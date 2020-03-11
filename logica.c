@@ -1,7 +1,6 @@
 #include "dados.h"
 
-int jogar (ESTADO *teste1, COORDENADA c);
-int jogadaValida (ESTADO *teste1, COORDENADA c);
+
 
 int jogadaValida(ESTADO *teste1, COORDENADA c) {
     //primeiro ve se ajogada é valida
