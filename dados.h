@@ -28,6 +28,3 @@ typedef struct {
         int jogador_atual;
 } ESTADO;
 
-void mostra_jogadas (ESTADO *s);
-void desenhaTabuleiro (ESTADO *s);
-ESTADO *inicializar_estado();

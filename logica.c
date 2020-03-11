@@ -1,23 +1,23 @@
 #include "dados.h"
 
-int jogadaValida(ESTADO *teste1, COORDENADA c){
+int jogar (ESTADO *teste1, COORDENADA c);
+int jogadaValida (ESTADO *teste1, COORDENADA c);
+
+int jogadaValida(ESTADO *teste1, COORDENADA c) {
     //primeiro ve se ajogada é valida
     //depois modifica o estado se for válida
     // 1 para válida; 0 n valida    
     int b, n, m, y , z;
     teste1 -> jogador_atual = b;
-    y = ((teste1 -> ultima_jogada).jogador1).coluna;
-    z = (teste1 -> ultima_jogada).jogador1.linha;
+    y = (teste1 -> ultima_jogada).coluna;
+    z = (teste1 -> ultima_jogada).linha;
     n = c.coluna;
     m = c.linha;
-    if (((n > 1) && (n < 8)) &&
-        ((m > 1) && (m < 8)) &&
-        ((n == y) || (n == y+1) || (n == y-1)) && 
-        ((m == z) || (m == z+1) || (m == z-1)) ) return TRUE;
+    if (((n > 1) && (n < 8)) && ((m > 1) && (m < 8)) && ((n == y) || (n == y+1) || (n == y-1)) && ((m == z) || (m == z+1) || (m == z-1)) ) return TRUE;
     else return FALSE;
 }
 
-int jogar(ESTADO *teste1, COORDENADA c){
+int jogar(ESTADO *teste1, COORDENADA c) {
     //primeiro ve se a jogada é valida
     //depois modifica o estado se for válida
     // 1 para válida; 0 n valida    
@@ -25,8 +25,8 @@ int jogar(ESTADO *teste1, COORDENADA c){
     j = jogadaValida(teste1, c);
     if (!j) return 0;
     teste1 -> jogador_atual = b;
-    y = ((teste1 -> ultima_jogada).jogador1).coluna;
-    z = (teste1 -> ultima_jogada).jogador1.linha;
+    y = (teste1 -> ultima_jogada).coluna;
+    z = (teste1 -> ultima_jogada).linha;
     n = c.coluna;
     m = c.linha;
     teste1 -> tab [z] [y] = PRETA; // ALTERA A CASA PARA PRETA, VERIFICAR SE É Y / Z OU Z / Y
@@ -34,12 +34,11 @@ int jogar(ESTADO *teste1, COORDENADA c){
     // Alterar no array de jogadas, acrescentar a atual
     int jogadaAtual;
     jogadaAtual = (teste1->num_jogadas);
-    ((((&teste1) -> jogadas[jogadaAtual]).jogador2).coluna) = n;
-    ((((&teste1) -> jogadas[jogadaAtual]).jogador2).linha) = m;
+    ((teste1 -> jogadas[jogadaAtual].jogador2).coluna) = n;
+    ((teste1 -> jogadas[jogadaAtual].jogador2).linha) = m;
 
     (teste1 -> num_jogadas) ++;
     if ( b == 2) teste1 -> jogador_atual = 1;
     else teste1 -> jogador_atual = 2;
     return 1;
 }
-
