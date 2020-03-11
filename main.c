@@ -1,5 +1,8 @@
-#include "interface.c"
-#include "logica.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "interface.h"
+#include "logica.h"
 #include "dados.h"
 
 int main () {
