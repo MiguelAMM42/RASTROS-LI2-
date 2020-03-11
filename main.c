@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "dados.h"
 #include "interface.h"
 #include "logica.h"
-#include "dados.h"
 
 int main () {
     ESTADO *e = inicializar_estado();

@@ -5,8 +5,6 @@
 #include "dados.h"
 
 
-
-
 ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
     e -> jogador_atual = 1;
