@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#ifndef ___DADOS_H___
+#define ___DADOS_H___
+
 
 #define TRUE 1
 #define FALSE 0
@@ -28,3 +28,5 @@ typedef struct {
         int jogador_atual;
 } ESTADO;
 
+
+#endif
