@@ -7,7 +7,7 @@ int jogadaValida(ESTADO *teste1, COORDENADA c) {
     //depois modifica o estado se for válida
     // 1 para válida; 0 n valida    
     int b, n, m, y , z;
-    teste1 -> jogador_atual = b;
+    b = teste1 -> jogador_atual;
     y = (teste1 -> ultima_jogada).coluna;
     z = (teste1 -> ultima_jogada).linha;
     n = c.coluna;
@@ -23,7 +23,7 @@ int jogar(ESTADO *teste1, COORDENADA c) {
     int b, n, m, y , z, j;
     j = jogadaValida(teste1, c);
     if (!j) return 0;
-    teste1 -> jogador_atual = b;
+    b = teste1 -> jogador_atual  ;
     y = (teste1 -> ultima_jogada).coluna;
     z = (teste1 -> ultima_jogada).linha;
     n = c.coluna;
