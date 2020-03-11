@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "interface.h"
+#include "logica.h"
+#include "dados.h"
 
 void mostra_jogadas (ESTADO *s)  // Imprime a lista de jogadas
 { // Falta inicializar a lista de jogadas
