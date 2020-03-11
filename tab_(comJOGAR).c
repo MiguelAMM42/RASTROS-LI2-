@@ -22,7 +22,7 @@ typedef struct
 typedef JOGADA JOGADAS[32];
 typedef struct {
         CASA tab[8][8];
-        JOGADA ultima_jogada;
+        COORDENADA ultima_jogada;
         JOGADAS jogadas;
         int num_jogadas;
         int jogador_atual;
@@ -103,82 +103,7 @@ void desenhaTabuleiro (ESTADO *s) {
     }
 }
 }
-    // printf (" 12345678 \n");
-    /*while (linha != 8) {
-        printf ("%c ", linha + 97);
-        int arr[8];
-        geraArray (s, arr, linha + 1);
-        while (i != 8) {
-            if (linha == 0 && i == 7)  printf ("1 ");
-                                       
-            else if (linha == 7 && i == 0) putchar ('2');
-            else if (arr[i] == 2) putchar ('*');
-            else if (arr[i] == 1) putchar ('#');
-            else putchar ('.');
-            i ++;
-       }
-        i = 0;
-        printf ("\n");
-        linha ++;
-    }*/
-/*
-void geraArray (Estado *s, int *arr, int linhaD) {
-    int i = 0;
-    char coluna = 'a';
-    while (i != 8) {
-        coordenada v; 
-        (v).coluna = coluna;
-        (v).linha = linhaD;
-
-        if (CoorIgual (&(s -> registos[(s -> jogadas) - 1]), &v)) {
-            arr[i] = 2;
-        }
-        else if (pertence (s, &v)) {
-            arr[i] = 1;  
-        } else arr[i] = 0;
-        i ++;
-        coluna ++;
-    }
-}
-
-
-
-int acrescenta (Estado *s, coordenada *jogada) {
-    if (! jogadaValida (s, jogada)) {printf ("Jogada Inválida"); return 0;}
-    (s -> registos [++ (s -> jogadas)]) = *jogada;
-    return 1;
-}
-
-
-int jogadaValida (Estado *s, coordenada *jogada) {
-    if (distancia (s, jogada) || (! pertence (s, jogada))) return TRUE;
-    return FALSE;
-}
-
-
-int distancia (Estado *s, coordenada *jogada) { // Verifica se a casa atual do asterisco esta a um de distancia de uma certa casa
-    coordenada *ast = &(s -> registos[(s -> jogadas) - 1]); // Casa atual do asterisco
-    if ((abs (((ast -> coluna) - 95) - ((jogada -> coluna) - 95)) == 1) || (abs ((ast -> linha) - (jogada -> linha))) == 1) return TRUE;
-    return FALSE;
-}
-
-
-int pertence (Estado *s, coordenada *jogada) {
-    int i = 0;
-    while (i != s -> jogadas) {
-        if (CoorIgual (&(s -> registos[i]), jogada)) return TRUE;
-        i ++;
-    }
-    return FALSE;
-}
-
-int CoorIgual (Coordenada *a, Coordenada *b) {
-    if (((a -> coluna) == (b -> coluna)) && ((a -> linha) == (b -> linha))) return TRUE;
-    return FALSE;
-}
-
-*/
-
+   
 
 
 
@@ -205,19 +130,23 @@ int jogar(ESTADO *teste1, COORDENADA c){
     // 1 para válida; 0 n valida    
     int b, n, m, y , z, j;
     j = jogadaValida(teste1, c);
-    if (j == TRUE){
-        teste1 -> jogador_atual = b;
-        y = ((teste1 -> ultima_jogada).jogador1).coluna;
-        z = (teste1 -> ultima_jogada).jogador1.linha;
-        n = c.coluna;
-        m = c.linha;
-        teste1 -> tab [z] [y] = PRETA; // ALTERA A CASA PARA PRETA, VERIFICAR SE É Y / Z OU Z / Y
-        teste1 -> tab [m] [n] = BRANCA; // IGUAL A CIMA
-        
-        (teste1 -> num_jogadas) ++;
-        if ( b == 2) teste1 -> jogador_atual = 1;
-        else teste1 -> jogador_atual = 2;
-    }else teste1;
-    
+    if (!j) return 0;
+    teste1 -> jogador_atual = b;
+    y = ((teste1 -> ultima_jogada).jogador1).coluna;
+    z = (teste1 -> ultima_jogada).jogador1.linha;
+    n = c.coluna;
+    m = c.linha;
+    teste1 -> tab [z] [y] = PRETA; // ALTERA A CASA PARA PRETA, VERIFICAR SE É Y / Z OU Z / Y
+    teste1 -> tab [m] [n] = BRANCA; // IGUAL A CIMA
+    // Alterar no array de jogadas, acrescentar a atual
+    int jogadaAtual;
+    jogadaAtual = (teste1->num_jogadas);
+    ((((&teste1) -> jogadas[jogadaAtual]).jogador2).coluna) = n;
+    ((((&teste1) -> jogadas[jogadaAtual]).jogador2).linha) = m;
+
+    (teste1 -> num_jogadas) ++;
+    if ( b == 2) teste1 -> jogador_atual = 1;
+    else teste1 -> jogador_atual = 2;
+    return 1;
 }
 
