@@ -211,6 +211,9 @@ int jogar(ESTADO *teste1, COORDENADA c){
         z = (teste1 -> ultima_jogada).jogador1.linha;
         n = c.coluna;
         m = c.linha;
+        teste1 -> tab [z] [y] = PRETA; // ALTERA A CASA PARA PRETA, VERIFICAR SE É Y / Z OU Z / Y
+        teste1 -> tab [m] [n] = BRANCA; // IGUAL A CIMA
+        
         (teste1 -> num_jogadas) ++;
         if ( b == 2) teste1 -> jogador_atual = 1;
         else teste1 -> jogador_atual = 2;
