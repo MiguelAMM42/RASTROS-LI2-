@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include "dados.h"
-#include "interface.h"
-#include "logica.h"
+#include "interface.c"
+#include "logica.c"
 
 int main () {
     ESTADO *e = inicializar_estado();

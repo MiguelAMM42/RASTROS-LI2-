@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "logica.h"
 #include "dados.h"
+#include "logica.h"
 
 
 ESTADO *inicializar_estado() {

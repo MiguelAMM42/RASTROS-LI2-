@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "interface.h"
 #include "dados.h"
+#include "interface.h"
 
 
 
