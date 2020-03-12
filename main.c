@@ -40,6 +40,7 @@ int main () {
     teste1.registos[0] = v;
     coordenada v1 = {'b', 5};
     teste1.registos[1] = v1; */
+    printf ("\n \n");
     desenhaTabuleiro (teste1);
     printf ("\n \n");
     mostra_jogadas (teste1);
