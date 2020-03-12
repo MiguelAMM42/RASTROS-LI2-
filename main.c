@@ -41,6 +41,7 @@ int main () {
     coordenada v1 = {'b', 5};
     teste1.registos[1] = v1; */
     desenhaTabuleiro (teste1);
+    printf ("\n \n");
     mostra_jogadas (teste1);
     COORDENADA c1 = {4, 4};
     if ((jogadaValida(teste1, c1) && casaVazia(teste1,c1))) printf ("1");
