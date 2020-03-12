@@ -4,6 +4,17 @@
 #include "dados.h"
 #include "interface.h"
 
+int casaVazia(ESTADO *teste1, COORDENADA c) {
+	//primeiro ve se a casa de destino está vazia
+    // 1 para vazia; 0 n vazia    
+    int n, m;
+    n = c.coluna;   // COLUNA DA JOGADA
+    m = c.linha;   // LINHA DA JOGADA
+    if (teste1 -> tab [m] [n] == VAZIO) return TRUE;
+    else return FALSE;
+}
+
+
 
 
 int jogadaValida(ESTADO *teste1, COORDENADA c) {
