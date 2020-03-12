@@ -42,8 +42,9 @@ int main () {
     teste1.registos[1] = v1; */
     printf ("\n \n");
     desenhaTabuleiro (teste1);
-    printf ("\n \n");
+    printf ("\n");
     mostra_jogadas (teste1);
+    printf ("\n");
     COORDENADA c1 = {4, 4};
     jogar (teste1, c1);
     desenhaTabuleiro (teste1);
