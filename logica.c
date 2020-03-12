@@ -5,7 +5,7 @@
 #include "interface.h"
 
 int casaVazia(ESTADO *estado, COORDENADA c) {
-	// Primeiro ve se a casa de destino está vazia
+    // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
     int n, m;
     n = c.coluna;   // COLUNA DA JOGADA
