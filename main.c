@@ -8,7 +8,7 @@
 int main () {
 // Define o estado inicial
     ESTADO *e = inicializar_estado();
-    mostrar_tabuleiro (e);
+    mostrar_tabuleiro (ESTADO s);
     interpretador (e);
     return 0;
 }
