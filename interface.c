@@ -48,16 +48,16 @@ void mostra_jogadas (ESTADO *s) {  // Imprime a lista de jogadas
     int jogadaNum = 0;
     while (jogadaNum < (s -> num_jogadas)) 
     {
-        if ( jogadaNum < 10)   printf ("0%d : ", jogadaNum + 1);
-        else printf ("%d : ", jogadaNum + 1);
+     //   if ( jogadaNum < 10)   printf ("0%d : ", jogadaNum + 1);
+        printf ("%02d : ", jogadaNum + 1);
         printf ("%c %d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha)); 
         printf ("%c %d ;\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha));
         jogadaNum ++;
     }
     if ((s -> jogador_atual) == 1) printf ("\nÉ a vez do jogador 1! \n");
     else {
-        if ( jogadaNum < 10)   printf ("0%d : ", jogadaNum + 1);
-        else printf ("%d : ", jogadaNum + 1);
+       // if ( jogadaNum < 10)   printf ("0%d : ", jogadaNum + 1);
+        printf ("%02d : ", jogadaNum + 1);
         printf ("%c %d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha)); 
         printf ("È a vez do jogador 2!\n");
     }        
