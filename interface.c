@@ -3,6 +3,7 @@
 #include <math.h>
 #include "dados.h"
 #include "logica.h"
+#include "interface.h"
 
 
 ESTADO *inicializar_estado() {
