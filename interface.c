@@ -21,7 +21,7 @@ ESTADO *inicializar_estado() {
 }
 
 
-void desenhaTabuleiro (ESTADO *s) {
+void mostrar_tabuleiro (ESTADO s) {
     int i = 0;
     int linha = 0;
     for (linha = 0; linha < 8; linha++) {
@@ -32,9 +32,9 @@ void desenhaTabuleiro (ESTADO *s) {
                 else {
                     if (i == 0 && linha == 7) putchar ('1');
                     else {
-                        if ((s -> tab [linha] [i]) == BRANCA) putchar ('*');
+                        if ((s.tab [linha] [i]) == BRANCA) putchar ('*');
                         else {
-                            if ((s -> tab [linha] [i]) == VAZIO) putchar ('.');
+                            if ((s.tab [linha] [i]) == VAZIO) putchar ('.');
                             else putchar ('#'); 
                         }
                     }
