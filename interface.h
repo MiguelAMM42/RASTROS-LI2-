@@ -5,5 +5,6 @@
 void mostra_jogadas (ESTADO *s);
 void desenhaTabuleiro (ESTADO *s);
 ESTADO *inicializar_estado();
+int interpretador(ESTADO *e);
 
 #endif
