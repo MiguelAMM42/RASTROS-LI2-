@@ -72,6 +72,15 @@ int interpretador(ESTADO *e) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
         mostrar_tabuleiro(*e);
-    }
+       /*if(strlen(linha) == 1 && sscanf(linha, "ler %s", &endereco) == 2) {  // eu acho que o strlen começa no 0, por isso é 0 = ler e 1 = endereço
+        fp=fopen(endereco, "w+");
+            fprintf(fp, "Testing...\n");
+            mostrar_tabuleiro(*e);
+        }
+    if(strlen(linha) == 0 && sscanf(linha, "Q") == 1) {
+                                                        fclose (fp);
+                                                        }    
+
+    }*/
     return 1;
 }
