@@ -10,11 +10,11 @@ int main () {
 // Define o estado inicial
     int repetir = 1;
     ESTADO *e = inicializar_estado();
+    mostrar_tabuleiro (*e);
     while (repetir == 1)
     {
-    mostrar_tabuleiro (*e);
-    repetir = interpretador (e);
-    
+    interpretador (e);
+    mostrajogadas (e);          
     }
     return 0;
 }
