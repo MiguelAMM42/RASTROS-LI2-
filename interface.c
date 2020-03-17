@@ -84,3 +84,44 @@ int interpretador(ESTADO *e) {
     }*/
     return 1;
 }
+
+   /* 
+int interpretador(ESTADO *e) 
+{
+    char linha[BUF_SIZE];
+    char col[2], lin[2];
+    char endereco[50];
+    FILE *fp;
+    if
+    (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
+    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+        COORDENADA coord = {*col - 'a', *lin - '1'};
+        jogar(e, coord);
+        mostrar_tabuleiro(*e);
+    }
+    if(strlen(linha) >= 4 && sscanf(linha, "ler %s", endereco) == 2) {  // eu acho que o strlen começa no 0, por isso é 0 = ler e 1 = endereço
+            FILE *fp;
+            fp=fopen(endereco, "r");
+
+            fprintf(fp, "Ficheiro aberto\n");
+            mostrar_tabuleiro(*e);
+        }
+    if(strlen(linha) == 1 && sscanf(linha, "Q") == 1) {
+                                                        fclose (fp);
+                                                        }
+    if(sscanf(linha, "gr %s", endereco) == 2) 
+    {  // eu acho que o strlen começa no 0, por isso é 0 = ler e 1 = endereço
+           FILE *fp;
+           fp=fopen(endereco, "r");
+                if(fp == NULL) {
+        printf("Could not create file. Maybe locked or being used by another application?\n");
+        exit(-1);
+    }
+            }
+              
+return 1;
+}
+// Links giros para ver exemplos de guardar ficheiros:
+// https://www.quora.com/How-do-I-write-a-program-in-C-to-create-a-new-file-with-a-name-taken-from-the-user
+
+*/
