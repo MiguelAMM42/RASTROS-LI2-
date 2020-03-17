@@ -80,8 +80,8 @@ int interpretador(ESTADO *e) {
     if(strlen(linha) == 0 && sscanf(linha, "Q") == 1) {
                                                         fclose (fp);
                                                         }    
-
-    }*/
+    */
+    }
     return 1;
 }
 
