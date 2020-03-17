@@ -9,9 +9,9 @@
 int main () {
 // Define o estado inicial
     int repetir = 1;
+    ESTADO *e = inicializar_estado();
     while (repetir == 1)
     {
-    ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e);
     repetir = interpretador (e);
     return 0;
