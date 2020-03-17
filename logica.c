@@ -48,7 +48,7 @@ int casaVazia(ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
     int n, m;
-    n = c.coluna;   // COLUNA DA JOGADA
+    n = c.coluna;   // COLUNA DA JOGADA           VER SE TEMOS DE TROCAR O M POR N; NÃO TENHO A CERTEZA...
     m = c.linha;   // LINHA DA JOGADA
     if (estado -> tab [m] [n] == VAZIO) return TRUE;
     else return FALSE;
