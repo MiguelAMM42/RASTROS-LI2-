@@ -5,10 +5,15 @@
 #include "interface.c"
 #include "logica.c"
 
+
 int main () {
 // Define o estado inicial
+    int repetir = 1;
+    while (repetir == 1)
+    {
     ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e);
-    interpretador (e);
+    repetir = interpretador (e);
     return 0;
+    }
 }
