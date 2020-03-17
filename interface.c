@@ -24,17 +24,16 @@ ESTADO *inicializar_estado() {
 
 
 void mostrar_tabuleiro (ESTADO s) {
-    int i = 0;
-    int linha = 0;
-    for (linha = 0; linha < 8; linha++) {
+    int i, linha;
+    for (linha = 8; linha > 0; linha--) {
         for (i = 0; i < 9; i++) {
             if (i == 8) putchar('\n');
             else {
-                if (i == 7 && linha == 0) putchar ('2');
+                if (i == 7 && linha == 8) putchar ('2');
                 else {
-                    if (i == 0 && linha == 7) putchar ('1');
+                    if (i == 0 && linha == 1) putchar ('1');
                     else {
-                        if ((s.tab [linha] [i]) == BRANCA) putchar ('*');
+                        if ((s.tab [linha] [i]) == BRANCA) putchar ('*');                  ///
                         else {
                             if ((s.tab [linha] [i]) == VAZIO) putchar ('.');
                             else putchar ('#'); 
