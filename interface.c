@@ -108,6 +108,7 @@ int interpretador(ESTADO *e)
         }
     if(strlen(linha) == 1 && sscanf(linha, "Q") == 1) {
                                                         fclose (fp);
+                                                        return 0;
                                                         }
     if(sscanf(linha, "gr %s", endereco) == 2) 
     {  // eu acho que o strlen começa no 0, por isso é 0 = ler e 1 = endereço
