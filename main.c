@@ -14,7 +14,7 @@ int main () {
     while (repetir == 1)
     {
     interpretador (e);
-    mostrajogadas (e);          
+    mostra_jogadas (e);          
     }
     return 0;
 }
