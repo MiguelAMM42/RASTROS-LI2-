@@ -14,6 +14,7 @@ int main () {
     {
     mostrar_tabuleiro (*e);
     repetir = interpretador (e);
-    return 0;
+    
     }
+    return 0;
 }
