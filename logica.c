@@ -33,10 +33,10 @@ int jogar (ESTADO *estado, COORDENADA c) {
         printf ("O vencedor é o jogador %d.", 3 - estado -> jogador_atual);
         return 2;
     } else if (c.linha == 1 && c.coluna == 1) { // A casa 'a1' é alcançada
-        printf ("O vencedor é o jogador %d.", 1);
+        printf ("O vencedor é o jogador %d.\n", 1);
         return 2;
     } else if (c.linha == 8 && c.coluna == 8) { // A casa 'h8' é alcançada
-        printf ("O vencedor é o jogador %d.", 2);
+        printf ("O vencedor é o jogador %d.\n", 2);
         return 2;
     }
 
