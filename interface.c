@@ -50,15 +50,15 @@ void mostra_jogadas (ESTADO *s) {  // Imprime a lista de jogadas
     while (jogadaNum < (s -> num_jogadas)) 
     {
         printf ("%02d : ", jogadaNum + 1);
-        printf ("%c %d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha)); 
-        printf ("%c %d ;\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha));
+        printf ("%c %d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha) + 1); 
+        printf ("%c %d ;\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
     if ((s -> jogador_atual) == 1) printf ("\nÉ a vez do jogador 1! \n");
     else 
     {
         printf ("%02d : ", jogadaNum + 1);
-        printf ("%c %d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha)); 
+        printf ("%c %d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
         printf ("È a vez do jogador 2!\n");
     }        
 }
