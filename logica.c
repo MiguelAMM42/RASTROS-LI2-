@@ -3,6 +3,8 @@
 #include <math.h>
 #include "dados.h"
 #include "interface.h"
+
+
 int jogar (ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
@@ -61,7 +63,7 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
     z = (estado -> ultima_jogada).linha;
     n = c.coluna;
     m = c.linha;
-    if (((n > 1) && (n < 8)) && ((m > 1) && (m < 8)) && ((n == y) || (n == y + 1) || (n == y - 1)) && ((m == z) || (m == z + 1) || (m == z - 1)) && casaVazia(estado, c) && CoordenadaValida (c)) return TRUE;
+    if (((n == y) || (n == y + 1) || (n == y - 1)) && ((m == z) || (m == z + 1) || (m == z - 1)) && casaVazia(estado, c) && CoordenadaValida (c)) return TRUE;
     else return FALSE;
 }
 
@@ -69,8 +71,6 @@ int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
     CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
     if (anyBRANCA(p, 8)) return TRUE;
-    else return FALSE;
-
 }
 
 int anyBRANCA (CASA a[], int N) {
@@ -83,13 +83,12 @@ int anyBRANCA (CASA a[], int N) {
 }
 
 int CoordenadaValida (COORDENADA a) {
-    if (a.linha <= 8 && a.linha >= 1 && a.coluna >= 0 && a.coluna <= 7) return TRUE;
+    if (a.linha <= 7 && a.linha >= 0 && a.coluna >= 0 && a.coluna <= 7) return TRUE;
     return FALSE;
 }
 
-void guarda_ficheiro (ESTADO *e, FILE *fp)
-{
+void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostrar_tabuleiro (*e, fp);
-    fputc ('\n', fp);
+    fprintf ('a', fp);
     mostra_jogadas (e, fp);
 }

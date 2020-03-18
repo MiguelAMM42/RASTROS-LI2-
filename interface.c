@@ -69,7 +69,7 @@ int interpretador(ESTADO *e) {
     char col[2], lin[2];
     printf ("Comando:");
     if(fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
-    //Quando é feita a jogada normal
+    // Quando é feita a jogada normal
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
         COORDENADA coord = {*col - 'a', *lin - '1'};
