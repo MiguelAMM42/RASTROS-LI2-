@@ -67,6 +67,8 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
     else return FALSE;
 }
 
+//Something is wrong in Jogadas_Possiveis
+
 int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
     CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
