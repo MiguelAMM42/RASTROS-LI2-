@@ -3,8 +3,6 @@
 #include <math.h>
 #include "dados.h"
 #include "interface.h"
-
-
 int jogar (ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
@@ -71,6 +69,7 @@ int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
     CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
     if (anyBRANCA(p, 8)) return TRUE;
+    else return FALSE;
 
 }
 
@@ -88,3 +87,9 @@ int CoordenadaValida (COORDENADA a) {
     return FALSE;
 }
 
+void guarda_ficheiro (ESTADO *e, FILE *fp)
+{
+    mostrar_tabuleiro (*e, fp);
+    fputc ('\n', fp);
+    mostra_jogadas (e, fp);
+}
