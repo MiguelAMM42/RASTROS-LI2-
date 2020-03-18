@@ -48,16 +48,14 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp) {
 
 void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
     int jogadaNum = 0;
-    while (jogadaNum < (s -> num_jogadas)) 
-    {
+    while (jogadaNum < (s -> num_jogadas)) {
         fprintf (fp, "%02d : ", jogadaNum + 1);
         fprintf (fp, "%c %d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha) + 1); 
         fprintf (fp, "%c %d ;\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
     if ((s -> jogador_atual) == 1) printf ("\nÉ a vez do jogador 1! \n");
-    else 
-    {
+    else {
         fprintf (fp, "%02d : ", jogadaNum + 1);
         fprintf (fp, "%c %d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
         fprintf (fp, "È a vez do jogador 2!\n");
@@ -68,45 +66,34 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
     printf ("Comando:");
-    if(fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
+    if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
     // Quando é feita a jogada normal
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-    {
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
         mostrar_tabuleiro(*e, stdout);
     }
     else {
-            //Se premires qualquer carater, termina
-            if(strlen(linha) == 2 || sscanf(linha, " Q")) {      
-                                           printf ("Fim\n");
-                                           return -1;
-                                           }           
-            else {      
-                     char endereco[BUF_SIZE]; 
-                     if (sscanf(linha, "gr%s", endereco) == 1) 
-                        {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
-                               
-                               FILE *fp;
-                               fp = fopen(endereco, "w");
-                                if(fp == NULL) {  //SE não abre
-                                                       printf("Could not create file. Maybe locked or being used by another application?\n");
-                                                        return (-1);
-                                                    }
-                                else // SE o caminho está certo
-                                    {printf ("guarda_ficheiro %s", endereco);
-                                    guarda_ficheiro (e, fp);
-                                    fclose(fp);
-                                    }
-                                
-
-                        }
-                       else return 1;
-
-                }
+        //Se premires qualquer carater, termina
+        if(strlen(linha) == 2 || sscanf(linha, " Q")) {      
+            printf ("Fim\n");
+            return -1;
+        } else {      
+            char endereco[BUF_SIZE]; 
+            if (sscanf(linha, "gr%s", endereco) == 1) {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                FILE *fp;
+                fp = fopen(endereco, "w");
+                if(fp == NULL) {  // Se não abre
+                    printf("Could not create file. Maybe locked or being used by another application?\n");
+                    return (-1);
+                } else {// SE o caminho está certo
+                    printf ("guarda_ficheiro %s", endereco);
+                    guarda_ficheiro (e, fp);
+                    fclose(fp);
+                    }
+            } else return 1;
         }
-
-    
+    }
     return 1;
 }
 
