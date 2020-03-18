@@ -12,9 +12,9 @@ ESTADO *inicializar_estado() {
     teste1 -> num_jogadas = 0;
     teste1 -> ultima_jogada.coluna = 4;
     teste1 -> ultima_jogada.linha = 4;
-    for (int i = 7; i > (-1); i--) {                                         ///
+    for (int i = 0; i <8; i++) {                                         ///
         for (int ii = 0; ii < 8; ii ++) {                                 ///
-            if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;     ///
+            if (i == 3 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;     ///
             else (teste1 -> tab [i] [ii]) = VAZIO;                        ///                  
         }
     }
@@ -25,13 +25,13 @@ ESTADO *inicializar_estado() {
 
 void mostrar_tabuleiro (ESTADO s) {
     int i, linha;
-    for (linha = 7; linha > (-1); linha--) {
+    for (linha = 0; linha < 8); linha++) {
         for (i = 0; i < 9; i++) {
             if (i == 8) putchar('\n');
             else {
-                if (i == 7 && linha == 7) putchar ('2');
+                if (i == 7 && linha == 0) putchar ('2');
                 else {
-                    if (i == 0 && linha == 0) putchar ('1');
+                    if (i == 0 && linha == 7) putchar ('1');
                     else {
                         if ((s.tab [linha] [i]) == BRANCA) putchar ('*');                  ///
                         else {
