@@ -5,15 +5,16 @@
 #include "interface.c"
 #include "logica.c"
 
-
 int main () {
 // Define o estado inicial
+    int repetir = 1;
     ESTADO *e = inicializar_estado();
-    mostrar_tabuleiro (*e);
-    while (1)
+    while (repetir != -1)
     {
-    interpretador (e);
-    mostra_jogadas (e);          
+    mostrar_tabuleiro (*e, stdout);
+    mostra_jogadas (e, stdout);
+    repetir = interpretador (e);
+    if (repetir == -1) return 0;
     }
     return 0;
 }
