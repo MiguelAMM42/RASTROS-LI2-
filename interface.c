@@ -25,7 +25,7 @@ ESTADO *inicializar_estado() {
 
 void mostrar_tabuleiro (ESTADO s) {
     int i, linha;
-    for (linha = 0; linha < 8); linha++) {
+    for (linha = 0; linha < 8; linha++) {
         for (i = 0; i < 9; i++) {
             if (i == 8) putchar('\n');
             else {

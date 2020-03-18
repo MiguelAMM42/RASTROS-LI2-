@@ -58,8 +58,7 @@ int casaVazia(ESTADO *estado, COORDENADA c) {
 int jogadaValida(ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
-    int b, n, m, y, z;
-    b = estado -> jogador_atual;
+    int n, m, y, z;
     y = (estado -> ultima_jogada).coluna;
     z = (estado -> ultima_jogada).linha;
     n = c.coluna;
@@ -70,8 +69,7 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
 
 int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
-    CASA tabuleiro [8][8] = estado -> tab;
-    CASA p [] = {tabuleiro[c.linha + 1][c.coluna + 1], tabuleiro[c.linha - 1][c.coluna - 1], tabuleiro[c.linha + 1][c.coluna - 1], tabuleiro[c.linha - 1][c.coluna + 1], tabuleiro[c.linha + 1][c.coluna], tabuleiro[c.linha - 1][c.coluna], tabuleiro[c.linha][c.coluna + 1], tabuleiro[c.linha][c.coluna - 1]};
+    CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
     if (anyBRANCA(p, 8)) return TRUE;
 
 }
@@ -86,7 +84,7 @@ int anyBRANCA (CASA a[], int N) {
 }
 
 int CoordenadaValida (COORDENADA a) {
-    if (a.linha <= 8 && a.linha >= 1 && a.coluna >= 'a' && a.coluna <= 'h') return TRUE;
+    if (a.linha <= 8 && a.linha >= 1 && a.coluna >= 0 && a.coluna <= 7) return TRUE;
     return FALSE;
 }
 
