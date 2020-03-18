@@ -94,7 +94,10 @@ int interpretador(ESTADO *e) {
                                                         return (-1);
                                                     }
                                 else // SE o caminho está certo
-                                    {printf ("guarda_ficheiro %s", endereco);guarda_ficheiro (e, fp);}
+                                    {printf ("guarda_ficheiro %s", endereco);
+                                    guarda_ficheiro (e, fp);
+                                    fclose(fp);
+                                    }
                                 
 
                         }
