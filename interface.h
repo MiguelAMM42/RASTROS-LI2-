@@ -7,4 +7,6 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp);
 ESTADO *inicializar_estado();
 int interpretador(ESTADO *e);
 
+void guarda_ficheiro (ESTADO *e, FILE *fp);
+
 #endif
