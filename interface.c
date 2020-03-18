@@ -11,7 +11,7 @@ ESTADO *inicializar_estado() {
     teste1 -> jogador_atual = 1;
     teste1 -> num_jogadas = 0;
     teste1 -> ultima_jogada.coluna = 4;
-    teste1 -> ultima_jogada.linha = 4;
+    teste1 -> ultima_jogada.linha = 3;
     for (int i = 0; i <8; i++) {                                         ///
         for (int ii = 0; ii < 8; ii ++) {                                 ///
             if (i == 3 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;     ///
