@@ -30,7 +30,7 @@ int jogar (ESTADO *estado, COORDENADA c) {
     }
     // Casos em que o jogo se dá como terminado
     if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
-        printf ("O vencedor é o jogador %d.", 3 - estado -> jogador_atual);
+        printf ("O vencedor é o jogador %d.\n", 3 - estado -> jogador_atual);
         return 2;
     } else if (c.linha == 1 && c.coluna == 1) { // A casa 'a1' é alcançada
         printf ("O vencedor é o jogador %d.\n", 1);
