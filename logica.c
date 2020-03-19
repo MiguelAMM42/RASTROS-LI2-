@@ -95,50 +95,38 @@ void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostra_jogadas (e, fp);
 }
 
-ESTADO le_ficheiro (ESTADO *e, FILE *fp)
-{
+void le_ficheiro (ESTADO *e, FILE *fp) {
     char linha[100];
+    int nlinha = 7;
+    int num_jogadas = 0;
     // Ler tabuleiro
-    int nlinha = 0;
-    while (nlinha < 8 && fscanf (fp, "%s", linha) == 1) {
-        guardalinha (e, linha, nlinha);
-        nlinha ++;
-
-    //printf ("Chegou ao le_ficheiro\n");
-
-    /*
-        if (*linha[i*8+ii] == '\n') {
-            i++; ii = 1;
-        } //Chega ao fim da linha
-        else {
-            if (*linha[i*8+ii] == '#') {
-                e->tab[i][ii] = PRETA; ii++;
-            } else {
-                if (*linha[i*8+ii] == '*') {
-                    e -> tab [i][ii] = BRANCA;
-                    ii++;
-            } else {
-                e -> tab [i][ii] = VAZIO;
-                ii ++;
-            }
-            }
-        }
-    */
-    }
-    return *e;
+    while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --);
+    // Ler jogadas
+    while (fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
+    while (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
+    e -> num_jogadas = num_jogadas;
 }
 
-void guardaLinha (ESTADO *e, char linha[], int nlinha) {
+void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do tabuleiro do ficheiro no estado.
     int i = 0;
     while (i != 8) {
         if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
         else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
-        else if (linha [i] == '.') e -> tab [nlinha] [i] = VAZIO;
-        else if (linha [i] == '1') e -> tab [nlinha] [i] = UM;
-        else e -> tab [nlinha] [i] = DOIS;         
+        else e -> tab [nlinha][i] = VAZIO;
         i ++;
     }
-    
 }
-//Depois ver se esta função pode ser void, para ver se altera o ESTADO já aqui
+
+void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
+    COORDENADA jogada1 = {linha[0] - 'a', atoi (&linha[1]) - 1};
+    (e -> jogadas[num_jogada]).jogador1 = jogada1;
+    e -> ultima_jogada = jogada1;
+    e -> jogador_atual = 2;
+    if (n == 2) { // Caso sejam dois jogadores.
+        COORDENADA jogada2 = {linha[2] - 'a', atoi (&linha[3]) - 1};
+        (e -> jogadas[num_jogada]).jogador2 = jogada2;
+        e -> ultima_jogada = jogada2;
+        e -> jogador_atual = 1;
+    }
+}
 
