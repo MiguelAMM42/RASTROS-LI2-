@@ -97,17 +97,16 @@ int interpretador(ESTADO *e) {
                     }
             } 
             else {
-                    if (sscanf(linha, "ler%s", endereco) == 1) 
-                        {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                    if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
                             FILE *fp;
                             fp = fopen(endereco, "r");
                             if(fp == NULL) {  // Se não abre
                                 printf("Could not create file. Maybe locked or being used by another application?\n");
                                 return (-1);
                             } 
-                            else {// SE o caminho está certo
+                            else { // SE o caminho está certo
                                 printf ("\n ler ficheiro %s", endereco);
-                        printf ("\nEstamos a ler! %s\n", endereco);
+                                printf ("\nEstamos a ler! %s\n", endereco);
                                 le_ficheiro (e, fp);
                                 fclose(fp);
                                 mostrar_tabuleiro (*e, stdout);
