@@ -16,6 +16,8 @@ ESTADO *inicializar_estado() {
     for (int i = 7; i > (-1); i--) {
         for (int ii = 0; ii < 8; ii ++) {
             if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
+            else if (i == 7 && ii == 7) (teste1 -> tab [i] [ii]) = DOIS;
+            else if (i == 0 && ii == 0) (teste1 -> tab [i] [ii]) = UM;
             else (teste1 -> tab [i] [ii]) = VAZIO;                                          
         }
     }
@@ -29,19 +31,11 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp) {
     for (linha = 7; linha > (-1); linha--) {
         for (i = 0; i < 9; i++) {
             if (i == 8) fputc('\n', fp);
-            else {
-                if (i == 7 && linha == 7) fputc('2', fp);
-                else {
-                    if (i == 0 && linha == 0) fputc('1', fp);
-                    else {
-                        if ((s.tab [linha] [i]) == BRANCA) fputc('*', fp);
-                        else {
-                            if ((s.tab [linha] [i]) == VAZIO) fputc('.', fp);
-                            else fputc('#', fp); 
-                        }
-                    }
-                }
-            }
+            else if ((s.tab [linha] [i]) == DOIS) fputc('2', fp);
+            else if ((s.tab [linha] [i]) == UM) fputc('1', fp);
+            else if ((s.tab [linha] [i]) == BRANCA) fputc('*', fp);
+            else if ((s.tab [linha] [i]) == VAZIO) fputc('.', fp);
+            else fputc('#', fp); 
         }
     }
 }
@@ -69,55 +63,49 @@ int interpretador(ESTADO *e) {
     printf ("Comando:");
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
     // Quando é feita a jogada normal
-    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-    {
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
         mostrar_tabuleiro(*e, stdout);
         return 1;
-    }
-    else {
-        //Se premires qualquer carater, termina
+    } else { //Se premires qualquer carater, termina
         if((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) {      
             printf ("Fim\n");
             return -1;
-        } else {      
+        } else {     
             char endereco[BUF_SIZE]; 
-            if (sscanf(linha, "gr%s", endereco) == 1) 
-            {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+            if (sscanf(linha, "gr%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
                 FILE *fp;
                 fp = fopen(endereco, "w");
-                if(fp == NULL) {  // Se não abre
+                if (fp == NULL) {  // Caso em que não abre
                     printf("Could not create file. Maybe locked or being used by another application?\n");
                     return (-1);
-                } else {// SE o caminho está certo
+                } else { // SE o caminho está certo
                     printf ("guarda_ficheiro %s", endereco);
                     guarda_ficheiro (e, fp);
                     fclose(fp);
+                }
+            } else { 
+                if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                    FILE *fp;
+                    fp = fopen(endereco, "r");
+                    if (fp == NULL) {  // Se não abre
+                        printf("Could not create file. Maybe locked or being used by another application?\n");
+                        return (-1);
+                    } else { // SE o caminho está certo
+                        printf ("\n ler ficheiro %s", endereco);
+                        printf ("\nEstamos a ler! %s\n", endereco);
+                        le_ficheiro (e, fp);
+                        fclose(fp);
+                        mostrar_tabuleiro (*e, stdout);
                     }
-            } 
-            else {
-                    if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
-                            FILE *fp;
-                            fp = fopen(endereco, "r");
-                            if(fp == NULL) {  // Se não abre
-                                printf("Could not create file. Maybe locked or being used by another application?\n");
-                                return (-1);
-                            } 
-                            else { // SE o caminho está certo
-                                printf ("\n ler ficheiro %s", endereco);
-                                printf ("\nEstamos a ler! %s\n", endereco);
-                                le_ficheiro (e, fp);
-                                fclose(fp);
-                                mostrar_tabuleiro (*e, stdout);
-                                    }
-                               return 1;
-                         }           
-                        else return 1;
-                    }
-    }
+                return 1;
+                }           
+            else return 1;
+            }
+        }
     return 1;
-}
+    }
 }
 
 /*
@@ -162,9 +150,19 @@ int interpretador(ESTADO *e)
                             exit(-1);
                                                     }
                                     else 
-                                    {
-                                    int i = 0;
-                                    int linha = 0;
+                                   void guardaLinha (ESTADO *e, char linha[], int nlinha) {
+    int i = 0;	    int i = 0;
+    while (i != 8) {	    while (i != 8) {
+        if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;	        if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
+        else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;	        else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
+        else e -> tab [nlinha][i] = VAZIO;	        else if (linha [i] == '.') e -> tab [nlinha] [i] = VAZIO;
+        else if (linha [i] == '1') e -> tab [nlinha] [i] = UM;
+        else e -> tab [nlinha] [i] = DOIS;         
+        i ++;	        i ++;
+    }	    }
+
+
+}	} int linha = 0;
                         
                                     for (linha = 0; linha < 8; linha++) {
                                             for (i = 0; i < 9; i++) {

@@ -11,7 +11,7 @@ int jogar (ESTADO *estado, COORDENADA c) {
     // 1 - Devolve o Estado com a jogada efetuada; 0 - Devolve o estado inicial (a jogada não é válida)
     if (! jogadaValida(estado, c)) return 0; // Caso em que a jogada pretendida não é válida.
     estado -> tab [(estado -> ultima_jogada).linha] [(estado -> ultima_jogada).coluna] = PRETA; // Altera a casa BRANCA da jogada anterior para PRETA 
-    estado -> tab [c.linha] [c.coluna] = BRANCA; //  Altera a casa VAZIO da jogada atual para BRANCA 
+    estado -> tab [c.linha][c.coluna] = BRANCA; //  Altera a casa VAZIO da jogada atual para BRANCA 
     // Alterar no array de jogadas, acrescentar a atual
     // Coloca a última jogada no array de Jogadas #1
     // Altera a última jogada para a jogada que o jogador pretende efetuar #2
@@ -29,17 +29,18 @@ int jogar (ESTADO *estado, COORDENADA c) {
         estado -> num_jogadas ++;
     }
     // Casos em que o jogo se dá como terminado
-    if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
-        printf ("O vencedor é o jogador %d.\n", 3 - estado -> jogador_atual);
-        return 2;
-    } else if (c.linha == 1 && c.coluna == 1) { // A casa 'a1' é alcançada
+    if (c.linha == 0 && c.coluna == 0) { // A casa 'a1' é alcançada
         printf ("O vencedor é o jogador %d.\n", 1);
         return 2;
-    } else if (c.linha == 8 && c.coluna == 8) { // A casa 'h8' é alcançada
+    } else if (c.linha == 7 && c.coluna == 7) { // A casa 'h8' é alcançada
         printf ("O vencedor é o jogador %d.\n", 2);
         return 2;
     }
-
+    /*else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
+        printf ("O vencedor é o jogador %d.\n", 3 - estado -> jogador_atual);
+        return 2;
+    }
+    */
     return 1;
 }
 
@@ -50,7 +51,7 @@ int casaVazia(ESTADO *estado, COORDENADA c) {
     int n, m;
     n = c.coluna;   // COLUNA DA JOGADA           VER SE TEMOS DE TROCAR O M POR N; NÃO TENHO A CERTEZA...
     m = c.linha;   // LINHA DA JOGADA
-    if (estado -> tab [m] [n] == VAZIO) return TRUE;
+    if (estado -> tab [m] [n] != PRETA || estado -> tab [m] [n] != BRANCA) return TRUE;
     else return FALSE;
 }
 
@@ -112,10 +113,13 @@ void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do 
     while (i != 8) {
         if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
         else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
-        else e -> tab [nlinha][i] = VAZIO;
+        else if (linha [i] == '.') e -> tab [nlinha] [i] = VAZIO;
+        else if (linha [i] == '1') e -> tab [nlinha] [i] = UM;
+	    else e -> tab [nlinha] [i] = DOIS;    
         i ++;
     }
 }
+
 
 void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
     COORDENADA jogada1 = {linha[0] - 'a', atoi (&linha[1]) - 1};
