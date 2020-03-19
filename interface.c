@@ -69,10 +69,12 @@ int interpretador(ESTADO *e) {
     printf ("Comando:");
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
     // Quando é feita a jogada normal
-    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
+    {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
         mostrar_tabuleiro(*e, stdout);
+        return 1;
     }
     else {
         //Se premires qualquer carater, termina
@@ -81,7 +83,8 @@ int interpretador(ESTADO *e) {
             return -1;
         } else {      
             char endereco[BUF_SIZE]; 
-            if (sscanf(linha, "gr%s", endereco) == 1) {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+            if (sscanf(linha, "gr%s", endereco) == 1) 
+            {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
                 FILE *fp;
                 fp = fopen(endereco, "w");
                 if(fp == NULL) {  // Se não abre
@@ -92,12 +95,31 @@ int interpretador(ESTADO *e) {
                     guarda_ficheiro (e, fp);
                     fclose(fp);
                     }
-            } else return 1;
-        }
+            } 
+            else {
+                    if (sscanf(linha, "ler%s", endereco) == 1) 
+                        {  // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                            FILE *fp;
+                            fp = fopen(endereco, "r");
+                            if(fp == NULL) {  // Se não abre
+                                printf("Could not create file. Maybe locked or being used by another application?\n");
+                                return (-1);
+                            } 
+                            else {// SE o caminho está certo
+                                printf ("\n ler ficheiro %s", endereco);
+                        printf ("\nEstamos a ler! %s\n", endereco);
+                                *e = le_ficheiro (e, fp);
+                                fclose(fp);
+                                mostrar_tabuleiro (*e, stdout);
+                                    }
+                               return 1;
+                         }           
+                        else return 1;
+                    }
     }
     return 1;
 }
-
+}
 
 /*
 int interpretador(ESTADO *e) 
