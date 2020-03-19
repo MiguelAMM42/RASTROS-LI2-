@@ -78,7 +78,7 @@ int interpretador(ESTADO *e) {
     }
     else {
         //Se premires qualquer carater, termina
-        if(strlen(linha) == 2 || sscanf(linha, " Q")) {      
+        if((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) {      
             printf ("Fim\n");
             return -1;
         } else {      
