@@ -6,7 +6,7 @@
 #define FALSE 0
 #define MAX 64
 
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
+typedef enum {VAZIO, BRANCA, PRETA, UM, DOIS} CASA;
 
 typedef struct {
     int coluna;
@@ -27,6 +27,5 @@ typedef struct {
         int num_jogadas;
         int jogador_atual;
 } ESTADO;
-
 
 #endif
