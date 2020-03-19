@@ -15,13 +15,10 @@ ESTADO *inicializar_estado() {
     teste1 -> ultima_jogada.linha = 4;
     for (int i = 7; i > (-1); i--) {
         for (int ii = 0; ii < 8; ii ++) {
-            if (i == 7 && ii == 7) (teste1 -> tab [7] [7] = DOIS );
-            else if (i == 0 && ii == 0) (teste1 -> tab [0] [0] = UM );
-            else if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
+            if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
             else (teste1 -> tab [i] [ii]) = VAZIO;                                          
-        
+        }
     }
-}
     return teste1;
 }
 
@@ -33,9 +30,9 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp) {
         for (i = 0; i < 9; i++) {
             if (i == 8) fputc('\n', fp);
             else {
-                if ((s.tab [linha] [i]) == DOIS) fputc('*', fp);
+                if (i == 7 && linha == 7) fputc('2', fp);
                 else {
-                    if ((s.tab [linha] [i]) == UM) fputc('1', fp);
+                    if (i == 0 && linha == 0) fputc('1', fp);
                     else {
                         if ((s.tab [linha] [i]) == BRANCA) fputc('*', fp);
                         else {
@@ -53,14 +50,14 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
     int jogadaNum = 0;
     while (jogadaNum < (s -> num_jogadas)) {
         fprintf (fp, "%02d : ", jogadaNum + 1);
-        fprintf (fp, "%c %d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha) + 1); 
-        fprintf (fp, "%c %d ;\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
+        fprintf (fp, "%c%d / ", 'a' + (((s -> jogadas[jogadaNum]).jogador1).coluna) , (((s -> jogadas[jogadaNum]).jogador1).linha) + 1); 
+        fprintf (fp, "%c%d\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
     if ((s -> jogador_atual) == 1) printf ("\nÉ a vez do jogador 1! \n");
     else {
         fprintf (fp, "%02d : ", jogadaNum + 1);
-        fprintf (fp, "%c %d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
+        fprintf (fp, "%c%d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
         printf ("È a vez do jogador 2!\n");
     }        
 }
@@ -111,7 +108,7 @@ int interpretador(ESTADO *e) {
                             else {// SE o caminho está certo
                                 printf ("\n ler ficheiro %s", endereco);
                         printf ("\nEstamos a ler! %s\n", endereco);
-                                *e = le_ficheiro (e, fp);
+                                le_ficheiro (e, fp);
                                 fclose(fp);
                                 mostrar_tabuleiro (*e, stdout);
                                     }
