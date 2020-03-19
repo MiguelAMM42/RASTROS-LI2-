@@ -97,23 +97,46 @@ void guarda_ficheiro (ESTADO *e, FILE *fp) {
 
 ESTADO le_ficheiro (ESTADO *e, FILE *fp)
 {
-    char *linha[2*BUF_SIZE] = {};
-    fscanf (fp, "%s", *linha);
+    char linha[100];
     // Ler tabuleiro
-    int i = 0, ii = 0;
-    while (i < 8)
-        {
+    int nlinha = 0;
+    while (nlinha < 8 && fscanf (fp, "%s", linha) == 1) {
+        guardalinha (e, linha, nlinha);
+        nlinha ++;
+
     //printf ("Chegou ao le_ficheiro\n");
-        if (*linha[i*8+ii] == '\n') {i++; ii = 1;} //Chega ao fim da linha
-        else    {
-                if (*linha[i*8+ii] == '#') {e->tab[i][ii] = PRETA; ii++;}
-                else {
-                         if (*linha[i*8+ii] == '*') {e->tab[i][ii] = BRANCA; ii++;}
-                         else {e->tab[i][ii] = BRANCA; ii++;}
-                         }
-                }
+
+    /*
+        if (*linha[i*8+ii] == '\n') {
+            i++; ii = 1;
+        } //Chega ao fim da linha
+        else {
+            if (*linha[i*8+ii] == '#') {
+                e->tab[i][ii] = PRETA; ii++;
+            } else {
+                if (*linha[i*8+ii] == '*') {
+                    e -> tab [i][ii] = BRANCA;
+                    ii++;
+            } else {
+                e -> tab [i][ii] = VAZIO;
+                ii ++;
+            }
+            }
         }
+    */
+    }
     return *e;
+}
+
+void guardalinha (ESTADO *e, char linha[], int nlinha) {
+    int i = 0;
+    while (i != 8) {
+        if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
+        else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
+        else e -> tab [nlinha][i] = VAZIO;
+        i ++;
+    }
+    
 }
 
 //Depois ver se esta função pode ser void, para ver se altera o ESTADO já aqui

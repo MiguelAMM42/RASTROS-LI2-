@@ -12,5 +12,6 @@ int JogadasPossiveis (ESTADO *estado);
 int CoordenadaValida (COORDENADA a);
 void guarda_ficheiro (ESTADO *e, FILE *fp);
 ESTADO le_ficheiro (ESTADO *e, FILE *fp);
+void guardalinha (ESTADO *e, char linha[], int nlinha);
 
 #endif
