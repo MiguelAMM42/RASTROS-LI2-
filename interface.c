@@ -65,7 +65,8 @@ int interpretador(ESTADO *e) {
     // Quando é feita a jogada normal
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
-        jogar(e, coord);
+        int jogo = jogar(e, coord);
+        if (jogo == 2) return -1;
         mostrar_tabuleiro(*e, stdout);
         return 1;
     } else { //Se premires qualquer carater, termina
