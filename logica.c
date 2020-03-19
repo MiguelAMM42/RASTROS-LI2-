@@ -128,16 +128,17 @@ ESTADO le_ficheiro (ESTADO *e, FILE *fp)
     return *e;
 }
 
-void guardalinha (ESTADO *e, char linha[], int nlinha) {
+void guardaLinha (ESTADO *e, char linha[], int nlinha) {
     int i = 0;
     while (i != 8) {
         if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
         else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
-        else e -> tab [nlinha][i] = VAZIO;
+        else if (linha [i] == '.') e -> tab [nlinha] [i] = VAZIO;
+        else if (linha [i] == '1') e -> tab [nlinha] [i] = UM;
+        else e -> tab [nlinha] [i] = DOIS;         
         i ++;
     }
     
 }
-
 //Depois ver se esta função pode ser void, para ver se altera o ESTADO já aqui
 
