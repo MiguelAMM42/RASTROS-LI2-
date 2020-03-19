@@ -15,10 +15,13 @@ ESTADO *inicializar_estado() {
     teste1 -> ultima_jogada.linha = 4;
     for (int i = 7; i > (-1); i--) {
         for (int ii = 0; ii < 8; ii ++) {
-            if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
+            if (i == 7 && ii == 7) (teste1 -> tab [7] [7] = DOIS );
+            else if (i == 0 && ii == 0) (teste1 -> tab [0] [0] = UM );
+            else if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
             else (teste1 -> tab [i] [ii]) = VAZIO;                                          
-        }
+        
     }
+}
     return teste1;
 }
 
@@ -30,9 +33,9 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp) {
         for (i = 0; i < 9; i++) {
             if (i == 8) fputc('\n', fp);
             else {
-                if (i == 7 && linha == 7) fputc('2', fp);
+                if ((s.tab [linha] [i]) == DOIS) fputc('*', fp);
                 else {
-                    if (i == 0 && linha == 0) fputc('1', fp);
+                    if ((s.tab [linha] [i]) == UM) fputc('1', fp);
                     else {
                         if ((s.tab [linha] [i]) == BRANCA) fputc('*', fp);
                         else {
