@@ -94,3 +94,27 @@ void guarda_ficheiro (ESTADO *e, FILE *fp) {
     fputc ('\n', fp);
     mostra_jogadas (e, fp);
 }
+
+ESTADO le_ficheiro (ESTADO *e, FILE *fp)
+{
+    char *linha[2*BUF_SIZE] = {};
+    fscanf (fp, "%s", *linha);
+    // Ler tabuleiro
+    int i = 0, ii = 0;
+    while (i < 8)
+        {
+    //printf ("Chegou ao le_ficheiro\n");
+        if (*linha[i*8+ii] == '\n') {i++; ii = 1;} //Chega ao fim da linha
+        else    {
+                if (*linha[i*8+ii] == '#') {e->tab[i][ii] = PRETA; ii++;}
+                else {
+                         if (*linha[i*8+ii] == '*') {e->tab[i][ii] = BRANCA; ii++;}
+                         else {e->tab[i][ii] = BRANCA; ii++;}
+                         }
+                }
+        }
+    return *e;
+}
+
+//Depois ver se esta função pode ser void, para ver se altera o ESTADO já aqui
+
