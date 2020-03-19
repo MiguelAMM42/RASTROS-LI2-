@@ -11,7 +11,8 @@ int anyBRANCA (CASA a[], int N);
 int JogadasPossiveis (ESTADO *estado);
 int CoordenadaValida (COORDENADA a);
 void guarda_ficheiro (ESTADO *e, FILE *fp);
-ESTADO le_ficheiro (ESTADO *e, FILE *fp);
-void guardalinha (ESTADO *e, char linha[], int nlinha);
+void le_ficheiro (ESTADO *e, FILE *fp);
+void guardaLinha (ESTADO *e, char linha[], int nlinha);
+void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n);
 
 #endif
