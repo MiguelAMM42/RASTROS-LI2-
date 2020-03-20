@@ -14,7 +14,7 @@ void set_ultima_jogada (ESTADO *e, COORDENADA c) {
     e -> ultima_jogada = c;
 }
 
-void get_ultima_jogada (ESTADO *e) {
+COORDENADA get_ultima_jogada (ESTADO *e) {
     return e -> ultima_jogada;
 }
 
@@ -34,4 +34,13 @@ int get_jogador_atual (ESTADO *e) {
     return e -> jogador_atual;
 }
 
+void set_jogadas_coordenada (ESTADO *e, int num_jogada, int jogador, COORDENADA c) {
+    if (jogador == 1) e -> jogadas[num_jogada].jogador1 = c;
+    else e -> jogadas[num_jogada].jogador2 = c;
+}
+
+int coordenadaIgual (COORDENADA a, COORDENADA b) {
+    if (a.coluna == b.coluna && a.linha == b.linha) return TRUE;
+    return FALSE;
+}
 

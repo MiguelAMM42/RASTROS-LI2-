@@ -68,6 +68,26 @@ Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocad
 */
 ESTADO *inicializar_estado();
 
+void set_casa (ESTADO *e, COORDENADA c, CASA V);
+
+CASA get_casa (ESTADO *e, COORDENADA c);
+
+void set_ultima_jogada (ESTADO *e, COORDENADA c);
+
+COORDENADA get_ultima_jogada (ESTADO *e);
+
+void set_num_jogadas (ESTADO *e, int n);
+
+int get_num_jogadas (ESTADO *e);
+
+void set_jogador_atual (ESTADO *e, int n);
+
+int get_jogador_atual (ESTADO *e);
+
+void set_jogadas_coordenada (ESTADO *e, int num_jogada, int jogador, COORDENADA c);
+
+int coordenadaIgual (COORDENADA a, COORDENADA b);
+
 #endif
 
 
