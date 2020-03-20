@@ -47,7 +47,6 @@ int jogar (ESTADO *estado, COORDENADA c) {
 int casaVazia(ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
-    int n, m;
     if (get_casa (estado, c) != PRETA || get_casa (estado, c) != BRANCA) return TRUE;
     else return FALSE;
 }
@@ -71,6 +70,7 @@ int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
     CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
     if (anyBRANCA(p, 8)) return TRUE;
+    return FALSE;
 }
 
 int anyBRANCA (CASA a[], int N) {
@@ -104,11 +104,24 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
 void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do tabuleiro do ficheiro no estado.
     int i = 0;
     while (i != 8) {
-        if (linha [i] == '#') e -> tab [nlinha] [i] = PRETA;
-        else if (linha [i] == '*') e -> tab [nlinha] [i] = BRANCA;
-        else if (linha [i] == '.') e -> tab [nlinha] [i] = VAZIO;
-        else if (linha [i] == '1') e -> tab [nlinha] [i] = UM;
-	    else e -> tab [nlinha] [i] = DOIS;    
+        COORDENADA c = {i, nlinha};
+        switch (linha [i]) {
+        case '#':
+            set_casa (e, c, PRETA);
+            break;
+        case '*':
+            set_casa (e, c, BRANCA);
+            break;
+        case '.':
+            set_casa (e, c, VAZIO);
+            break;
+        case '1':
+            set_casa (e, c, UM);
+            break;
+        case '2':
+            set_casa (e, c, DOIS);
+            break;
+        }  
         i ++;
     }
 }
@@ -116,14 +129,14 @@ void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do 
 
 void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
     COORDENADA jogada1 = {linha[0] - 'a', atoi (&linha[1]) - 1};
-    (e -> jogadas[num_jogada]).jogador1 = jogada1;
-    e -> ultima_jogada = jogada1;
-    e -> jogador_atual = 2;
+    set_jogadas_coordenada (e, num_jogada, 1, jogada1);
+    set_ultima_jogada (e, jogada1);
+    set_jogador_atual (e, 2);
     if (n == 2) { // Caso sejam dois jogadores.
         COORDENADA jogada2 = {linha[2] - 'a', atoi (&linha[3]) - 1};
-        (e -> jogadas[num_jogada]).jogador2 = jogada2;
-        e -> ultima_jogada = jogada2;
-        e -> jogador_atual = 1;
+        set_jogadas_coordenada (e, num_jogada, 2, jogada2);
+        set_ultima_jogada (e, jogada2);
+        set_jogador_atual (e, 1);
     }
 }
 
