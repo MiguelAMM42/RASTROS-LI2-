@@ -47,25 +47,44 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
         fprintf (fp, "%c%d\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
-    if ((s -> jogador_atual) == 1) printf ("\nÉ a vez do jogador 1! \n");
-    else {
+    if ((s -> jogador_atual) == 1) printf ("\nPL1");
+    else 
+    {
         fprintf (fp, "%02d : ", jogadaNum + 1);
-        fprintf (fp, "%c%d / \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
-        printf ("È a vez do jogador 2!\n");
+        fprintf (fp, "%c%d /\n\n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
+        printf ("PL2");
     }        
 }
+
+
+
+
+void mostra_prompt (ESTADO *s, FILE *fp) {  // Imprime o prompt
+    int jogadaNum = 0;
+    while (jogadaNum < (s -> num_jogadas)) {
+        fprintf (fp, "::%02d ", jogadaNum + 1);
+        jogadaNum ++;
+    }
+    if ((s -> jogador_atual) == 1) printf ("PL1");
+    else {
+        fprintf (fp, "::%02d ", jogadaNum + 1);
+        printf ("PL2");
+    }        
+}
+
 
 
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    printf ("Comando:");
+    printf (">>");
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
     // Quando é feita a jogada normal
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         int jogo = jogar(e, coord);
         if (jogo == 2) return -1;
+        printf("\n");
         mostrar_tabuleiro(*e, stdout);
         return 1;
     } else { //Se premires qualquer carater, termina
