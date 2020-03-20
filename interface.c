@@ -6,34 +6,17 @@
 #include "interface.h"
 
 
-ESTADO *inicializar_estado() {
-    ESTADO *teste1 = (ESTADO *) malloc(sizeof(ESTADO));
-    teste1 -> jogador_atual = 1;
-    teste1 -> num_jogadas = 0;
-    teste1 -> ultima_jogada.coluna = 4;
-    teste1 -> ultima_jogada.linha = 4;
-    for (int i = 7; i > (-1); i--) {
-        for (int ii = 0; ii < 8; ii ++) {
-            if (i == 4 && ii == 4) (teste1 -> tab [i] [ii]) = BRANCA;
-            else if (i == 7 && ii == 7) (teste1 -> tab [i] [ii]) = DOIS;
-            else if (i == 0 && ii == 0) (teste1 -> tab [i] [ii]) = UM;
-            else (teste1 -> tab [i] [ii]) = VAZIO;                                          
-        }
-    }
-    return teste1;
-}
-
-
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
     int i = 0;
     int linha;
     for (linha = 7; linha > (-1); linha--) {
         for (i = 0; i < 9; i++) {
+            COORDENADA c = {i, linha};
             if (i == 8) fputc('\n', fp);
-            else if ((s.tab [linha] [i]) == DOIS) fputc('2', fp);
-            else if ((s.tab [linha] [i]) == UM) fputc('1', fp);
-            else if ((s.tab [linha] [i]) == BRANCA) fputc('*', fp);
-            else if ((s.tab [linha] [i]) == VAZIO) fputc('.', fp);
+            else if (get_casa (&s, c) == DOIS) fputc('2', fp);
+            else if (get_casa (&s, c) == UM) fputc('1', fp);
+            else if (get_casa (&s, c) == BRANCA) fputc('*', fp);
+            else if (get_casa (&s, c) == VAZIO) fputc('.', fp);
             else fputc('#', fp); 
         }
     }

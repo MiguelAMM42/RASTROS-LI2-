@@ -2,6 +2,24 @@
 #include <stdlib.h>
 #include "dados.h"
 
+ESTADO *inicializar_estado() {
+    ESTADO *teste1 = (ESTADO *) malloc(sizeof(ESTADO));
+    set_jogador_atual (teste1, 1);
+    set_num_jogadas (teste1, 0);
+    COORDENADA c = {4, 4};
+    set_ultima_jogada(teste1, c);
+    for (int i = 7; i > (-1); i--) {
+        for (int ii = 0; ii < 8; ii ++) {
+            COORDENADA a = {ii, i};
+            if (i == 4 && ii == 4) set_casa (teste1, a, BRANCA);
+            else if (i == 7 && ii == 7) set_casa (teste1, a, DOIS);
+            else if (i == 0 && ii == 0) set_casa (teste1, a, UM);
+            else set_casa (teste1, a, VAZIO);                                         
+        }
+    }
+    return teste1;
+}
+
 void set_casa (ESTADO *e, COORDENADA c, CASA V) {
     (e -> tab [c.linha][c.coluna]) = V;
 }

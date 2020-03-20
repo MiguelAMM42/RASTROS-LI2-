@@ -20,13 +20,6 @@ void mostra_jogadas (ESTADO *s, FILE *fp);
 */
 void mostrar_tabuleiro (ESTADO s, FILE *fp);
 /**
-\brief Inicializa o Estado
-@returns O Estado é devolvido inicializado.
-*/
-ESTADO *inicializar_estado();
-
-
-/**
 \brief Interpreta as jogadas feitas pelo jogador
 @param s Apontador para o Estado
 @returns Valor que corresponde ao tipo de comportamento que deve ter o Jogo.
