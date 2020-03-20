@@ -10,13 +10,14 @@ int main () {
     int repetir = 1, contComandos = 0; 
     ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e, stdout);
-    while (repetir != -1)
+    while (repetir != 0)
     {
     mostra_jogadas (e, stdout);
     printf("(%d)\n", contComandos);
     repetir = interpretador (e);
-    contComandos ++;
-    if (repetir == -1) return 0;
+    if (repetir == 0) return 0;
+    if (repetir == 1) contComandos++;
     }
     return 0;
 }
+
