@@ -46,7 +46,7 @@ int jogar (ESTADO *estado, COORDENADA c) {
 int casaVazia(ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
-    if (get_casa (estado, c) != PRETA || get_casa (estado, c) != BRANCA) return TRUE;
+    if (get_casa (estado, c) != PRETA && get_casa (estado, c) != BRANCA) return TRUE;
     else return FALSE;
 }
 
@@ -107,7 +107,7 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --);
     // Ler jogadas
     while (fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
-    while (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
+    if (fscanf (fp, "%*s %*s %s %*s %*s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
     set_num_jogadas (e, num_jogadas);
 }
 
