@@ -3,6 +3,8 @@
 #include <math.h>
 #include "dados.c"
 
+//VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
+
 
 int jogar (ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a jogada é valida
@@ -41,7 +43,6 @@ int jogar (ESTADO *estado, COORDENADA c) {
     }
     return 1;
 }
-
 
 int casaVazia(ESTADO *estado, COORDENADA c) {
     // Primeiro ve se a casa de destino está vazia
