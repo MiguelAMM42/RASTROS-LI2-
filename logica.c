@@ -35,11 +35,10 @@ int jogar (ESTADO *estado, COORDENADA c) {
         printf ("O vencedor é o jogador %d.\n", 2);
         return 2;
     }
-    /*else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
-        printf ("O vencedor é o jogador %d.\n", 3 - estado -> jogador_atual);
+    else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
+        printf ("O vencedor é o jogador %d.\n", 3 - get_jogador_atual (estado));
         return 2;
     }
-    */
     return 1;
 }
 
@@ -69,14 +68,14 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
 int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
     CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
-    if (anyBRANCA(p, 8)) return TRUE;
+    if (anyVazio (p, 8)) return TRUE;
     return FALSE;
 }
 
-int anyBRANCA (CASA a[], int N) {
+int anyVazio (CASA a[], int N) {
     int i = 0;
     while (i != N) {
-        if (a[i] == BRANCA) return TRUE;
+        if (a[i] == VAZIO) return TRUE;
         i ++;
     }
     return FALSE;
