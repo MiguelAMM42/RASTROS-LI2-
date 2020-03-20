@@ -67,18 +67,29 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
 
 int JogadasPossiveis (ESTADO *estado) {
     COORDENADA c = estado -> ultima_jogada;
-    CASA p [] = {estado -> tab[c.linha + 1][c.coluna + 1], estado -> tab[c.linha - 1][c.coluna - 1], estado -> tab[c.linha + 1][c.coluna - 1], estado -> tab[c.linha - 1][c.coluna + 1], estado -> tab[c.linha + 1][c.coluna], estado -> tab[c.linha - 1][c.coluna], estado -> tab[c.linha][c.coluna + 1], estado -> tab[c.linha][c.coluna - 1]};
-    if (anyVazio (p, 8)) return TRUE;
+    if (anyVazio (estado, c)) return TRUE;
     return FALSE;
 }
 
-int anyVazio (CASA a[], int N) {
-    int i = 0;
-    while (i != N) {
-        if (a[i] == VAZIO) return TRUE;
-        i ++;
+int anyVazio (ESTADO *e, COORDENADA c) {
+    int ilinha = 1;
+    while (ilinha >= -1) {
+        int icoluna = 1;
+        while (icoluna >= -1) {
+            COORDENADA a = {c.coluna + icoluna, c.linha + ilinha};
+            if (icoluna == 0 && ilinha == 0) icoluna = -1;
+            if (CoordenadaValida (a) && get_casa (e, a) == VAZIO) return TRUE;
+            icoluna --;
+        }
+        ilinha --;
     }
     return FALSE;
+}
+
+
+int CoordenadaValida (COORDENADA a) {	
+    if (a.linha <= 7 && a.linha >= 0 && a.coluna >= 0 && a.coluna <= 7) return TRUE;	
+    return FALSE;	
 }
 
 
@@ -97,7 +108,7 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     // Ler jogadas
     while (fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
     while (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
-    e -> num_jogadas = num_jogadas;
+    set_num_jogadas (e, num_jogadas);
 }
 
 void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do tabuleiro do ficheiro no estado.
