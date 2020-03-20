@@ -7,13 +7,15 @@
 
 int main () {
 // Define o estado inicial
-    int repetir = 1;
+    int repetir = 1, contComandos = 0; 
     ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e, stdout);
     while (repetir != -1)
     {
     mostra_jogadas (e, stdout);
+    printf("(%d)\n", contComandos);
     repetir = interpretador (e);
+    contComandos ++;
     if (repetir == -1) return 0;
     }
     return 0;
