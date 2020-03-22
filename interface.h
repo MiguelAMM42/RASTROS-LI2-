@@ -36,8 +36,8 @@ void mostra_prompt (ESTADO *s, FILE *fp);
 
 /**
 \brief Interpreta as jogadas feitas pelo jogador
-@param s Apontador para o Estado
-@param s Apontador para o ficheiro onde se guarda o Estado
+@param e Apontador para o Estado
+@param fp Apontador para o ficheiro onde se guarda o Estado
 */
 void guarda_ficheiro (ESTADO *e, FILE *fp);
 
