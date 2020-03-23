@@ -97,7 +97,7 @@ int CoordenadaValida (COORDENADA a) {
 void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostrar_tabuleiro (*e, fp);
     fputc ('\n', fp);
-    mostra_jogadas (e, fp);
+  //  mostra_jogadas (e, fp);
 }
 
 void le_ficheiro (ESTADO *e, FILE *fp) {
