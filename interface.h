@@ -29,9 +29,9 @@ int interpretador(ESTADO *e);
 /**
 \brief Imprime o prompt
 @param s Apontador para o estado
-@param fp Apontador para o ficheiro
 */
-void mostra_prompt (ESTADO *s, FILE *fp);
+void mostra_prompt (ESTADO *s);
+
 
 
 /**
