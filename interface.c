@@ -91,6 +91,11 @@ int interpretador(ESTADO *e) {
                     return 1;
                 } 
             } else { 
+                if (sscanf(linha, "movs") == 0)
+                                 {
+                                  mostra_jogadas (e, stdout);
+                                 }
+                 else {
                 if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
                     FILE *fp;
                     fp = fopen(endereco, "r");
@@ -105,6 +110,7 @@ int interpretador(ESTADO *e) {
                         mostrar_tabuleiro (*e, stdout);
                         return 1;
                     }
+                }
                 }           
             }
         }
