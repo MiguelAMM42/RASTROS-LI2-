@@ -37,8 +37,7 @@ int jogar (ESTADO *estado, COORDENADA c) {
     } else if (coordenadaIgual (h8, c)) { // A casa 'h8' é alcançada
         printf ("O vencedor é o jogador %d.\n", 2);
         return 2;
-    }
-    else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
+    } else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
         printf ("O vencedor é o jogador %d.\n", 3 - get_jogador_atual (estado));
         return 2;
     }
