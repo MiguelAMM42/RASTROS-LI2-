@@ -37,21 +37,19 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
         fprintf (fp, "%c%d /\n\n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
         printf ("PL2");
     }        
-}
+}  //Tem de se resolver o bug do printf desnecessário
 
 
 
 
-void mostra_prompt (ESTADO *s, FILE *fp) {  // Imprime o prompt
+void mostra_prompt (ESTADO *s) {  // Imprime o prompt
     int jogadaNum = 0;
     while (jogadaNum < (s -> num_jogadas)) {
-        fprintf (fp, "::%02d ", jogadaNum + 1);
         jogadaNum ++;
     }
-    if ((s -> jogador_atual) == 1) printf ("PL1");
+    if ((s -> jogador_atual) == 1) printf ("\nPL1");
     else {
-        fprintf (fp, "::%02d ", jogadaNum + 1);
-        printf ("PL2");
+        printf ("\nPL2");
     }        
 }
 
