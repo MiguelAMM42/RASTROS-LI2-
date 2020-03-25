@@ -57,90 +57,59 @@ void mostra_prompt (ESTADO *s, FILE *fp) {  // Imprime o prompt
 
 //IGNORA: -1 ; ACABA: 0; CONTINUA: +1 
 //INFO JOGAR) VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
+
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    printf ("Comando:");
-    if (fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
+    printf (">>");
+    if (fgets(linha, BUF_SIZE, stdin) == NULL) return -1;
     // Quando é feita a jogada normal
-    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-    {
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         int jogo = jogar(e, coord);
-        if (jogo == 2) return -1;
+        if (jogo == 2) return 0;
+        if (jogo == 0) return -1;
+        printf("\n");
         mostrar_tabuleiro(*e, stdout);
         return 1;
-    } 
-    else { //Se premires qualquer carater, termina
-        if((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) 
-            {      
+    } else { //Se premires qualquer carater, termina
+        if((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) {      
             printf ("Fim\n");
-            return -1; 
-            }
-         
-        else {     
-            
+            return 0;
+        } else {     
             char endereco[BUF_SIZE]; 
-            
-            if (sscanf(linha, "gr%s", endereco) == 1) 
-                    { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
-                        FILE *fp;
-                        fp = fopen(endereco, "w");
-                        if (fp == NULL) {  // Caso em que não abre
-                            printf("Could not create file. Maybe locked or being used by another application?\n");
-                            return (-1);
-                            } 
-                    
-                            else{ // SE o caminho está certo
-                                printf ("guarda_ficheiro %s", endereco);
-                                guarda_ficheiro (e, fp);
-                                fclose(fp);
-                                }
-                    
-                    } 
-            else { 
-                 if (sscanf(linha, "movs") == 0)
-                                 {
-                                  mostra_jogadas (e, stdout);
-                                 }
-                 else {   
-            
-                        if (sscanf(linha, "ler%s", endereco) == 1) 
-                        { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
-                
-                            FILE *fp;
-                
-                            fp = fopen(endereco, "r");
-                
-                            if (fp == NULL) {  // Se não abre
-                
-                                printf("Could not create file. Maybe locked or being used by another application?\n");
-                
-                                return (-1);
-                                }     
-                            else 
-                                { // SE o caminho está certo
-                
-                                printf ("\n ler ficheiro %s", endereco);
-                
-                                printf ("\nEstamos a ler! %s\n", endereco);
-                
-                                le_ficheiro (e, fp);
-                
-                                fclose(fp);
-                
-                                mostrar_tabuleiro (*e, stdout);
-                
-                                 }
-                        }           
-                    }   
-                      
+            if (sscanf(linha, "gr%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                FILE *fp;
+                fp = fopen(endereco, "w");
+                if (fp == NULL) {  // Caso em que não abre
+                    printf("Could not create file. Maybe locked or being used by another application?\n");
+                    return (-1);
+                } else { // SE o caminho está certo
+                    printf ("guarda_ficheiro %s", endereco);
+                    guarda_ficheiro (e, fp);
+                    fclose(fp);
+                    return 1;
+                } 
+            } else { 
+                if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                    FILE *fp;
+                    fp = fopen(endereco, "r");
+                    if (fp == NULL) {  // Se não abre
+                        printf("Could not create file. Maybe locked or being used by another application?\n");
+                        return (-1);
+                    } else { // SE o caminho está certo
+                        printf ("\n ler ficheiro %s", endereco);
+                        printf ("\nEstamos a ler! %s\n", endereco);
+                        le_ficheiro (e, fp);
+                        fclose(fp);
+                        mostrar_tabuleiro (*e, stdout);
+                        return 1;
+                    }
+                }           
             }
         }
-    }
-    return 1;
+    } return -1;
 }
-
 
 
 /*
