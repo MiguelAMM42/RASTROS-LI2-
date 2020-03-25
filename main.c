@@ -12,7 +12,7 @@ int main () {
     mostrar_tabuleiro (*e, stdout);
     while (repetir != 0)
     {
-    mostra_jogadas (e, stdout);
+    mostra_prompt (e);
     printf("(%d)\n", contComandos);
     repetir = interpretador (e);
     if (repetir == 0) return 0;
