@@ -64,8 +64,9 @@ void le_ficheiro (ESTADO *e, FILE *fp);
 @param e Apontador para o estado
 @param linha Linha do tabuleiro
 @param nlinha Linha atual
+@param contador Apontador para um contador que posteriormente irá calcular o número de jogadas
 */
-void guardaLinha (ESTADO *e, char linha[], int nlinha);
+void guardaLinha (ESTADO *e, char linha[], int nlinha, int *contador);
 /**
 \brief Lê um ficheiro com as Jogadas e altera o Estado
 @param e Apontador para o estado

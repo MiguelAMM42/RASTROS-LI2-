@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "dados.c"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
@@ -104,21 +105,23 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     char linha[100];
     int nlinha = 7;
     int num_jogadas = 0;
+    int contador = 0;
     // Ler tabuleiro
-    while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --);
+    while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --, &contador);
+    set_num_jogadas (e, contador / 2);
     // Ler jogadas
-    while (fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
-    if (fscanf (fp, "%*s %*s %s %*s %*s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
-    set_num_jogadas (e, num_jogadas);
+    while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
+    if (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
 }
 
-void guardaLinha (ESTADO *e, char linha[], int nlinha) { // Guarda as linhas do tabuleiro do ficheiro no estado.
+void guardaLinha (ESTADO *e, char linha[], int nlinha, int *contador) { // Guarda as linhas do tabuleiro do ficheiro no estado.
     int i = 0;
     while (i != 8) {
         COORDENADA c = {i, nlinha};
         switch (linha [i]) {
         case '#':
             set_casa (e, c, PRETA);
+            (*contador) ++;
             break;
         case '*':
             set_casa (e, c, BRANCA);
