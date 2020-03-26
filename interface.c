@@ -30,14 +30,13 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
         fprintf (fp, "%c%d\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
-    if ((s -> jogador_atual) == 1) printf ("\nPL1");
+    if ((s -> jogador_atual) == 1) printf ("\n");
     else 
     {
         fprintf (fp, "%02d : ", jogadaNum + 1);
         fprintf (fp, "%c%d /\n\n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
-        printf ("PL2");
     }        
-}  //Tem de se resolver o bug do printf desnecessário
+}
 
 
 
@@ -89,9 +88,10 @@ int interpretador(ESTADO *e) {
                     return 1;
                 } 
             } else { 
-                if (sscanf(linha, "movs") == 0)
+                if (strcmp(linha, ("movs\n")) == 0)
                                  {
-                                  mostra_jogadas (e, stdout);
+                                 mostra_jogadas (e, stdout);
+                                 return 1;
                                  }
                  else {
                 if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
@@ -101,11 +101,11 @@ int interpretador(ESTADO *e) {
                         printf("Could not create file. Maybe locked or being used by another application?\n");
                         return (-1);
                     } else { // SE o caminho está certo
-                        printf ("\n ler ficheiro %s", endereco);
                         printf ("\nEstamos a ler! %s\n", endereco);
                         le_ficheiro (e, fp);
                         fclose(fp);
                         mostrar_tabuleiro (*e, stdout);
+                        mostra_jogadas(e, stdout);
                         return 1;
                     }
                 }
@@ -114,6 +114,8 @@ int interpretador(ESTADO *e) {
         }
     } return -1;
 }
+
+
 
 
 /*
