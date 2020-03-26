@@ -153,6 +153,7 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
     }
 }
 
+/*
 void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe um *numeroJogada* válido, ou seja, menor que o num_jogadas atual.
     set_casa (e, get_jog e -> jogadas[n].jogador1, PRETA); // Criar função no dados.c para não mexer diretamente com a estrutura de dados.
     set_casa (e, e -> jogadas[n].jogador2, BRANCA);
@@ -166,5 +167,6 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
     set_num_jogadas (e, numeroJogada + 1); // Alterar o *num_jogadas* para o número de jogadas pretendido.
     set_jogador_atual (e, 1); // Alterar o *jogador_atual* para o jogador 1 que será o primeiro a jogar.
 }
+*/
 
 // Falta adicionar o comando jog ao interpretador.
