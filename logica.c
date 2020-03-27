@@ -97,7 +97,7 @@ int CoordenadaValida (COORDENADA a) {
 void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostrar_tabuleiro (*e, fp);
     fputc ('\n', fp);
-  //  mostra_jogadas (e, fp);
+    mostra_jogadas (e, fp);
 }
 
 void le_ficheiro (ESTADO *e, FILE *fp) {
@@ -109,7 +109,7 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --, &contador);
     set_num_jogadas (e, contador / 2);
     // Ler jogadas
-    while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %*s %s %*s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
+    while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %*s %s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
     if (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
 }
 
