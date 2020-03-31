@@ -42,12 +42,13 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
 
 void mostra_prompt (ESTADO *s) {  // Imprime o prompt
     int jogadaNum = 0;
+    int conta_comandos = (s -> num_comando);
     while (jogadaNum < (s -> num_jogadas)) {
         jogadaNum ++;
     }
-    if ((s -> jogador_atual) == 1) printf ("\nPL1");
+    if ((s -> jogador_atual) == 1) printf ("\nPL1(%d)", conta_comandos);
     else {
-        printf ("\nPL2");
+        printf ("\nPL2(%d)", conta_comandos);
     }        
 }
 
@@ -70,6 +71,7 @@ int interpretador(ESTADO *e) {
         if (jogo == 0) return -1;
         printf("\n");
         mostrar_tabuleiro(*e, stdout);
+        e -> num_comando ++;
         return 1;
     } else { //Se premires qualquer carater, termina
         if((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) {      
@@ -87,12 +89,14 @@ int interpretador(ESTADO *e) {
                     printf ("guarda_ficheiro %s", endereco);
                     guarda_ficheiro (e, fp);
                     fclose(fp);
+                    e -> num_comando ++;
                     return 1;
                 } 
             } else { 
                 if (strcmp(linha, ("movs\n")) == 0)
                                  {
                                  mostra_jogadas (e, stdout);
+                                 e -> num_comando ++;
                                  return 1;
                                  }
                  else {
@@ -108,6 +112,7 @@ int interpretador(ESTADO *e) {
                         fclose(fp);
                         mostrar_tabuleiro (*e, stdout);
                         mostra_jogadas(e, stdout);
+                        e -> num_comando ++;
                         return 1;
                     }
                 }
@@ -116,6 +121,7 @@ int interpretador(ESTADO *e) {
         }
     } return -1;
 }
+
 
 
 
