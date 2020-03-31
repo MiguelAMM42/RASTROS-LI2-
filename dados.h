@@ -132,6 +132,12 @@ void set_jogadas_coordenada (ESTADO *e, int num_jogada, int jogador, COORDENADA 
 @returns TRUE (1) ou FALSE (0), se as coordenadas são iguais ou não
 */
 int coordenadaIgual (COORDENADA a, COORDENADA b);
+/**
+\brief Define o nº.de comandos
+@param e Apontador para o Estado
+@param n Número de comandos
+*/
+void set_num_comandos (ESTADO *e, int n);
 
 #endif
 
