@@ -7,17 +7,16 @@
 
 int main () {
 // Define o estado inicial
-    int repetir = 1, contComandos = 0; 
+    int repetir = 1;
     ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e, stdout);
     while (repetir != 0)
     {
     mostra_prompt (e);
-    printf("(%d)\n", contComandos);
     repetir = interpretador (e);
     if (repetir == 0) return 0;
-    if (repetir == 1) contComandos++;
     }
     return 0;
 }
+
 
