@@ -6,6 +6,7 @@ ESTADO *inicializar_estado() {
     ESTADO *teste1 = (ESTADO *) malloc(sizeof(ESTADO));
     set_jogador_atual (teste1, 1);
     set_num_jogadas (teste1, 0);
+    set_num_comandos (teste1, 0);
     COORDENADA c = {4, 4};
     set_ultima_jogada(teste1, c);
     for (int i = 7; i > (-1); i--) {
@@ -60,5 +61,9 @@ void set_jogadas_coordenada (ESTADO *e, int num_jogada, int jogador, COORDENADA 
 int coordenadaIgual (COORDENADA a, COORDENADA b) {
     if (a.coluna == b.coluna && a.linha == b.linha) return TRUE;
     return FALSE;
+}
+
+void set_num_comandos (ESTADO *e, int n) {
+    e -> num_comando = n;
 }
 
