@@ -77,8 +77,8 @@ int anyVazio (ESTADO *e, COORDENADA c) {
     while (ilinha >= -1) {
         int icoluna = 1;
         while (icoluna >= -1) {
-            COORDENADA a = {c.coluna + icoluna, c.linha + ilinha};
             if (icoluna == 0 && ilinha == 0) icoluna = -1;
+            COORDENADA a = {c.coluna + icoluna, c.linha + ilinha};
             if (CoordenadaValida (a) && get_casa (e, a) == VAZIO) return TRUE;
             icoluna --;
         }
