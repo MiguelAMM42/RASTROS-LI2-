@@ -3,9 +3,8 @@
 #include <string.h>
 #include <math.h>
 #include "dados.h"
-#include "logica.h"
 #include "interface.h"
-
+#include "logica.h"
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
     int i = 0;
