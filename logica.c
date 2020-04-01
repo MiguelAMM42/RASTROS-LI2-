@@ -154,20 +154,30 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
 }
 
 void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe um *numeroJogada* válido, ou seja, menor que o num_jogadas atual.
+    if (numeroJogada == 0) 
+    {
+        int com = get_num_comandos (e);
+        free (e);
+        (e) = inicializar_estado();
+        set_num_comandos (e, com);
+        return; 
+    }
+    numeroJogada--;
+    set_num_jogadas (e, numeroJogada+1); // Alterar o *num_jogadas* para o número de jogadas pretendido.
     set_ultima_jogada (e, (e-> jogadas [numeroJogada]).jogador2); 
     set_casa (e, e -> jogadas[numeroJogada].jogador1, PRETA); //Altera casa do jogador 1, para casa PRETA
     set_casa (e, e -> jogadas[numeroJogada].jogador2, BRANCA);
-    numeroJogada ++;
-    while (numeroJogada != e -> num_jogadas) { // Transformar as peças das eventuais jogadas posteriores.
+   numeroJogada ++;
+    while (numeroJogada <= e -> num_jogadas) { // Transformar as peças das eventuais jogadas posteriores.
         set_casa (e, e -> jogadas[numeroJogada].jogador1, VAZIO);
         set_casa (e, e -> jogadas[numeroJogada].jogador2, VAZIO);
         numeroJogada ++;
     }
     if (get_jogador_atual (e) == 2) set_casa (e, e -> jogadas[numeroJogada].jogador1, VAZIO); // Caso a última jogada seja incompleta.
-    set_num_jogadas (e, numeroJogada + 1); // Alterar o *num_jogadas* para o número de jogadas pretendido.
-    set_jogador_atual (e, 1); // Alterar o *jogador_atual* para o jogador 1 que será o primeiro a jogar.
     
+    set_jogador_atual (e, 1); // Alterar o *jogador_atual* para o jogador 1 que será o primeiro a jogar.
+    COORDENADA c = {0,0};
+    set_casa (e, c, UM);
 }
-
 
 // Falta adicionar o comando jog ao interpretador.
