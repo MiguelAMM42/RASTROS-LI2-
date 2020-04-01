@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include "dados.h"
 #include "logica.h"
 #include "interface.h"
 
