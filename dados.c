@@ -67,3 +67,8 @@ void set_num_comandos (ESTADO *e, int n) {
     e -> num_comando = n;
 }
 
+int get_num_comandos (ESTADO *e){
+    return e -> num_comando;
+}
+
+
