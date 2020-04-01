@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include "dados.h"
-#include "interface.c"
-#include "logica.c"
+#include "interface.h"
+#include "logica.h"
 
 int main () {
 // Define o estado inicial
