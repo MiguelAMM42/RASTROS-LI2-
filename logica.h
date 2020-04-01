@@ -80,6 +80,6 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n);
 @param e Apontador para o estado
 @param numeroJogada número da jogada para qual o jogador pretende ir (supõe-se que está é válida)
 */
-/*void jogadaAnterior (ESTADO *e, int numeroJogada);*/
+void jogadaAnterior (ESTADO *e, int numeroJogada);
 
 #endif
