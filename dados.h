@@ -142,7 +142,7 @@ void set_num_comandos (ESTADO *e, int n);
 \brief Devolve o nº.de comandos
 @param e Apontador para o Estado
 */
-int get_num_comandos (ESTADO *e)
+int get_num_comandos (ESTADO *e);
 
 #endif
 
