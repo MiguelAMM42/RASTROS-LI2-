@@ -3,6 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include "dados.h"
+#include "logica.h"
 #include "interface.h"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
