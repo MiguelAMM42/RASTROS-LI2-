@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "dados.c"
+#include "dados.h"
+#include "interface.h"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
