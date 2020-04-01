@@ -138,6 +138,11 @@ int coordenadaIgual (COORDENADA a, COORDENADA b);
 @param n Número de comandos
 */
 void set_num_comandos (ESTADO *e, int n);
+/**
+\brief Devolve o nº.de comandos
+@param e Apontador para o Estado
+*/
+int get_num_comandos (ESTADO *e)
 
 #endif
 
