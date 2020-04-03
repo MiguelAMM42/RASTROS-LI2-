@@ -112,8 +112,8 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --, &contador);
     set_num_jogadas (e, contador / 2);
     // Ler jogadas
-    while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %*s %s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
-    if (fscanf (fp, "%*s %*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
+    while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
+    if (fscanf (fp, "%*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
 }
 
 void guardaLinha (ESTADO *e, char linha[], int nlinha, int *contador) { // Guarda as linhas do tabuleiro do ficheiro no estado.
@@ -166,12 +166,13 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
         return; 
     }
     numeroJogada--;
+    int n = e -> num_jogadas;
     set_num_jogadas (e, numeroJogada+1); // Alterar o *num_jogadas* para o número de jogadas pretendido.
     set_ultima_jogada (e, (e-> jogadas [numeroJogada]).jogador2); 
     set_casa (e, e -> jogadas[numeroJogada].jogador1, PRETA); //Altera casa do jogador 1, para casa PRETA
     set_casa (e, e -> jogadas[numeroJogada].jogador2, BRANCA);
    numeroJogada ++;
-    while (numeroJogada <= e -> num_jogadas) { // Transformar as peças das eventuais jogadas posteriores.
+    while (numeroJogada <= n) { // Transformar as peças das eventuais jogadas posteriores.
         set_casa (e, e -> jogadas[numeroJogada].jogador1, VAZIO);
         set_casa (e, e -> jogadas[numeroJogada].jogador2, VAZIO);
         numeroJogada ++;
