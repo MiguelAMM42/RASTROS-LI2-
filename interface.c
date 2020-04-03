@@ -105,6 +105,7 @@ int interpretador(ESTADO *e) {
                                 //printf ("%d", jog);
                                 if (jog > jogadas) {printf ("Jogada inválida, mete-me outro"); return -1;}
                                 else jogadaAnterior (e, jog);
+                                mostrar_tabuleiro (*e, stdout);
                                 e -> num_comando ++;
                                 return 1;
                             }
