@@ -45,4 +45,27 @@ int lista_esta_vazia (LISTA L) {
 	// OU (?)
 	// return L;
 }
+LISTA criar_lista ()
+{ 
+  LISTA L;
+  L = malloc (sizeof (LISTA));
+  //COOR Inicializada
+  COORDENADA cI = {4, 4};
+  COOR ini;
+  ini.c = cI;
+  ini.valor = 1;
+  //LISTA iniciada
+  L->c = ini;
+  L->prox = NULL;
+  return L;
+}
+
+LISTA remove_cabeca(LISTA L)
+{
+	if (L == NULL) return NULL;
+	LISTA tmp = L;
+	L = L -> prox;
+	free (tmp);
+	return L;
+}
 
