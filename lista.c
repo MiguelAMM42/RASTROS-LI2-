@@ -80,6 +80,6 @@ LISTA insere_cabeca(LISTA L, void *valor){
     LISTA R = malloc(sizeof(LISTA));
     R -> valor = *valor;
     R -> prox = L;
-	return R;
+    return R;
 }
 
