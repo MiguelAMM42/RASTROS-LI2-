@@ -69,17 +69,21 @@ LISTA remove_cabeca(LISTA L)
 	return L;
 }
 
-
 LISTA proximo(LISTA L){
-	LISTA proximo = L -> prox;
-	return proximo;
+	return L -> prox;
 }
 
 
+/*
 LISTA insere_cabeca(LISTA L, void *valor){
-    LISTA R = malloc(sizeof(LISTA));
-    R -> valor = *valor;
-    R -> prox = L;
-    return R;
+   L -> c.valor  = &valor;
+   return L;
 }
+*/
+
+
+
+
+
+
 
