@@ -58,6 +58,7 @@ void mostra_prompt (ESTADO *s) {  // Imprime o prompt
 //IGNORA: -1 ; ACABA: 0; CONTINUA: +1 
 //INFO JOGAR) VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
+
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
@@ -111,38 +112,43 @@ int interpretador(ESTADO *e) {
                             }
                         else 
                         {
-                            if (strcmp(linha, ("movs\n")) == 0)
-                                         {
-                                         mostra_jogadas (e, stdout);
-                                         e -> num_comando ++;
-                                         return 1;
-                                         }
-                         else {
-                        if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
-                            FILE *fp;
-                            fp = fopen(endereco, "r");
-                            if (fp == NULL) {  // Se não abre
-                                printf("Could not create file. Maybe locked or being used by another application?\n");
-                                return (-1);
-                            } else { // SE o caminho está certo
-                                printf ("\nEstamos a ler! %s\n", endereco);
-                                le_ficheiro (e, fp);
-                                fclose(fp);
-                                mostrar_tabuleiro (*e, stdout);
-                                mostra_jogadas(e, stdout);
-                                e -> num_comando ++;
+
+                            if (strcmp(linha, ("jogs\n")) == 0)
+                            {
+                                printf ("Comando jogs ! :)");
                                 return 1;
                             }
-                        }
-                        }           
-                    }
+                            else {
+                                        if (strcmp(linha, ("movs\n")) == 0)
+                                                     {
+                                                     mostra_jogadas (e, stdout);
+                                                     e -> num_comando ++;
+                                                     return 1;
+                                                     }
+                                     else {
+                                    if (sscanf(linha, "ler%s", endereco) == 1) { // para gravar, se meteres gr QUALQUER_COISA vai para esta parte
+                                        FILE *fp;
+                                        fp = fopen(endereco, "r");
+                                        if (fp == NULL) {  // Se não abre
+                                            printf("Could not create file. Maybe locked or being used by another application?\n");
+                                            return (-1);
+                                        } else { // SE o caminho está certo
+                                            printf ("\nEstamos a ler! %s\n", endereco);
+                                            le_ficheiro (e, fp);
+                                            fclose(fp);
+                                            mostrar_tabuleiro (*e, stdout);
+                                            mostra_jogadas(e, stdout);
+                                            e -> num_comando ++;
+                                            return 1;
+                                        }
+                                    }
+                                    }           
+                                }
+                            }
                 }
         }
     } return -1;
 }
-
-
-
 
 
 /*
