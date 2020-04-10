@@ -55,7 +55,7 @@ LISTA criar_lista ()
   ini.c = cI;
   ini.valor = 1;
   //LISTA iniciada
-  L->c = ini;
+  L-> valor = &ini;
   L->prox = NULL;
   return L;
 }
@@ -75,7 +75,7 @@ LISTA proximo(LISTA L){
 
 
 LISTA insere_cabeca(LISTA L, void *valor){
-	L -> c.valor = *(int *)valor;
+	L -> valor = &valor;
 	return L;
 }
 
