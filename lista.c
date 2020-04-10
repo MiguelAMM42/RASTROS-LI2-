@@ -74,12 +74,11 @@ LISTA proximo(LISTA L){
 }
 
 
-/*
 LISTA insere_cabeca(LISTA L, void *valor){
-   L -> c.valor  = &valor;
-   return L;
+	L -> c.valor = *(int *)valor;
+	return L;
 }
-*/
+
 
 
 
