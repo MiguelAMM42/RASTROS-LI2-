@@ -79,7 +79,9 @@ LISTA insere_cabeca(LISTA L, void *valor){
 	return L;
 }
 
-
+void *devolve_cabeca(LISTA L) {
+	return (&(L -> valor));
+}
 
 
 
