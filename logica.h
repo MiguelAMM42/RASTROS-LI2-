@@ -81,5 +81,10 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n);
 @param numeroJogada número da jogada para qual o jogador pretende ir (supõe-se que está é válida)
 */
 void jogadaAnterior (ESTADO *e, int numeroJogada);
+/**
+\brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
+@param e Apontador para o estado
+*/
+COORDENADA comando_jog(ESTADO *e, LISTA vV);
 
 #endif

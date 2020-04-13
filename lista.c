@@ -5,6 +5,7 @@
 #include "lista.h"
 #define BUF_SIZE 1024
 
+/*
 int main() {
 	LISTA L = criar_lista();
 	char linha[BUF_SIZE];
@@ -38,50 +39,56 @@ int main() {
 	}
 	return 0;
 }
+*/
 
 int lista_esta_vazia (LISTA L) {
-	if (L == NULL) return 1;
-	return 0;
-	// OU (?)
-	// return L;
+   // if (L == NULL) return 1;
+    return !L;
+    // OU (?)
+    // return L;
 }
 LISTA criar_lista ()
 { 
   LISTA L;
-  L = malloc (sizeof (LISTA));
+ // L = malloc (sizeof (LISTA));
   //COOR Inicializada
-  COORDENADA cI = {4, 4};
-  COOR ini;
-  ini.c = cI;
-  ini.valor = 1;
   //LISTA iniciada
-  L-> valor = &ini;
-  L->prox = NULL;
+  L= NULL;
   return L;
 }
 
 LISTA remove_cabeca(LISTA L)
 {
-	if (L == NULL) return NULL;
-	LISTA tmp = L;
-	L = L -> prox;
-	free (tmp);
-	return L;
+    if (L == NULL) return NULL;
+    LISTA tmp = L;
+    L = L -> prox;
+    free (tmp);
+    return L;
 }
 
 LISTA proximo(LISTA L){
-	return L -> prox;
+    return L -> prox;
 }
 
 
-LISTA insere_cabeca(LISTA L, void *valor){
-	L -> valor = &valor;
-	return L;
+LISTA insere_cabeca(LISTA L, void *x){
+    LISTA R;
+    R = malloc (sizeof (NODO)); 
+    R -> prox = L;
+    R -> valor = x;
+    
+    //free(R);
+    return R;
+    //incompleto?
 }
 
 void *devolve_cabeca(LISTA L) {
-	return (&(L -> valor));
+    return ((L -> valor));
 }
+
+	
+	
+	
 
 
 

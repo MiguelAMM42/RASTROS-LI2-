@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include "dados.h"
+#include "lista.h"
 #include "interface.h"
 #include "logica.h"
 
@@ -113,9 +114,17 @@ int interpretador(ESTADO *e) {
                         else 
                         {
 
-                            if (strcmp(linha, ("jogs\n")) == 0)
+                            if (strcmp(linha, ("jog\n")) == 0)
                             {
-                                printf ("Comando jogs ! :)");
+                            	LISTA vV = criar_lista();
+                                COORDENADA jogada = comando_jog(e, vV);
+                                printf("jjyellowazulrosamarinha\n");
+                                jogar(e,jogada);
+                                mostrar_tabuleiro (*e, stdout);
+                                while (!lista_esta_vazia(vV)){
+                                     vV = remove_cabeca(vV);
+                                }
+                                e -> num_comando ++;
                                 return 1;
                             }
                             else {
