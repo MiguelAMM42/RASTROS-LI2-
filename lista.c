@@ -86,7 +86,61 @@ void *devolve_cabeca(LISTA L) {
     return ((L -> valor));
 }
 
-	
+LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
+	int v = valorC (e, (l -> valor) -> jogada); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
+	LISTA ls = l; // Apontador para o Nodo com menor/maior valor, inicializado com o apontador para o primeiro Nodo.
+	l = l -> prox;
+	if (min_max = 0) { // Queremos o mínimo da lista
+		while (!l -> prox) {
+			COORDENADA *c = (l -> valor) -> jogada;
+			int valor = valorC (e, c);
+			if (valor < v) {
+				v = valor;
+				ls = l;
+			}
+		}
+	} else { // Queremos o máximo da lista
+		while (!l -> prox) {
+			COORDENADA *c = (l -> valor) -> jogada;
+			int valor = valorC (e, c);
+			if (valor > v) {
+				v = valor;
+				ls = l;
+			}
+		}
+	}
+	return ls;
+}
+
+int valorC (ESTADO *e, COORDENADA *c) {
+	return 10;
+}
+
+LISTA criaLista (ESTADO *e) {
+	LISTA l = criar_lista;
+
+	COORDENADA atual = get_ultima_jogada(e);
+
+	int ilinha = 1;
+    while (ilinha >= -1) {
+        int icoluna = 1;
+        while (icoluna >= -1) {
+            if (icoluna == 0 && ilinha == 0) icoluna = -1;
+            COORDENADA a = {atual.coluna + icoluna, atual.linha + ilinha};
+			criarCoordenada (e, a);
+            icoluna --;
+        }
+        ilinha --;
+	}
+
+}
+
+void adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {
+	if (!jogadaValida (e, c)) return;
+	COORDENADA *s = malloc (sizeof (COORDENADA));
+	(*s) = c;
+	insere_cabeca (l, s);
+}
 	
 	
 
