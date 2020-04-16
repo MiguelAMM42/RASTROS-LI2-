@@ -3,6 +3,7 @@
 #include <string.h>
 #include "dados.h"
 #include "lista.h"
+#include "logica.h"
 #define BUF_SIZE 1024
 
 /*
@@ -87,12 +88,12 @@ void *devolve_cabeca(LISTA L) {
 }
 
 LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
-	int v = valorC (e, (l -> valor) -> jogada); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
+	int v = valorC (e, &(((COOR*)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
 	LISTA ls = l; // Apontador para o Nodo com menor/maior valor, inicializado com o apontador para o primeiro Nodo.
 	l = l -> prox;
 	if (min_max = 0) { // Queremos o mínimo da lista
 		while (!l -> prox) {
-			COORDENADA *c = (l -> valor) -> jogada;
+			COORDENADA *c = &(((COOR*)(l -> valor)) -> jogada);
 			int valor = valorC (e, c);
 			if (valor < v) {
 				v = valor;
@@ -101,7 +102,7 @@ LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
 		}
 	} else { // Queremos o máximo da lista
 		while (!l -> prox) {
-			COORDENADA *c = (l -> valor) -> jogada;
+			COORDENADA *c = &(((COOR*)(l -> valor)) -> jogada);
 			int valor = valorC (e, c);
 			if (valor > v) {
 				v = valor;
@@ -117,7 +118,7 @@ int valorC (ESTADO *e, COORDENADA *c) {
 }
 
 LISTA criaLista (ESTADO *e) {
-	LISTA l = criar_lista;
+	LISTA l = criar_lista ();
 
 	COORDENADA atual = get_ultima_jogada(e);
 
@@ -127,12 +128,12 @@ LISTA criaLista (ESTADO *e) {
         while (icoluna >= -1) {
             if (icoluna == 0 && ilinha == 0) icoluna = -1;
             COORDENADA a = {atual.coluna + icoluna, atual.linha + ilinha};
-			criarCoordenada (e, a);
+			adicionarCoordenada (e, a, l);
             icoluna --;
         }
         ilinha --;
 	}
-
+	return l;
 }
 
 void adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {

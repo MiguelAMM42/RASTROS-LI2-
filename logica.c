@@ -187,67 +187,11 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
 
 // Falta adicionar o comando jog ao interpretador.
 
-COORDENADA comando_jog(ESTADO *e, LISTA vV){   
+COORDENADA comando_jog(ESTADO *e){   
     //LISTA vM1; //Lista com os melhores vizinhos para o jogador 1
     //LISTA vM2; //Lista com os melhores vizinhos para o jogador 2    
-    COORDENADA atual = get_ultima_jogada(e);
-    int  n, m; //n para a linha da última jogada; m para a coluna   
-
-    n = atual.linha;
-    m = atual.coluna;
-
     
-    COORDENADA s = {n+1, m-1};
-    
-    COORDENADA t = {n, m-1};
-
-    COORDENADA u = {n-1, m-1};
-
-    COORDENADA v = {n+1, m};
-
-    COORDENADA w = {n-1, m};
-
-    COORDENADA x = {n+1, m+1};
-
-    COORDENADA y = {n, m+1};
-
-    COORDENADA z = {n-1, m+1};
-    
-    
-    
-    if (jogadaValida(e,s)){
-        vV = insere_cabeca (vV, &s);
-    }vV = vV;
-
-    if (jogadaValida(e,t)){
-        vV = insere_cabeca (vV, &t);
-    }vV = vV;
-    
-    if (jogadaValida(e,u)){
-        vV = insere_cabeca (vV, &u);
-    }vV = vV;
-
-    if (jogadaValida(e,v)){
-        vV = insere_cabeca (vV, &v);
-    }vV = vV;
-
-    if (jogadaValida(e,w)){
-        vV = insere_cabeca (vV, &w);
-    }vV = vV;
-
-    if (jogadaValida(e,x)){
-        vV = insere_cabeca (vV, &x);
-    }vV = vV;
-
-    if (jogadaValida(e,y)){
-        vV = insere_cabeca (vV, &y);
-    } vV = vV;
-
-    if (jogadaValida(e,z)){
-        vV = insere_cabeca (vV, &z);
-    } vV = vV;
-
-    
+    LISTA vV = criaLista (e);
 
     COORDENADA* jogada = devolve_cabeca(vV);
     //jogada.coluna = u.coluna;  ///PARA TESTAR

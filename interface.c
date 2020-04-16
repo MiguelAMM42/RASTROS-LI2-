@@ -116,8 +116,7 @@ int interpretador(ESTADO *e) {
 
                             if (strcmp(linha, ("jog\n")) == 0)
                             {
-                            	LISTA vV = criar_lista();
-                                COORDENADA jogada = comando_jog(e, vV);
+                                COORDENADA jogada = comando_jog(e);
                                 printf("jjyellowazulrosamarinha\n");
                                 jogar(e,jogada);
                                 mostrar_tabuleiro (*e, stdout);
