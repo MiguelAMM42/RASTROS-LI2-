@@ -27,7 +27,7 @@ int lista_esta_vazia(LISTA L);
 LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max);
 int valorC (ESTADO *e, COORDENADA *c);
 LISTA criaLista (ESTADO *e);
-void adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
+LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
 
 
 

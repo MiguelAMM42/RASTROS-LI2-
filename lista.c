@@ -128,19 +128,21 @@ LISTA criaLista (ESTADO *e) {
         while (icoluna >= -1) {
             if (icoluna == 0 && ilinha == 0) icoluna = -1;
             COORDENADA a = {atual.coluna + icoluna, atual.linha + ilinha};
-			adicionarCoordenada (e, a, l);
+			l = adicionarCoordenada (e, a, l);
             icoluna --;
         }
         ilinha --;
 	}
+
+
 	return l;
 }
 
-void adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {
-	if (!jogadaValida (e, c)) return;
+LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {
+	if (!jogadaValida (e, c)) return l;
 	COORDENADA *s = malloc (sizeof (COORDENADA));
 	(*s) = c;
-	insere_cabeca (l, s);
+	return insere_cabeca (l, s);
 }
 	
 	

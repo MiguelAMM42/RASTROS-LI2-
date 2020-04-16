@@ -187,11 +187,10 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
 
 // Falta adicionar o comando jog ao interpretador.
 
-COORDENADA comando_jog(ESTADO *e){   
+COORDENADA comando_jog(LISTA vV){   
     //LISTA vM1; //Lista com os melhores vizinhos para o jogador 1
     //LISTA vM2; //Lista com os melhores vizinhos para o jogador 2    
     
-    LISTA vV = criaLista (e);
 
     COORDENADA* jogada = devolve_cabeca(vV);
     //jogada.coluna = u.coluna;  ///PARA TESTAR

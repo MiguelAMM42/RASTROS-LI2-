@@ -85,6 +85,6 @@ void jogadaAnterior (ESTADO *e, int numeroJogada);
 \brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
 @param e Apontador para o estado
 */
-COORDENADA comando_jog(ESTADO *e);
+COORDENADA comando_jog(LISTA vV);
 
 #endif
