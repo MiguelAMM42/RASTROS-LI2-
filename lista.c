@@ -51,10 +51,7 @@ int lista_esta_vazia (LISTA L) {
 LISTA criar_lista ()
 { 
   LISTA L;
- // L = malloc (sizeof (LISTA));
-  //COOR Inicializada
-  //LISTA iniciada
-  L= NULL;
+  L = NULL;
   return L;
 }
 
@@ -93,12 +90,12 @@ void *devolve_cabeca(LISTA L) {
 }
 
 LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
-	int v = valorC (e, &(((COOR*)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
+	int v = valorC (e, &(((MinMax*)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
 	LISTA ls = l; // Apontador para o Nodo com menor/maior valor, inicializado com o apontador para o primeiro Nodo.
 	l = l -> prox;
 	if (min_max = 0) { // Queremos o mínimo da lista
 		while (!l -> prox) {
-			COORDENADA *c = &(((COOR*)(l -> valor)) -> jogada);
+			COORDENADA *c = &(((MinMax*)(l -> valor)) -> jogada);
 			int valor = valorC (e, c);
 			if (valor < v) {
 				v = valor;
@@ -107,7 +104,7 @@ LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
 		}
 	} else { // Queremos o máximo da lista
 		while (!l -> prox) {
-			COORDENADA *c = &(((COOR*)(l -> valor)) -> jogada);
+			COORDENADA *c = &(((MinMax*)(l -> valor)) -> jogada);
 			int valor = valorC (e, c);
 			if (valor > v) {
 				v = valor;
