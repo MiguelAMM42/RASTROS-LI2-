@@ -63,6 +63,11 @@ LISTA remove_cabeca(LISTA L)
     if (L == NULL) return NULL;
     LISTA tmp = L;
     L = L -> prox;
+  	//Talvez apagar
+	void *cA;
+	cA = (tmp -> valor);
+	free (cA);
+	//Acabei
     free (tmp);
     return L;
 }
