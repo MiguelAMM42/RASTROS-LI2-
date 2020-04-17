@@ -118,15 +118,22 @@ int interpretador(ESTADO *e) {
                             {
                             	LISTA vV = criaLista (e);
                                 COORDENADA jogada = comando_jog(vV);
-                                printf("jjyellowazulrosamarinha\n");
-                                jogar(e,jogada);
-                                mostrar_tabuleiro (*e, stdout);
+                               // printf("jjyellowazulrosamarinha\n");
                                 while (!lista_esta_vazia(vV)){
                                      vV = remove_cabeca(vV);
                                 }
-                                e -> num_comando ++;
-                                return 1;
+                                int jogo = jogar(e, jogada);
+                                            if (jogo == 2){
+                                                mostrar_tabuleiro(*e, stdout);
+                                                return 0;
+                                            } 
+                                            if (jogo == 0) return -1;
+                                            printf("\n");
+                                            mostrar_tabuleiro(*e, stdout);
+                                            e -> num_comando ++;
+                                            return 1;
                             }
+                
                             else {
                                         if (strcmp(linha, ("movs\n")) == 0)
                                                      {
@@ -158,8 +165,6 @@ int interpretador(ESTADO *e) {
         }
     } return -1;
 }
-
-
 /*
 int interpretador(ESTADO *e) 
 {
