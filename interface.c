@@ -69,7 +69,7 @@ int interpretador(ESTADO *e) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         int jogo = jogar(e, coord);
-        if (jogo == 2){
+        if (jogo >= 20){
             mostrar_tabuleiro(*e, stdout);
             return 0;
         } 
@@ -119,11 +119,9 @@ int interpretador(ESTADO *e) {
                             	LISTA vV = criaLista (e);
                                 COORDENADA jogada = comando_jog(vV);
                                // printf("jjyellowazulrosamarinha\n");
-                                while (!lista_esta_vazia(vV)){
-                                     vV = remove_cabeca(vV);
-                                }
+                                while (!lista_esta_vazia(vV)) vV = remove_cabeca(vV);
                                 int jogo = jogar(e, jogada);
-                                            if (jogo == 2){
+                                            if (jogo >= 20){
                                                 mostrar_tabuleiro(*e, stdout);
                                                 return 0;
                                             } 

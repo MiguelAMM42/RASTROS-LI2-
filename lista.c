@@ -144,7 +144,7 @@ LISTA criaLista (ESTADO *e) {
 }
 
 LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {
-	if (!jogadaValida (e, c)) return l;
+	if ((!jogadaValida (e, c)) || (! CoordenadaValida (c))) return l;
 	COORDENADA *s = malloc (sizeof (COORDENADA));
 	(*s) = c;
 	return insere_cabeca (l, s);
