@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "dados.h"
 
 ESTADO *inicializar_estado() {
@@ -26,6 +27,7 @@ void set_casa (ESTADO *e, COORDENADA c, CASA V) {
 }
 
 CASA get_casa (ESTADO *e, COORDENADA c) {
+    assert (c.linha >= 0 && c.coluna >= 0 && c.linha <= 7 && c.coluna <= 7 && "get_casa falha");  
     return e -> tab [c.linha][c.coluna];
 }
 

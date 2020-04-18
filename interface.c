@@ -5,6 +5,8 @@
 #include "dados.h"
 #include "interface.h"
 #include "logica.h"
+#include "lista.h"
+#include "lista.c"
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
     int i = 0;
@@ -56,7 +58,7 @@ void mostra_prompt (ESTADO *s) {  // Imprime o prompt
 //INFO JOGAR) VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
 //IGNORA: -1 ; ACABA: 0; CONTINUA: +1 
-//INFO JOGAR) VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
+//INFO JOGAR) VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: >=2 
 
 
 int interpretador(ESTADO *e) {
@@ -68,7 +70,7 @@ int interpretador(ESTADO *e) {
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         int jogo = jogar(e, coord);
-        if (jogo == 2){
+        if (jogo >= 2){
             mostrar_tabuleiro(*e, stdout);
             return 0;
         } 
@@ -115,7 +117,10 @@ int interpretador(ESTADO *e) {
 
                             if (strcmp(linha, ("jogs\n")) == 0)
                             {
-                                printf ("Comando jogs ! :)");
+                                printf ("comando jo||JPFgs\n");
+                                //COORDENADA cA = get_ultima_jogada (e);
+                                //int jA = get_jogador_atual (e);
+                                printf ("Distância é: %d", distRap (e));
                                 return 1;
                             }
                             else {

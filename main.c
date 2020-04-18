@@ -5,6 +5,11 @@
 #include "interface.h"
 #include "logica.h"
 
+
+#include "dados.c"
+#include "interface.c"
+#include "logica.c"
+
 int main () {
 // Define o estado inicial
     int repetir = 1;

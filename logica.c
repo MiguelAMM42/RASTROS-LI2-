@@ -3,7 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include "dados.h"
-#include "logica.h"
+//#include "logica.h"
 #include "interface.h"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
@@ -35,13 +35,14 @@ int jogar (ESTADO *estado, COORDENADA c) {
     COORDENADA h8 = {7, 7};
     if (coordenadaIgual (a1, c)) { // A casa 'a1' é alcançada
         printf ("O vencedor é o jogador %d.\n", 1);
-        return 2;
+        return 21;
     } else if (coordenadaIgual (h8, c)) { // A casa 'h8' é alcançada
         printf ("O vencedor é o jogador %d.\n", 2);
-        return 2;
+        return 22;
     } else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
         printf ("O vencedor é o jogador %d.\n", 3 - get_jogador_atual (estado));
-        return 2;
+        int venc = 3 - get_jogador_atual (estado);
+        return (20+venc);
     }
     return 1;
 }
@@ -68,13 +69,7 @@ int jogadaValida(ESTADO *estado, COORDENADA c) {
 
 //Something is wrong in Jogadas_Possiveis
 
-int JogadasPossiveis (ESTADO *estado) {
-    COORDENADA c = estado -> ultima_jogada;
-    if (anyVazio (estado, c)) return TRUE;
-    return FALSE;
-}
-
-int anyVazio (ESTADO *e, COORDENADA c) {
+int vizinhos_livres (ESTADO *e, COORDENADA c) {
     int ilinha = 1;
     while (ilinha >= -1) {
         int icoluna = 1;
@@ -90,6 +85,12 @@ int anyVazio (ESTADO *e, COORDENADA c) {
     return FALSE;
 }
 
+
+int JogadasPossiveis (ESTADO *estado) {
+    COORDENADA c = estado -> ultima_jogada;
+    if (vizinhos_livres (estado, c)) return TRUE;
+    return FALSE;
+}
 
 int CoordenadaValida (COORDENADA a) {	
     if (a.linha <= 7 && a.linha >= 0 && a.coluna >= 0 && a.coluna <= 7) return TRUE;	
