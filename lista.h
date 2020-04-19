@@ -30,19 +30,37 @@ typedef struct nodo {
    void *valor;
    struct nodo *prox;
 } NODO, *LISTA;
+<<<<<<< HEAD
 
 
 //COMENTAR FUNÇÕES TODAS-------------///
 
+=======
+/**
+\brief Inicializa a lista, com NULL
+@param e Apontador para o Estado
+@param c Apontador para o Coordenada
+@param l Apontador para uma lista
+*/
+>>>>>>> 1ca75f6ad4ec0af002a711c3a86e2034238931f6
 LISTA criar_lista();
+/**
+\brief Acrescenta um valor ao início da lista
+@param L Lista à qual serão acrescentados valores
+@param valor Endereço do valor para acrescentar 
+*/
 LISTA insere_cabeca(LISTA L, void *valor);
+
 void *devolve_cabeca(LISTA L);
+
 LISTA proximo(LISTA L);
+
 LISTA remove_cabeca(LISTA L);
+
 int lista_esta_vazia(LISTA L);
-LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max);
-int valorC (ESTADO *e, COORDENADA *c);
+
 LISTA criaLista (ESTADO *e);
+<<<<<<< HEAD
 LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
 /**
 \brief Calcula rapidamente a distância da coordenada à peça do jogador Atual
@@ -50,6 +68,10 @@ LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
 @param JOgador Atual (1 ou 2)
 */
 int dist_jog1 (COORDENADA c, int jogAtual);
+=======
+
+void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l);
+>>>>>>> 1ca75f6ad4ec0af002a711c3a86e2034238931f6
 
 
 
