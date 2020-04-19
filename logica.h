@@ -1,3 +1,8 @@
+/**
+@file logica.h
+Definição das funções relacionadas com o lógica do jogo.
+*/
+
 #ifndef ___LOGICA_H___
 #define ___LOGICA_H___
 
