@@ -35,10 +35,8 @@ void *devolve_cabeca(LISTA L);
 LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
-LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max);
-int valorC (ESTADO *e, COORDENADA *c);
 LISTA criaLista (ESTADO *e);
-LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
+void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l);
 
 
 
