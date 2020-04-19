@@ -8,6 +8,8 @@ Definição das funções relacionadas com as listas.
 
 #define BUF_SIZE 1024
 
+#define MAX_TAB 8
+
 typedef struct minmax {
    COORDENADA jogada;
    int comprimento; // (?) (Não sei até que ponto é útil meter na estrutura de dados se calhar é melhor meter como contador numa função).
@@ -29,6 +31,9 @@ typedef struct nodo {
    struct nodo *prox;
 } NODO, *LISTA;
 
+
+//COMENTAR FUNÇÕES TODAS-------------///
+
 LISTA criar_lista();
 LISTA insere_cabeca(LISTA L, void *valor);
 void *devolve_cabeca(LISTA L);
@@ -39,6 +44,12 @@ LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max);
 int valorC (ESTADO *e, COORDENADA *c);
 LISTA criaLista (ESTADO *e);
 LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l);
+/**
+\brief Calcula rapidamente a distância da coordenada à peça do jogador Atual
+@param c Coordenada onde se encontra a peça branca
+@param JOgador Atual (1 ou 2)
+*/
+int dist_jog1 (COORDENADA c, int jogAtual);
 
 
 

@@ -185,26 +185,27 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
     set_casa (e, c, UM);
 }
 
-// Falta adicionar o comando jog ao interpretador.
-
-COORDENADA comando_jog(LISTA vV){   
-    //LISTA vM1; //Lista com os melhores vizinhos para o jogador 1
-    //LISTA vM2; //Lista com os melhores vizinhos para o jogador 2    
-    
-
-    COORDENADA* jogada = devolve_cabeca(vV);
-    //jogada.coluna = u.coluna;  ///PARA TESTAR
-    //jogada.linha = u.linha;  ///PARA TESTAR     ///TEMHO DE ARRANJAR FORMA DE IR À LISTA BUSCAR UM VALOR////
 
 
-    //IR à LISTA E RETIRAR A CABEÇA
-    //HAVERÁ SEMPRE ALGO LÁ PORQUE SENÃO O JOG JÁ TERIA ACABADO
-
-
-
-    return *jogada;
+COORDENADA *comando_jog(LISTA vV, ESTADO *e){   
+    int distancia;
+    COORDENADA* jogada; 
+    COORDENADA* jogadaMinima;
+    int jogAtual = get_jogador_atual(e);
+    int distanciaMinima = 200;
+    while(!lista_esta_vazia(vV)){
+        jogada = devolve_cabeca(vV);
+        distancia = dist_jog1(*jogada, jogAtual);
+        if (distancia < distanciaMinima){
+            jogadaMinima = jogada;
+            distanciaMinima = distancia;
+        }
+        vV = vV -> prox;
+    }
+    return jogadaMinima;
 
 }
+
 
 
 

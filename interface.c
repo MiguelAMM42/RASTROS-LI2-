@@ -114,18 +114,18 @@ int interpretador(ESTADO *e) {
 
     } else if (strcmp(linha, ("jog\n")) == 0) {
             LISTA vV = criaLista (e);
-            COORDENADA jogada = comando_jog(vV);
-            while (!lista_esta_vazia(vV)) vV = remove_cabeca(vV);
-                int jogo = jogar(e, jogada);
-                if (jogo >= 20) {
-                        mostrar_tabuleiro(*e, stdout);
-                        return 0;
-                    } 
-                if (jogo == 0) return -1;
-                printf("\n");
+            COORDENADA* jogada = comando_jog(vV, e);
+            int jogo = jogar(e, *jogada);
+            if (ALGUEM_GANHOU(jogo)) {
                 mostrar_tabuleiro(*e, stdout);
-                e -> num_comando ++;
-                return 1;
+                return 0;
+            } 
+            else if (COMANDO_INVALIDO(jogo)) return -1;
+            printf("\n");
+            mostrar_tabuleiro(*e, stdout);
+            while (!lista_esta_vazia(vV)) vV = remove_cabeca(vV);
+            e -> num_comando ++;
+            return 1;
 
     } else if (strcmp(linha, ("movs\n")) == 0) {
             mostra_jogadas (e, stdout);

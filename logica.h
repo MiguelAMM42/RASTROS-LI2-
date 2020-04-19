@@ -83,8 +83,9 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n);
 void jogadaAnterior (ESTADO *e, int numeroJogada);
 /**
 \brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
+@param vV Lista dos vizinhos válidos
 @param e Apontador para o estado
 */
-COORDENADA comando_jog(LISTA vV);
+COORDENADA* comando_jog(LISTA vV, ESTADO *e);
 
 #endif

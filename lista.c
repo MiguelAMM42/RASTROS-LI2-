@@ -5,6 +5,7 @@
 #include "lista.h"
 #include "logica.h"
 #define BUF_SIZE 1024
+#define max_tab 8
 
 /*
 int main() {
@@ -147,10 +148,25 @@ LISTA adicionarCoordenada (ESTADO *e, COORDENADA c, LISTA l) {
 	return insere_cabeca (l, s);
 }
 	
+
+int dist_jog1 (COORDENADA c, int jogAtual)
+{
+    int col = c.coluna;
+    int lin = c.linha;
+    if (jogAtual == 1)
+        {
+        if (col <= lin) return col--;
+        else return lin--;
+        }
+    else 
+        {
+        lin = max_tab - lin;
+        col = max_tab - col;
+        if (lin <= col) return lin++;
+        else return col++;
+        }
+}
 	
-
-
-
 
 
 
