@@ -114,7 +114,7 @@ void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l) {
 	if ((!jogadaValida (e, *c)) || (! CoordenadaValida (*c))) return;
 	COORDENADA *s = malloc (sizeof (COORDENADA));
 	(*s) = *c;
-	(*l) = insere_cabeca (l, s);
+	(*l) = insere_cabeca (*l, s);
 }
 	
 
