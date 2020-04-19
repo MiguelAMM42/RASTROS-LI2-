@@ -28,14 +28,30 @@ typedef struct nodo {
    void *valor;
    struct nodo *prox;
 } NODO, *LISTA;
-
+/**
+\brief Inicializa a lista, com NULL
+@param e Apontador para o Estado
+@param c Apontador para o Coordenada
+@param l Apontador para uma lista
+*/
 LISTA criar_lista();
+/**
+\brief Acrescenta um valor ao início da lista
+@param L Lista à qual serão acrescentados valores
+@param valor Endereço do valor para acrescentar 
+*/
 LISTA insere_cabeca(LISTA L, void *valor);
+
 void *devolve_cabeca(LISTA L);
+
 LISTA proximo(LISTA L);
+
 LISTA remove_cabeca(LISTA L);
+
 int lista_esta_vazia(LISTA L);
+
 LISTA criaLista (ESTADO *e);
+
 void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l);
 
 
