@@ -25,15 +25,11 @@ void mostrar_tabuleiro (ESTADO s, FILE *fp);
 @returns Valor que corresponde ao tipo de comportamento que deve ter o Jogo.
 */
 int interpretador(ESTADO *e);
-
 /**
 \brief Imprime o prompt
 @param s Apontador para o estado
 */
 void mostra_prompt (ESTADO *s);
-
-
-
 /**
 \brief Interpreta as jogadas feitas pelo jogador
 @param e Apontador para o Estado

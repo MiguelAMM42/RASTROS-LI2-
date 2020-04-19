@@ -4,6 +4,7 @@
 #include "dados.h"
 #include "lista.h"
 #include "logica.h"
+#include "bot.h"
 
 LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
 	int v = valorC (e, &(((MinMax*)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
