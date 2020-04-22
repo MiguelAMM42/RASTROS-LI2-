@@ -12,7 +12,7 @@ Definição das funções relacionadas com o lógica do jogo.
 @param c A coordenada
 @returns Se a casa está livre ou não
 */
-int casaVazia (ESTADO *estado, COORDENADA c);
+int casaVazia (ESTADO *estado, COORDENADA *c);
 /**
 \brief Verifica se a jogada é possível, e  altera o estado
 @param estado Apontador para o estado
@@ -26,7 +26,7 @@ int jogar (ESTADO *estado, COORDENADA c);
 @param c Coordenada da jogada
 @returns Se a jogada é válida ou não
 */
-int jogadaValida (ESTADO *estado, COORDENADA c);
+int jogadaValida (ESTADO *estado, COORDENADA *c);
 /**
 \brief Verifica se o jogo acaba
 @param estado Apontador para o estado
@@ -39,7 +39,7 @@ int fimDoJogo (ESTADO *estado);
 @param c Apontador para a coordenada
 @returns Retorna TRUE or FALSE 
 */
-int anyVazio (ESTADO *e, COORDENADA c);
+int anyVazio (ESTADO *e, COORDENADA *c);
 /**
 \brief Verifica se na última jogada do estado existe alguma casa livre
 @param estado Apontador para o estado
@@ -51,7 +51,7 @@ int JogadasPossiveis (ESTADO *estado);
 @param a Coordenada 
 @returns Retorna se é possível ou não
 */
-int CoordenadaValida (COORDENADA a);
+int CoordenadaValida (COORDENADA *a);
 /**
 \brief Guarda um ficheiro com o Tabuleiro e as jogadas 
 @param e Apontador para o estado

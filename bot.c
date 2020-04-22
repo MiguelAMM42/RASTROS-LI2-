@@ -3,8 +3,8 @@
 #include <string.h>
 #include "dados.h"
 #include "lista.h"
-#include "logica.h"
 #include "bot.h"
+#include "logica.h"
 
 LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
 	int v = valorC (e, &(((MinMax*)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
@@ -35,4 +35,8 @@ LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) { // min -> 0 || max -> 1
 
 int valorC (ESTADO *e, COORDENADA *c) {
 	return 10;
+}
+
+void Cria_ListaMinMax (ESTADO *e, LISTA *l) {
+	
 }
