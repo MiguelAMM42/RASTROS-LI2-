@@ -24,27 +24,28 @@ int jogar (ESTADO *estado, COORDENADA c) {
     if (get_jogador_atual (estado) == 1) {
         set_jogadas_coordenada (estado, get_num_jogadas(estado), 1, c); // #1
         set_ultima_jogada (estado, c); // #2
-        set_jogador_atual (estado, 2); //﻿﻿ #3
+        set_jogador_atual (estado, 2); // #3
     } else {
         set_jogadas_coordenada (estado, get_num_jogadas(estado), 2, c); // #1
         set_ultima_jogada (estado, c); // #2
         set_jogador_atual (estado, 1); // #3
         set_num_jogadas (estado, get_num_jogadas(estado) + 1);
     }
+    return 1;
+}
+
+int Vencedor (ESTADO *e) {
     // Casos em que o jogo se dá como terminado
     COORDENADA a1 = {0, 0};
     COORDENADA h8 = {7, 7};
-    if (coordenadaIgual (a1, c)) { // A casa 'a1' é alcançada
-        printf ("O vencedor é o jogador %d.\n", 1);
-        return 2;
-    } else if (coordenadaIgual (h8, c)) { // A casa 'h8' é alcançada
-        printf ("O vencedor é o jogador %d.\n", 2);
-        return 3;
-    } else if (! JogadasPossiveis (estado)) { // Não há jogadas possíveis
-        printf ("O vencedor é o jogador %d.\n", 3 - get_jogador_atual (estado));
-        return 1 + get_jogador_atual (estado);
-    }
-    return 1;
+    COORDENADA c = get_ultima_jogada(e);
+    // A casa 'a1' é alcançada
+    if (coordenadaIgual (a1, c)) return 1;
+    // A casa 'h8' é alcançada
+    else if (coordenadaIgual (h8, c)) return 2;
+    // Não há jogadas possíveis
+    else if (! JogadasPossiveis (e)) return (3 - get_jogador_atual (e));
+    return 0; // Não há vencedor
 }
 
 int casaVazia(ESTADO *estado, COORDENADA *c) {

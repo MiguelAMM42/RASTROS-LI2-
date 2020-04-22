@@ -44,10 +44,20 @@ void Cria_ListaMinMax (ESTADO *e, LISTA *l, int comp) { // comprimento
 	MinMax arvore = malloc (sizeof (MinMax)); 
 	(*l) -> valor = arvore;
 	arvore -> jogada = e -> ultima_jogada;
-	arvore -> comprimento = comp;
-	arvore -> jogador = 3 - (e -> jogador_atual);
+	// Criação de um nível de jogadas
 	CriaNivel (e, arvore, comp);
 }
+
+void CriaNiveis (ESTADO *e, MinMax jogada, int comp) {
+	int i = 2;
+	int j = 2;
+	while (i) { 
+		while (j) jogada -> jogadas[i][j --] = NULL;
+		i --;
+	}
+	
+}
+
 
 void CriaNivel (ESTADO *e, MinMax jogada, int comp) {
 	COORDENADA atual = get_ultima_jogada(e);
@@ -56,7 +66,6 @@ void CriaNivel (ESTADO *e, MinMax jogada, int comp) {
     while (ilinha >= -1) {
         int icoluna = -1;
         while (icoluna <= 1) {
-            if (icoluna == 0 && ilinha == 0) icoluna = 1;
             COORDENADA a = {atual.coluna + icoluna, atual.linha + ilinha};
 			adicionarCoordenadaMinMax (e, &a, jogada, icoluna + 1, ilinha + 1, comp);
             icoluna --;
@@ -65,21 +74,21 @@ void CriaNivel (ESTADO *e, MinMax jogada, int comp) {
 	}
 }
 
-void adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp) {
-	if (!comp) { // Adicionar NULL a todos os apontadores
+MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp) {
+	if (!comp) { // Comprimento chegou ao fim
 		int i = 2;
 		int j = 2;
-		while (i) {
+		while (i) { // Adicionar NULL a todos os apontadores
 			while (j) l -> jogadas[i][j --] = NULL;
 			i --;
 		}
-		return;
-	} else if ((!jogadaValida (e, c)) || (! CoordenadaValida (c))) { // Avaliar se a jogada é válida
+		return NULL;
+	} else if (linha == 1 && coluna == 1 || (!jogadaValida (e, c)) || (! CoordenadaValida (c))) { // Avaliar se a jogada é válida
 		l -> jogadas[linha][coluna] = NULL;
-		return;
+		return NULL;
 	}
+	// A jogada é válida logo é adicionada.
 	l -> jogadas[linha][coluna] = malloc (sizeof (struct minmax));
 	(l -> jogadas[linha][coluna]) -> jogada = *c;
-	(l -> jogadas[linha][coluna]) -> comprimento = -- comp;
-	(l -> jogadas[linha][coluna]) -> jogador = e -> jogador_atual;
+	return l -> jogadas[linha][coluna];
 }

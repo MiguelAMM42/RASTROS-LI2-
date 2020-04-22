@@ -8,8 +8,6 @@ Definição das funções relacionadas com o bot.
 
 typedef struct minmax {
    COORDENADA jogada;
-   int comprimento; // (?) (Não sei até que ponto é útil meter na estrutura de dados se calhar é melhor meter como contador numa função).
-   int jogador; // Jogador a efetuar esta jogada. Importante para ver se é utilizado o max ou min neste conjunto de nodos.
    struct minmax *jogadas[3][3]; // Outros nodos com outras tipos de jogadas
 } *MinMax;
 
@@ -30,5 +28,5 @@ brief Atribui um valor(usado na criação da lista para a heurística Min_Max)
 int valorC (ESTADO *e, COORDENADA *c);
 
 void CriaNivel (ESTADO *e, MinMax jogada, int comp);
-void adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp);
+MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp);
 #endif

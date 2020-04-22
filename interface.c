@@ -4,11 +4,8 @@
 #include <math.h>
 #include "dados.h"
 #include "lista.h"
-#include "interface.h"
 #include "logica.h"
-#define Jogador_1_ganhou 2
-#define Jogador_2_ganhou 3
-#define ALGUEM_GANHOU(jogo) jogo >= 2
+#include "interface.h"
 #define COMANDO_INVALIDO(jogo) jogo == 0
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
@@ -35,11 +32,9 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
         fprintf (fp, "%c%d\n", 'a' + (((s -> jogadas[jogadaNum]).jogador2).coluna) , (((s -> jogadas[jogadaNum]).jogador2).linha) + 1);
         jogadaNum ++;
     }
-    if ((s -> jogador_atual) == 1) printf ("\n");
-    else 
-    {
+    if ((s -> jogador_atual) == 2) {
         fprintf (fp, "%02d: ", jogadaNum + 1);
-        fprintf (fp, "%c%d \n\n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
+        fprintf (fp, "%c%d \n", 'a' + (((s -> jogadas[s -> num_jogadas]).jogador1) .coluna), (((s -> jogadas[s -> num_jogadas]).jogador1) .linha) + 1); 
     }        
 }
 
@@ -68,17 +63,21 @@ int interpretador(ESTADO *e) {
     char endereco[BUF_SIZE]; 
     int jog = 0;
     printf (">>");
+    
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return -1;
 
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
         COORDENADA coord = {*col - 'a', *lin - '1'};
-        int jogo = jogar(e, coord);
-        if (ALGUEM_GANHOU (jogo)) {
+        int valido = jogar(e, coord);
+        int vencedor = Vencedor (e);
+        if (vencedor) {
             mostrar_tabuleiro(*e, stdout);
+            printf ("O vencedor é o jogador %d.\n", vencedor);
             return 0;
-        } 
-        if (COMANDO_INVALIDO(jogo)) return -1;
-        printf("\n");
+        } else if (!valido) {
+            printf("Jogada inválida");
+            return -1;
+        }
         mostrar_tabuleiro(*e, stdout);
         e -> num_comando ++;
         return 1;
@@ -113,17 +112,22 @@ int interpretador(ESTADO *e) {
             return 1;
 
     } else if (strcmp(linha, ("jog\n")) == 0) {
-            LISTA vV = criaLista (e);
-            COORDENADA* jogada = comando_jog(vV, e);
-            int jogo = jogar(e, *jogada);
-            if (ALGUEM_GANHOU(jogo)) {
+            LISTA jogadasPossiveis = criaLista (e);
+            COORDENADA* jogada = comando_jog(jogadasPossiveis, e);
+            int valido = jogar(e, *jogada);
+            int vencedor = Vencedor (e);
+            if (vencedor) {
+                putchar ('\n');
                 mostrar_tabuleiro(*e, stdout);
+                printf ("O vencedor é o jogador %d.\n", vencedor);
                 return 0;
             } 
-            else if (COMANDO_INVALIDO(jogo)) return -1;
-            printf("\n");
+            else if (!valido) {
+                printf("Jogada inválida");
+                return -1;
+            }
             mostrar_tabuleiro(*e, stdout);
-            while (!lista_esta_vazia(vV)) vV = remove_cabeca(vV);
+            while (!lista_esta_vazia(jogadasPossiveis)) jogadasPossiveis = remove_cabeca(jogadasPossiveis);
             e -> num_comando ++;
             return 1;
 
@@ -139,7 +143,7 @@ int interpretador(ESTADO *e) {
                 printf("Could not create file. Maybe locked or being used by another application?\n");
                 return (-1);
             } else { // Se o caminho está certo.
-                printf ("\nEstamos a ler! %s\n", endereco);
+                printf ("Estamos a ler!\n");
                 le_ficheiro (e, fp);
                 fclose(fp);
                 mostrar_tabuleiro (*e, stdout);

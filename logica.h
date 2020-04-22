@@ -21,6 +21,11 @@ int casaVazia (ESTADO *estado, COORDENADA *c);
 */
 int jogar (ESTADO *estado, COORDENADA c);
 /**
+\brief Verifica se há um vencedor
+@param estado Apontador para o estado
+*/
+int Vencedor (ESTADO *e);
+/**
 \brief Verifica se a jogada é Válida
 @param estado Apontador para o estado
 @param c Coordenada da jogada
