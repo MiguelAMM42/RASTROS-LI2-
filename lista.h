@@ -10,20 +10,6 @@ Definição das funções relacionadas com as listas.
 
 #define MAX_TAB 8
 
-typedef struct minmax {
-   COORDENADA jogada;
-   int comprimento; // (?) (Não sei até que ponto é útil meter na estrutura de dados se calhar é melhor meter como contador numa função).
-   int jogador; // Jogador a efetuar esta jogada. Importante para ver se é utilizado o max ou min neste conjunto de nodos.
-   struct minMax *jogadas11; // Outros nodos com outras tipos de jogadas
-   struct minMax *jogadas12;
-   struct minMax *jogadas13;
-   struct minMax *jogadas21;
-   struct minMax *jogadas23;
-   struct minMax *jogadas31;
-   struct minMax *jogadas32;
-   struct minMax *jogadas33;
-} MinMax;
-
 typedef int MAPA[8][8];
 
 typedef struct nodo {
