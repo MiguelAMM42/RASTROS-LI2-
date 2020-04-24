@@ -5,7 +5,6 @@
 #include "dados.h"
 #include "lista.h"
 #include "logica.h"
-#include "interface.h"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
@@ -98,12 +97,6 @@ int CoordenadaValida (COORDENADA *a) {
     return FALSE;	
 }
 
-
-void guarda_ficheiro (ESTADO *e, FILE *fp) {
-    mostrar_tabuleiro (*e, fp);
-    fputc ('\n', fp);
-    mostra_jogadas (e, fp);
-}
 
 void le_ficheiro (ESTADO *e, FILE *fp) {
     char linha[100];
