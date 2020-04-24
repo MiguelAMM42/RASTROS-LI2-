@@ -6,7 +6,6 @@
 #include "lista.h"
 #include "logica.h"
 #include "interface.h"
-#include "bot.h"
 #define COMANDO_INVALIDO(jogo) jogo == 0
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
@@ -53,6 +52,11 @@ void mostra_prompt (ESTADO *s) {  // Imprime o prompt
     }        
 }
 
+void guarda_ficheiro (ESTADO *e, FILE *fp) {
+    mostrar_tabuleiro (*e, fp);
+    fputc ('\n', fp);
+    mostra_jogadas (e, fp);
+}
 
 // IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
 // INFO JOGAR: VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2; 
@@ -113,10 +117,9 @@ int interpretador(ESTADO *e) {
             return 1;
 
     } else if (strcmp(linha, ("jog\n")) == 0) {
-            MinMax arvore = malloc (sizeof (MinMax));
-            Cria_ListaMinMax (e, &arvore, 2);
-            COORDENADA jogada = ((arvore -> jogadas[0][0]) -> jogadas[0][0]) -> jogada;
-            int valido = jogar(e, jogada);
+            LISTA jogadasPossiveis = criaLista (e);
+            COORDENADA* jogada = comando_jog(jogadasPossiveis, e);
+            int valido = jogar(e, *jogada);
             int vencedor = Vencedor (e);
             if (vencedor) {
                 putchar ('\n');
@@ -129,6 +132,7 @@ int interpretador(ESTADO *e) {
                 return -1;
             }
             mostrar_tabuleiro(*e, stdout);
+            while (!lista_esta_vazia(jogadasPossiveis)) jogadasPossiveis = remove_cabeca(jogadasPossiveis);
             e -> num_comando ++;
             return 1;
 
