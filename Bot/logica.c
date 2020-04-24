@@ -6,7 +6,6 @@
 #include "lista.h"
 #include "logica.h"
 
-//VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
 
 int jogar (ESTADO *estado, COORDENADA c) {
@@ -50,22 +49,27 @@ int Vencedor (ESTADO *e) {
 int casaVazia(ESTADO *estado, COORDENADA *c) {
     // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
-    if (get_casa (estado, *c) != PRETA && get_casa (estado, *c) != BRANCA) return TRUE;
+    CASA casa = get_casa (estado, *c);
+    if (casa != PRETA && casa != BRANCA) return TRUE;
     else return FALSE;
 }
-
 
 int jogadaValida(ESTADO *estado, COORDENADA *c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
-    int colunaU, linhaU, colunaJ, linhaJ;
-    linhaU = (estado -> ultima_jogada).linha; // z
-    colunaU = (estado -> ultima_jogada).coluna; // y
-    linhaJ = c -> linha; // m
-    colunaJ = c -> coluna; // n
-    if (((colunaJ == colunaU) || (colunaJ == colunaU + 1) || (colunaJ == colunaU - 1)) && ((linhaJ == linhaU) || (linhaJ == linhaU + 1) || (linhaJ == linhaU - 1)) && casaVazia(estado, c)) return TRUE;
+    int colA, linA, colB, linB;
+    linA = (estado -> ultima_jogada).linha; 
+    colA = (estado -> ultima_jogada).coluna; 
+    linB = c -> linha; 
+    colB = c -> coluna; 
+    if ((
+    ((colA == colB) && ((linA == linB-1) || (linA == linB+1)) 
+    || ((colA == colB +1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1)) 
+    || ((colA == colB -1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1))) 
+    && casaVazia(estado, c))))) return TRUE;
     else return FALSE;
 }
+
 
 //Something is wrong in Jogadas_Possiveis
 
@@ -107,6 +111,8 @@ void le_ficheiro (ESTADO *e, FILE *fp) {
     while (nlinha >= 0 && fscanf (fp, "%s", linha) == 1) guardaLinha (e, linha, nlinha --, &contador);
     set_num_jogadas (e, contador / 2);
     // Ler jogadas
+    COORDENADA c = {4, 4};
+    set_ultima_jogada (e, c);
     while (num_jogadas != get_num_jogadas(e) && fscanf (fp, "%*s %s %s", linha, &linha[2]) == 2) guardaJogadas (e, linha, num_jogadas ++, 2);
     if (fscanf (fp, "%*s %s", linha) == 1) guardaJogadas (e, linha, num_jogadas, 1);
 }

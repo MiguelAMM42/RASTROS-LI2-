@@ -11,30 +11,30 @@ int main (int argc, char *argv[]) {
 	if (argc != 3) return -1;
 
 	// Leitura do estado através do ficheiro
-	ESTADO *e;
+	ESTADO e;
 	FILE *fileLeitura;
     fileLeitura = fopen(argv[1], "r");
     if (fileLeitura == NULL) return -1; // Se não abre.
-    le_ficheiro (e, fileLeitura);
+    le_ficheiro (&e, fileLeitura);
     fclose(fileLeitura);
-    mostrar_tabuleiro (*e, stdout);
-    mostra_jogadas(e, stdout);
-    e -> num_comando ++;
+    mostrar_tabuleiro (e, stdout);
+    mostra_jogadas(&e, stdout);
 
 	// Jogada do Bot
-	MinMax arvore = malloc (sizeof (MinMax));
-    Cria_ListaMinMax (e, &arvore, 2);
-    COORDENADA jogada = ((arvore -> jogadas[0][0]) -> jogadas[0][0]) -> jogada;
-    jogar(e, jogada);
-    mostrar_tabuleiro(*e, stdout);
-	// Gravação da jogada no ficheiro
+	putchar ('\n');
+	MinMax arvore = malloc (sizeof (struct minmax));
+    Cria_ListaMinMax (&e, &arvore, 2);
+	MinMax ar1 = (arvore -> jogadas[0][0]);
+    COORDENADA jogada = ar1 -> jogada;
+    jogar(&e, jogada);
+    mostrar_tabuleiro(e, stdout);
 
+	// Gravação da jogada no ficheiro
 	FILE *fileGravacao;
     fileGravacao = fopen(argv[2], "w");
     if (fileGravacao == NULL) return -1; // Caso em que não abre
-    guarda_ficheiro (e, fileGravacao);
+    guarda_ficheiro (&e, fileGravacao);
     fclose(fileGravacao);
-    e -> num_comando ++;
     return 0;
 }
 
@@ -76,53 +76,56 @@ void Cria_ListaMinMax (ESTADO *e, MinMax *m, int comp) {
 	// Alocação da memória inicial para o árvore de jogadas
 	(*m) -> jogada = e -> ultima_jogada;
 	// Criação de um nível de jogadas
-	CriaNivel (e, *m, comp);
+	CriaNivel (*e, *m, comp);
 }
 
-void CriaNiveis (ESTADO *e, MinMax jogada, int comp) { // Aplica a CriaNível várias vezes 
-	int i = 2;
-	int j = 2;
-	CriaNivel (e, jogada, comp);
-	while (i) { // Adicionar NULL a todos os apontadores
-		while (j) CriaNiveis(e, jogada -> jogadas[i][j --], --comp);
-		i --;
+
+
+void CriaNivel (ESTADO e, MinMax jogada, int comp) {
+	if (!jogada) return;
+	else if (!comp) {
+		jogada = NULL;
+		return;
 	}
-	
-}
-
-
-void CriaNivel (ESTADO *e, MinMax jogada, int comp) {
-	if (!comp) jogada = NULL;
-	COORDENADA atual = get_ultima_jogada(e);
-
+	COORDENADA atual = get_ultima_jogada(&e);
 	int ilinha = 1;
-    while (ilinha >= -1) {
-        int icoluna = -1;
-        while (icoluna <= 1) {
-            COORDENADA a = {atual.coluna + icoluna, atual.linha + ilinha};
-			MinMax nodo = adicionarCoordenadaMinMax (e, &a, jogada, ilinha + 1, icoluna + 1, comp);
-			CriaNivel (e, nodo, comp - 1);
-            icoluna ++;
-        }
-        ilinha --;
+	while (ilinha >= -1) {
+	    int icoluna = -1;
+	    while (icoluna <= 1) {
+	        COORDENADA coor = {atual.coluna + icoluna, atual.linha + ilinha};
+			if (ilinha == 0 && icoluna == 0) (jogada -> jogadas[1][1]) = NULL;
+			int n = jogadaValida (&e, &coor), m = CoordenadaValida (&coor);
+			if (n && m) {
+				MinMax nodo = adicionarCoordenadaMinMax (&e, &coor, jogada, -ilinha + 1, icoluna + 1, comp);
+				ESTADO a = e;
+				jogar(&a, coor); // Tirar Verificação de jogada válida
+				CriaNivel (a, nodo, comp - 1);
+			}	
+	        icoluna ++;
+		}
+		putchar('\n');
+	ilinha --;
 	}
 }
+
 
 MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax m, int linha, int coluna, int comp) {
-	if (!comp) { // Comprimento chegou ao fim
+	if (!m) return NULL; // Nodo é NULL
+	else if (!comp) { // Comprimento chegou ao fim
 		int i = 2;
 		while (i) { // Adicionar NULL a todos os apontadores
 			int j = 2;
-			while (j) m -> jogadas[i][j --] = NULL;
+			while (j) {
+				m -> jogadas[i][j] = NULL;
+				j --;
+			}
 			i --;
 		}
-		return NULL;
-	} else if (linha == 1 && coluna == 1 || (!jogadaValida (e, c)) || (! CoordenadaValida (c))) { // Avaliar se a jogada é válida
-		m -> jogadas[linha][coluna] = NULL;
 		return NULL;
 	}
 	// A jogada é válida logo é adicionada.
 	m -> jogadas[linha][coluna] = malloc (sizeof (struct minmax));
+	printf ("0%d:%c%c \n", comp,'a' + (c -> coluna), '1' + (c -> linha));
 	(m -> jogadas[linha][coluna]) -> jogada = *c;
 	return m -> jogadas[linha][coluna];
 }

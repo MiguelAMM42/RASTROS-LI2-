@@ -27,8 +27,7 @@ brief Atribui um valor(usado na criação da lista para a heurística Min_Max)
 */
 int valorC (ESTADO *e, COORDENADA *c);
 void Cria_ListaMinMax (ESTADO *e, MinMax *l, int comp);
-void CriaNiveis (ESTADO *e, MinMax jogada, int comp);
-void CriaNivel (ESTADO *e, MinMax jogada, int comp);
+void CriaNivel (ESTADO e, MinMax jogada, int comp);
 MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp);
 
 
