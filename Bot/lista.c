@@ -5,7 +5,7 @@
 #include "lista.h"
 #include "logica.h"
 #define BUF_SIZE 1024
-#define max_tab 8
+#define max_tab 7
 
 /*
 int main() {
@@ -129,8 +129,8 @@ int dist_jog1 (COORDENADA c, int jogAtual)
         }
     else 
         {
-        lin = max_tab - lin;
-        col = max_tab - col;
+        lin = 8 - lin;
+        col = 8 - col;
         if (lin <= col) return lin++;
         else return col++;
         }

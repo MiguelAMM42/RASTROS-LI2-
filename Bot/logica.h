@@ -58,12 +58,6 @@ int JogadasPossiveis (ESTADO *estado);
 */
 int CoordenadaValida (COORDENADA *a);
 /**
-\brief Guarda um ficheiro com o Tabuleiro e as jogadas 
-@param e Apontador para o estado
-@param fp Apontador para o ficheiro
-*/
-void guarda_ficheiro (ESTADO *e, FILE *fp);
-/**
 \brief Lê um ficheiro com o Tabuleiro e as jogadas 
 @param e Apontador para o estado
 @param fp Apontador para o ficheiro
