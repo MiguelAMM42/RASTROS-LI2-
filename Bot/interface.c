@@ -53,12 +53,6 @@ void mostra_prompt (ESTADO *s) {  // Imprime o prompt
     }        
 }
 
-void guarda_ficheiro (ESTADO *e, FILE *fp) {
-    mostrar_tabuleiro (*e, fp);
-    fputc ('\n', fp);
-    mostra_jogadas (e, fp);
-}
-
 
 // IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
 // INFO JOGAR: VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2; 
