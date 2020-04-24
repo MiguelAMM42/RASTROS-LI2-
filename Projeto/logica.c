@@ -58,12 +58,14 @@ int casaVazia(ESTADO *estado, COORDENADA *c) {
 int jogadaValida(ESTADO *estado, COORDENADA *c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
-    int colunaU, linhaU, colunaJ, linhaJ;
-    linhaU = (estado -> ultima_jogada).linha; // z
-    colunaU = (estado -> ultima_jogada).coluna; // y
-    linhaJ = c -> linha; // m
-    colunaJ = c -> coluna; // n
-    if (((colunaJ == colunaU) || (colunaJ == colunaU + 1) || (colunaJ == colunaU - 1)) && ((linhaJ == linhaU) || (linhaJ == linhaU + 1) || (linhaJ == linhaU - 1)) && casaVazia(estado, c)) return TRUE;
+    int colA, linA, colB, linB;
+    linA = (estado -> ultima_jogada).linha; 
+    colA = (estado -> ultima_jogada).coluna; 
+    linB = c -> linha; 
+    colB = c -> coluna; 
+    if ( (colA == colB + 1 | colA == colB | colA == colB - 1 &&
+    linA == linB + 1 | linA == linB | linA == linB -1) &&
+    colA != colB || linA != linB && casaVazia(estado, c)) return TRUE;
     else return FALSE;
 }
 
