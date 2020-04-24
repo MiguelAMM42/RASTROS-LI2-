@@ -15,10 +15,10 @@ typedef struct minmax {
 /**
 brief Cria uma lista com os valores úteis para a heurística do Min_Max
 @param e Apontador para o Estado
-@param l LISTA com os valores
+@param l lista de jogadas
 @min_max Valor min_max
 */
-LISTA min_max_Lista (ESTADO *e, LISTA l, int min_max) ;
+MinMax min_max_Lista (ESTADO *e, MinMax l, int min_max) ;
 /**
 brief Atribui um valor(usado na criação da lista para a heurística Min_Max)
 @param e Apontador para o Estado
@@ -26,7 +26,10 @@ brief Atribui um valor(usado na criação da lista para a heurística Min_Max)
 @returns Atribui 10(provisoriamente) à Coordenada
 */
 int valorC (ESTADO *e, COORDENADA *c);
-
+void Cria_ListaMinMax (ESTADO *e, MinMax *l, int comp);
+void CriaNiveis (ESTADO *e, MinMax jogada, int comp);
 void CriaNivel (ESTADO *e, MinMax jogada, int comp);
 MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax l, int linha, int coluna, int comp);
+
+
 #endif

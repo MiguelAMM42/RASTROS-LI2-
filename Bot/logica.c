@@ -5,7 +5,6 @@
 #include "dados.h"
 #include "lista.h"
 #include "logica.h"
-#include "interface.h"
 
 //VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2 
 
