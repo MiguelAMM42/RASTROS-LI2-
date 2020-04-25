@@ -41,33 +41,15 @@ int main (int argc, char *argv[]) {
 
 // void imprime_minmax(m) {}
 
-/*
-MinMax min_max_Lista (ESTADO *e, MinMax l, int min_max) { // min -> 0 || max -> 1
-	int v = valorC (e, &(((MinMax)(l -> valor)) -> jogada)); // Valor mínimo/máximo, inicializado com o valor do primeiro elemento.
-	MinMax ls = l; // Apontador para o Nodo com menor/maior valor, inicializado com o apontador para o primeiro Nodo.
-	l = l -> prox;
-	if (min_max = 0) { // Queremos o mínimo da lista
-		while (!l -> prox) {
-			COORDENADA *c = &(((MinMax)(l -> valor)) -> jogada);
-			int valor = valorC (e, c);
-			if (valor < v) {
-				v = valor;
-				ls = l;
-			}
-		}
-	} else { // Queremos o máximo da lista
-		while (!l -> prox) {
-			COORDENADA *c = &(((MinMax)(l -> valor)) -> jogada);
-			int valor = valorC (e, c);
-			if (valor > v) {
-				v = valor;
-				ls = l;
-			}
-		}
+MinMax min_max_Lista (ESTADO *e, MinMax l, int comp, int min_max) { // min -> 0 || max -> 1
+    MinMax jogada;
+	if (min_max) { // Queremos o máximo da lista
+		
+	} else { // Queremos o mínimo da lista
+		
 	}
-	return ls;
+	return jogada;
 }
-*/
 
 int valorC (ESTADO *e, COORDENADA *c) {
 	return 10;
@@ -348,41 +330,5 @@ int dist (ESTADO *e)
     else return (d2-d1);
 }
 
-/*
-int main() {
-    LISTA L = criar_lista();
-    char linha[BUF_SIZE];
-    printff("Insira várias linhas, acabando com CTRL-D:\n"); 
-    // control-D é a tecla CTRL e a tecla D ao mesmo tempo
-    // Em windows é capaz de ser CTRL-Z
-    while(fgets(linha, BUF_SIZE, stdin) != 0) {
-        // A função strdup cria uma copia da string que foi lida
-        L = insere_cabeca(L, strdup(linha));
-    }
-
-    printff("\n==============================\n");
-    printff(  "=          PERCURSO          =\n");
-    printff(  "==============================\n\n");
-    
-    // percorre sem remover os elementos da lista
-    for (LISTA T = L; !lista_esta_vazia(T); T = proximo(T)) {
-        char *str = (char *) devolve_cabeca(T);
-        printff("%s", str);
-    }
-    
-    printff("\n==============================\n");
-    printff(  "=           REMOCAO          =\n");
-    printff(  "==============================\n\n");
-    // percorre e vai removendo a cabeça
-    while(!lista_esta_vazia(L)) {
-        char *str = (char *) devolve_cabeca(L);
-        L = remove_cabeca(L);
-        printff("%s", str);
-        free(str);
-    }
-    return 0;
-}
-
-*/
 
 
