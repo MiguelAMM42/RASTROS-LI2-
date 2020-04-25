@@ -24,8 +24,8 @@ int main (int argc, char *argv[]) {
 	// Jogada do Bot
 	putchar ('\n');
 	MinMax arvore = malloc (sizeof (struct minmax));
-    Cria_ListaMinMax (e, &arvore, 4);
-	MinMax ar1 = (arvore -> jogadas[0][0] -> jogadas[0][0]);
+    Cria_ListaMinMax (e, &arvore, 5);
+	MinMax ar1 = (arvore -> jogadas[2][1]);
     COORDENADA jogada = ar1 -> jogada;
     jogar(e, jogada); // Tirar verificaçao da jogada valida
     mostrar_tabuleiro(*e, stdout);
@@ -42,6 +42,7 @@ int main (int argc, char *argv[]) {
 // void imprime_minmax(m) {}
 
 MinMax min_max_Lista (ESTADO *e, MinMax l, int comp, int min_max) { // min -> 0 || max -> 1
+    if (comp = 2) {} 
     MinMax jogada;
 	if (min_max) { // Queremos o máximo da lista
 		
@@ -65,6 +66,10 @@ void Cria_ListaMinMax (ESTADO *e, MinMax *m, int comp) {
 
 
 void CriaNivel (ESTADO e, MinMax jogada, int comp) {
+
+    // Adicionar caso em q temos q adicionar todo NULL nas matriz, evitando assim, chamar outras funções.
+
+
 	if (!jogada) return;
 	else if (!comp) {
 		jogada = NULL;
@@ -325,10 +330,26 @@ int dist (ESTADO *e)
     int d2 = getCasaBOT (maximino, maximino, m);
     
     //int dist = distRap ();
-    if (d1 == 0 || d2 == 0) return -1;
-    if (jA == 1) return (d1- d2);
-    else return (d2-d1);
+    if (d1 == 100 || d2 == 100) return 50; // Não é possivel chegar a nenhuma das casas
+    // Falta o caso em que um jogador pode chegar a sua casa e o outro não
+    if (jA == 1) return (d2 - d1);
+    else return (d1 - d2);
 }
 
+MinMax Max(ESTADO *e, MinMax m, int jogador) {
+    ESTADO *eJogada;
+    int max = -10000;
+    jogar(e, (m -> jogadas[0][0]) -> jogada);
+    int i = 2;
+		while (i) { // Adicionar NULL a todos os apontadores
+			int j = 2;
+			while (j) {
+				m -> jogadas[i][j] = NULL;
+				j --;
+			}
+			i --;
+		}
+
+}
 
 

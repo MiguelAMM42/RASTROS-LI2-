@@ -26,7 +26,7 @@ brief Cria uma lista com os valores úteis para a heurística do Min_Max
 @param l lista de jogadas
 @min_max Valor min_max
 */
-MinMax min_max_Lista (ESTADO *e, MinMax l, int min_max) ;
+MinMax min_max_Lista (ESTADO *e, MinMax l, int comp,int min_max) ;
 /**
 brief Atribui um valor(usado na criação da lista para a heurística Min_Max)
 @param e Apontador para o Estado
