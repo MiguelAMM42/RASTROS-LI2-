@@ -6,6 +6,7 @@
 #include "logica.h"
 #include "interface.h"
 #include "bot.h"
+#define maximino 7
 
 int main (int argc, char *argv[]) {
 	if (argc != 3) return -1;
@@ -163,20 +164,20 @@ int distRap (ESTADO *e)
     {
         (cA.coluna)--;
         (cA.linha) --;
-        vLogico = casaVazia(e, cA);                                                 
+        vLogico = casaVazia(e, &cA);                                                 
         while (cA.coluna > 0 && cA.linha > 0 && vLogico)
         {
    //     printf (" meio1 ");           
          dist++;
          (cA.coluna)--;
          (cA.linha) --;
-         vLogico = casaVazia(e, cA);
+         vLogico = casaVazia(e, &cA);
         }
         while (cA.coluna > 0 && cA.linha == 0 && cA.coluna < maximino && cA.linha < maximino && vLogico) {
 
   //      printf (" linha1 == 0 ");
                                                         (cA.coluna) --;
-                                                        vLogico = casaVazia(e, cA);
+                                                        vLogico = casaVazia(e, &cA);
                                                         if (vLogico) dist++;   
                                                     }   
         
@@ -184,7 +185,7 @@ int distRap (ESTADO *e)
                           
       //  printf (" coluna1 == 0 ");
                                                                 (cA.linha) --;
-                                                                vLogico = casaVazia(e, cA);
+                                                                vLogico = casaVazia(e, &cA);
                                                                 if (vLogico) dist++;   
                                                             }
 
@@ -197,7 +198,7 @@ int distRap (ESTADO *e)
        // printf (" meio2 " );
         (cA.coluna)++;
         (cA.linha) ++;
-        vLogico = casaVazia(e, cA);
+        vLogico = casaVazia(e, &cA);
         
         while (cA.coluna < maximino && cA.linha < maximino && cA.coluna > 0 && cA.linha > 0 && vLogico)
         {
@@ -206,7 +207,7 @@ int distRap (ESTADO *e)
           dist++;           
          (cA.coluna)++;
          (cA .linha) ++;
-         vLogico = casaVazia(e, cA);
+         vLogico = casaVazia(e, &cA);
          //
         }
         while (cA.coluna < maximino && cA.linha  == maximino && cA.coluna > 0 && cA.linha > 0 && vLogico) 
@@ -214,7 +215,7 @@ int distRap (ESTADO *e)
                           
        // printf (" linha max 2 " );
                                                         (cA.coluna) ++;
-                                                        vLogico = casaVazia(e, cA);
+                                                        vLogico = casaVazia(e, &cA);
                                                         if (vLogico) dist++;   
                                                     }   
         
@@ -222,7 +223,7 @@ int distRap (ESTADO *e)
                           
      //   printf (" coluna max 2 ");
                                                                 (cA.linha ) ++;
-                                                                vLogico = casaVazia(e, cA);
+                                                                vLogico = casaVazia(e, &cA);
                                                                 if (vLogico) dist++;   
                                                             }
 
