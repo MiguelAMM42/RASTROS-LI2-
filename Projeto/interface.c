@@ -58,6 +58,93 @@ void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostra_jogadas (e, fp);
 }
 
+
+int comandoPos(ESTADO *e, int jog){
+	        int jogadas;
+            jogadas =  get_num_jogadas (e);
+            if (jog > jogadas) {
+                printf ("Posição inválida. Insira um valor inferior por favor!\n");
+                return -1;
+            } else jogadaAnterior (e, jog);
+            mostrar_tabuleiro (*e, stdout);
+            e -> num_comando ++;
+            return 1;
+}
+
+int comandoJogar(ESTADO *e, char *col, char *lin){
+	COORDENADA coord = {*col - 'a', *lin - '1'};
+        int valido = jogar(e, coord);
+        int vencedor = Vencedor (e);
+        if (vencedor) {
+            mostrar_tabuleiro(*e, stdout);
+            printf ("O vencedor é o jogador %d.\n", vencedor);
+            return 0;
+        } else if (!valido) {
+            printf("Jogada inválida");
+            return -1;
+        }
+        mostrar_tabuleiro(*e, stdout);
+        e -> num_comando ++;
+        return 1;
+}
+
+int comandoGravar(ESTADO *e, const char *endereco ){
+	FILE *fp;
+        fp = fopen(endereco, "w");
+        if (fp == NULL) {  // Caso em que não abre
+            printf("Não foi possível criar o ficheiro. Talvez esteja bloqueado ou a ser usado por outra aplicação.\n");
+            return (-1);
+        } else { // Se o caminho está certo.
+            printf ("A guardar o ficheiro %s...", endereco);
+            guarda_ficheiro (e, fp);
+            fclose(fp);
+            e -> num_comando ++;
+            return 1;
+        }
+
+}
+
+int comandoJog (ESTADO *e){
+	LISTA jogadasPossiveis = criaLista (e);
+            COORDENADA* jogada = comando_jog(jogadasPossiveis, e);
+            int valido = jogar(e, *jogada);
+            int vencedor = Vencedor (e);
+            if (vencedor) {
+                putchar ('\n');
+                mostrar_tabuleiro(*e, stdout);
+                printf ("O vencedor é o jogador %d.\n", vencedor);
+                return 0;
+            } 
+            else if (!valido) {
+                printf("Jogada inválida.Jogue outra vez!");
+                return -1;
+            }
+            mostrar_tabuleiro(*e, stdout);
+            while (!lista_esta_vazia(jogadasPossiveis)) jogadasPossiveis = remove_cabeca(jogadasPossiveis);
+            e -> num_comando ++;
+            return 1;
+}
+
+int comandoLer(ESTADO *e, const char *endereco ){
+	        FILE *fp;
+            fp = fopen(endereco, "r");
+            if (fp == NULL) {  // Se não abre.
+                printf("Esse ficheiro não existe. Inseriu bem o nome?\n");
+                return (-1);
+            } else { // Se o caminho está certo.
+                printf ("A carregar o ficheiro...\n");
+                le_ficheiro (e, fp);
+                fclose(fp);
+                mostrar_tabuleiro (*e, stdout);
+                mostra_jogadas(e, stdout);
+                e -> num_comando ++;
+                return 1;
+            }
+}
+
+
+
+
 // IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
 // INFO JOGAR: VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2; 
 
@@ -72,90 +159,34 @@ int interpretador(ESTADO *e) {
     if (fgets(linha, BUF_SIZE, stdin) == NULL) return -1;
 
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
-        COORDENADA coord = {*col - 'a', *lin - '1'};
-        int valido = jogar(e, coord);
-        int vencedor = Vencedor (e);
-        if (vencedor) {
-            mostrar_tabuleiro(*e, stdout);
-            printf ("O vencedor é o jogador %d.\n", vencedor);
-            return 0;
-        } else if (!valido) {
-            printf("Jogada inválida");
-            return -1;
-        }
-        mostrar_tabuleiro(*e, stdout);
-        e -> num_comando ++;
-        return 1;
+        int comJogar = comandoJogar(e,col,lin);
+        return comJogar;
 
     } else if ((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) { // Se premires qualquer carater, termina.
         printf ("Fim\n");
         return 0;
 
-    } else if (sscanf(linha, "gr%s", endereco) == 1) { // Para gravar, se meteres gr QUALQUER_COISA vai para esta parte.
-        FILE *fp;
-        fp = fopen(endereco, "w");
-        if (fp == NULL) {  // Caso em que não abre
-            printf("Could not create file. Maybe locked or being used by another application?\n");
-            return (-1);
-        } else { // Se o caminho está certo.
-            printf ("guarda_ficheiro %s", endereco);
-            guarda_ficheiro (e, fp);
-            fclose(fp);
-            e -> num_comando ++;
-            return 1;
-        }
+    } else if (sscanf(linha, "gr%s", endereco) == 1) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
+        int comGr = comandoGravar(e,endereco);
+        return comGr;
 
+    
     } else if (sscanf(linha, "pos%d", &jog) == 1) {
-            int jogadas;
-            jogadas =  get_num_jogadas (e);
-            if (jog > jogadas) {
-                printf ("Jogada inválida, mete-me outro");
-                return -1;
-            } else jogadaAnterior (e, jog);
-            mostrar_tabuleiro (*e, stdout);
-            e -> num_comando ++;
-            return 1;
+        int comPos = comandoPos(e, jog);
+        return comPos;
 
     } else if (strcmp(linha, ("jog\n")) == 0) {
-            LISTA jogadasPossiveis = criaLista (e);
-            COORDENADA* jogada = comando_jog(jogadasPossiveis, e);
-            int valido = jogar(e, *jogada);
-            int vencedor = Vencedor (e);
-            if (vencedor) {
-                putchar ('\n');
-                mostrar_tabuleiro(*e, stdout);
-                printf ("O vencedor é o jogador %d.\n", vencedor);
-                return 0;
-            } 
-            else if (!valido) {
-                printf("Jogada inválida");
-                return -1;
-            }
-            mostrar_tabuleiro(*e, stdout);
-            while (!lista_esta_vazia(jogadasPossiveis)) jogadasPossiveis = remove_cabeca(jogadasPossiveis);
-            e -> num_comando ++;
-            return 1;
+        int comJog = comandoJog (e);
+        return comJog;
 
     } else if (strcmp(linha, ("movs\n")) == 0) {
-            mostra_jogadas (e, stdout);
-            e -> num_comando ++;
-            return 1;
+        mostra_jogadas (e, stdout);
+        e -> num_comando ++;
+        return 1;
 
-    } else if (sscanf(linha, "ler%s", endereco) == 1) { // Para gravar, se meteres gr QUALQUER_COISA vai para esta parte.
-            FILE *fp;
-            fp = fopen(endereco, "r");
-            if (fp == NULL) {  // Se não abre.
-                printf("Could not create file. Maybe locked or being used by another application?\n");
-                return (-1);
-            } else { // Se o caminho está certo.
-                printf ("Estamos a ler!\n");
-                le_ficheiro (e, fp);
-                fclose(fp);
-                mostrar_tabuleiro (*e, stdout);
-                mostra_jogadas(e, stdout);
-                e -> num_comando ++;
-                return 1;
-            }
+    } else if (sscanf(linha, "ler%s", endereco) == 1) { // Para ler, se meter ler QUALQUER_COISA, vai para esta parte.
+        int comLer = comandoLer(e,endereco );
+        return comLer;
     }
     return -1;
 } 
