@@ -11,6 +11,14 @@ typedef struct minmax {
    struct minmax *jogadas[3][3]; // Outros nodos com outras tipos de jogadas
 } *MinMax;
 
+int distRap (ESTADO *e);
+int distRec (ESTADO *e);
+int test_coor_rec (ESTADO *e, COORDENADA cTeste, int jA);
+int dist_imdt (COORDENADA c, int jogA);
+void inicializaMapa (MAPA m, ESTADO *e);
+void flood_fill (int distAtual, MAPA m, COORDENADA cA);
+
+int dist (ESTADO *e);
 
 /**
 brief Cria uma lista com os valores úteis para a heurística do Min_Max
