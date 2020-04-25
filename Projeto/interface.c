@@ -104,7 +104,7 @@ int comandoGravar(ESTADO *e, const char *endereco ){
             }
             guarda_ficheiro (e, fp);
             fclose(fp);
-            printf("Ficheiro %s guardado!\n", endereco);
+            printf("\nFicheiro %s guardado!\n\n", endereco);
             e -> num_comando ++;
             return 1;
         }
