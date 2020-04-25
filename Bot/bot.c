@@ -11,29 +11,29 @@ int main (int argc, char *argv[]) {
 	if (argc != 3) return -1;
 
 	// Leitura do estado através do ficheiro
-	ESTADO e;
+	ESTADO *e = inicializar_estado();
 	FILE *fileLeitura;
     fileLeitura = fopen(argv[1], "r");
     if (fileLeitura == NULL) return -1; // Se não abre.
-    le_ficheiro (&e, fileLeitura);
+    le_ficheiro (e, fileLeitura);
     fclose(fileLeitura);
-    mostrar_tabuleiro (e, stdout);
-    mostra_jogadas(&e, stdout);
+    mostrar_tabuleiro (*e, stdout);
+    mostra_jogadas(e, stdout);
 
 	// Jogada do Bot
 	putchar ('\n');
 	MinMax arvore = malloc (sizeof (struct minmax));
-    Cria_ListaMinMax (&e, &arvore, 2);
-	MinMax ar1 = (arvore -> jogadas[0][0]);
+    Cria_ListaMinMax (e, &arvore, 4);
+	MinMax ar1 = (arvore -> jogadas[0][0] -> jogadas[0][0]);
     COORDENADA jogada = ar1 -> jogada;
-    jogar(&e, jogada);
-    mostrar_tabuleiro(e, stdout);
+    jogar(e, jogada); // Tirar verificaçao da jogada valida
+    mostrar_tabuleiro(*e, stdout);
 
 	// Gravação da jogada no ficheiro
 	FILE *fileGravacao;
     fileGravacao = fopen(argv[2], "w");
     if (fileGravacao == NULL) return -1; // Caso em que não abre
-    guarda_ficheiro (&e, fileGravacao);
+    guarda_ficheiro (e, fileGravacao);
     fclose(fileGravacao);
     return 0;
 }
@@ -93,14 +93,13 @@ void CriaNivel (ESTADO e, MinMax jogada, int comp) {
 	    int icoluna = -1;
 	    while (icoluna <= 1) {
 	        COORDENADA coor = {atual.coluna + icoluna, atual.linha + ilinha};
-			if (ilinha == 0 && icoluna == 0) (jogada -> jogadas[1][1]) = NULL;
-			int n = jogadaValida (&e, &coor), m = CoordenadaValida (&coor);
-			if (n && m) {
+			if (!ilinha && !icoluna) (jogada -> jogadas[1][1]) = NULL;
+			else if (CoordenadaValida (&coor) && jogadaValida (&e, &coor)) {
 				MinMax nodo = adicionarCoordenadaMinMax (&e, &coor, jogada, -ilinha + 1, icoluna + 1, comp);
 				ESTADO a = e;
 				jogar(&a, coor); // Tirar Verificação de jogada válida
 				CriaNivel (a, nodo, comp - 1);
-			}	
+			} else jogada -> jogadas[-ilinha + 1][icoluna + 1] = NULL;
 	        icoluna ++;
 		}
 		putchar('\n');

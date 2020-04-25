@@ -63,9 +63,11 @@ int jogadaValida(ESTADO *estado, COORDENADA *c) {
     colA = (estado -> ultima_jogada).coluna; 
     linB = c -> linha; 
     colB = c -> coluna; 
-    if ( (colA == colB + 1 | colA == colB | colA == colB - 1 &&
-    linA == linB + 1 | linA == linB | linA == linB -1) &&
-    colA != colB || linA != linB && casaVazia(estado, c)) return TRUE;
+    if
+    (( ((colA == colB) && ((linA == linB-1) || (linA == linB+1)))
+    || ((colA == colB +1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1))) 
+    || ((colA == colB -1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1))))
+    && casaVazia(estado, c)) return TRUE;
     else return FALSE;
 }
 
