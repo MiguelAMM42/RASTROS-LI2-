@@ -80,7 +80,7 @@ int comandoJogar(ESTADO *e, char *col, char *lin){
             printf ("O vencedor é o jogador %d.\n", vencedor);
             return 0;
         } else if (!valido) {
-            printf("Jogada inválida");
+            printf("Jogada inválida!!!");
             return -1;
         }
         mostrar_tabuleiro(*e, stdout);
@@ -89,15 +89,22 @@ int comandoJogar(ESTADO *e, char *col, char *lin){
 }
 
 int comandoGravar(ESTADO *e, const char *endereco ){
-	FILE *fp;
+		FILE *fp;
+		int i = 0;
         fp = fopen(endereco, "w");
         if (fp == NULL) {  // Caso em que não abre
             printf("Não foi possível criar o ficheiro. Talvez esteja bloqueado ou a ser usado por outra aplicação.\n");
             return (-1);
         } else { // Se o caminho está certo.
-            printf ("A guardar o ficheiro %s...", endereco);
+            for (i = 0; i <= 100000; i++){
+                printf("\r[A gravar o ficheiro %s ... %d", endereco ,i/1000);
+                putchar('%');
+                putchar(']');
+                fflush(stdout); 
+            }
             guarda_ficheiro (e, fp);
             fclose(fp);
+            printf("Ficheiro %s guardado!\n", endereco);
             e -> num_comando ++;
             return 1;
         }
@@ -132,7 +139,14 @@ int comandoLer(ESTADO *e, const char *endereco ){
                 printf("Esse ficheiro não existe. Inseriu bem o nome?\n");
                 return (-1);
             } else { // Se o caminho está certo.
-                printf ("A carregar o ficheiro...\n");
+                int i = 0;
+                for (i = 0; i <= 100000; i++){
+                    printf("\r[A carregar o ficheiro %s ... %d", endereco ,i/1000);
+                    putchar('%');
+                    putchar(']');
+                    fflush(stdout);  
+                }
+                printf("\n");
                 le_ficheiro (e, fp);
                 fclose(fp);
                 mostrar_tabuleiro (*e, stdout);
