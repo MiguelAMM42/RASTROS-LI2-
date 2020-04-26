@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h> 
 #include "dados.h"
 #include "lista.h"
 #include "logica.h"
@@ -156,6 +157,29 @@ int comandoLer(ESTADO *e, const char *endereco ){
             }
 }
 
+int comandoJog2 (ESTADO *e){
+			int tamanho, valAl;
+			LISTA jogadasPossiveis = criaLista (e);
+			tamanho = length(jogadasPossiveis);
+			valAl = 1 + (rand() % tamanho); //a rand gera valores entre 0 e (tamanho-1), mas quer-se um valor entre 1 e tamanho          
+ 			COORDENADA* jogada = comando_jog2(jogadasPossiveis,valAl);         
+ 			int valido = jogar(e, *jogada);
+            int vencedor = Vencedor (e);
+            if (vencedor) {
+                putchar ('\n');
+                mostrar_tabuleiro(*e, stdout);
+                printf ("O vencedor é o jogador %d.\n", vencedor);
+                return 0;
+            } 
+            else if (!valido) {
+                printf("Jogada inválida.Jogue outra vez!");
+                return -1;
+            }
+            mostrar_tabuleiro(*e, stdout);
+            while (!lista_esta_vazia(jogadasPossiveis)) jogadasPossiveis = remove_cabeca(jogadasPossiveis);
+            e -> num_comando ++;
+            return 1;
+}
 
 
 
@@ -193,7 +217,12 @@ int interpretador(ESTADO *e) {
         int comJog = comandoJog (e);
         return comJog;
 
-    } else if (strcmp(linha, ("movs\n")) == 0) {
+    } else if (strcmp(linha, ("jog2\n")) == 0) {
+        int comJog = comandoJog2 (e);
+        return comJog;
+	
+
+	}else if (strcmp(linha, ("movs\n")) == 0) {
         mostra_jogadas (e, stdout);
         e -> num_comando ++;
         return 1;

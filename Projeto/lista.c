@@ -49,6 +49,7 @@ int lista_esta_vazia (LISTA L) {
     // OU (?)
     // return L;
 }
+
 LISTA criar_lista ()
 { 
   LISTA L;
@@ -138,4 +139,11 @@ int dist_jog1 (COORDENADA c, int jogAtual)
 	
 
 
-
+int length (LISTA l){
+    int count=0;
+    while (l != NULL){
+         count ++;
+         l = l -> prox;
+    }
+    return count;
+}

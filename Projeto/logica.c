@@ -205,5 +205,24 @@ COORDENADA *comando_jog(LISTA vV, ESTADO *e){
 }
 
 
+COORDENADA *comando_jog2(LISTA vV,int x){   
+    int i;
+    COORDENADA* jogada; 
+    if (x == 1) jogada = devolve_cabeca(vV);
+    else {
+        
+        for(i = x; i > 1; i--){
+            vV = vV -> prox;
+        }
+        
+        jogada = devolve_cabeca(vV);
+     
+    }
+    
+    return jogada;
+
+}
+
+
 
 

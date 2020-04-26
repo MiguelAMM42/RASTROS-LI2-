@@ -71,6 +71,12 @@ int dist_jog1 (COORDENADA c, int jogAtual);
 @param Apontador para a Lista
 */
 void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l);
+/**
+\brief Calcula o tamanho de uma lista
+@param l Lista a que se vai calcular o comprimento
+@returns Comprimento da lista.
+*/
+int length (LISTA l);
 
 
 

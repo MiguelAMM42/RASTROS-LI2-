@@ -97,5 +97,11 @@ void jogadaAnterior (ESTADO *e, int numeroJogada);
 @param e Apontador para o estado
 */
 COORDENADA* comando_jog(LISTA vV, ESTADO *e);
+/**
+\brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
+@param vV Lista dos vizinhos válidos
+@param x Valor aleatório gerado previamente 
+*/
+COORDENADA* comando_jog2(LISTA vV, int x);
 
 #endif

@@ -71,5 +71,11 @@ int comandoJog (ESTADO *e);
 @returns Valor que corresponde ao tipo de comportamento que deve ter o Jogo.
 */
 int comandoLer(ESTADO *e, const char *endereco );
+/**
+\brief Usado no Interpretador para executar o comando "jog2"
+@param e Apontador para o Estado
+@returns Valor que corresponde ao tipo de comportamento que deve ter o Jogo.
+*/
+int comandoJog2 (ESTADO *e);
 
 #endif
