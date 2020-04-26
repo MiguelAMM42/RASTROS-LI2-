@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h> 
 #include "dados.h"
 #include "lista.h"
 #include "interface.h"
@@ -8,6 +9,7 @@
 
 int main () {
 // Define o estado inicial
+    srand(time(NULL));
     int repetir = 1;
     ESTADO *e = inicializar_estado();
     mostrar_tabuleiro (*e, stdout);
