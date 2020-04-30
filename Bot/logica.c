@@ -9,8 +9,6 @@
 
 
 int jogar (ESTADO *estado, COORDENADA c) {
-    // Primeiro ve se a jogada é valida
-    // Depois modifica o estado se for válida
     // 1 - Devolve o Estado com a jogada efetuada; 0 - Devolve o estado inicial (a jogada não é válida)
     //if (! jogadaValida(estado, &c)) return 0; // Caso em que a jogada pretendida não é válida.
     set_casa (estado, get_ultima_jogada (estado), PRETA); // Altera a casa BRANCA da jogada anterior para PRETA 

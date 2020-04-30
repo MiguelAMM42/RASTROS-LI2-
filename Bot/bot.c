@@ -23,10 +23,8 @@ int main (int argc, char *argv[]) {
 
 	// Jogada do Bot
 	putchar ('\n');
-	MinMax arvore = malloc (sizeof (struct minmax));
-    Cria_ListaMinMax (e, &arvore, 5);
-	MinMax ar1 = (arvore -> jogadas[2][1]);
-    COORDENADA jogada = ar1 -> jogada;
+    COORDENADA jogada = jogadaOTIMA (*e, 6, -500, +500, 2 - get_jogador_atual(e));
+    // printf ("\n%d\n", minimax(*e, 4, -500, 500, 1));
     jogar(e, jogada); // Tirar verificaçao da jogada valida
     mostrar_tabuleiro(*e, stdout);
 
@@ -39,208 +37,160 @@ int main (int argc, char *argv[]) {
     return 0;
 }
 
-// void imprime_minmax(m) {}
 
-MinMax min_max_Lista (ESTADO *e, MinMax l, int comp, int min_max) { // min -> 0 || max -> 1
-    if (comp = 2) {} 
-    MinMax jogada;
-	if (min_max) { // Queremos o máximo da lista
-		
-	} else { // Queremos o mínimo da lista
-		
-	}
-	return jogada;
-}
+COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
+    COORDENADA jogadaotima;
+    // Queremos o MAXIMO
+    if (jogador) {
+        int max = -500;
+        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        int ilinha = 1;
+        while (ilinha >= -1) {
+		int icoluna = 1;
+		    while (icoluna >= -1) {
+                COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
+                if (!ilinha && !icoluna);
+                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
+                    ESTADO a = e;
+                    jogar (&a, jogada);
 
-int valorC (ESTADO *e, COORDENADA *c) {
-	return 10;
-}
+                    int valor = minimax(e, comp - 1, alpha, beta, 0);
+                    if (valor > max) {
+                        max = valor;
+                        jogadaotima = jogada;
+                    } 
+                    if (alpha < valor) alpha = valor;
+                    if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
+                }
+                icoluna --; 
+		    }
+		ilinha --;
+	    }
+    return jogadaotima;
 
-void Cria_ListaMinMax (ESTADO *e, MinMax *m, int comp) {
-	// Alocação da memória inicial para o árvore de jogadas
-	(*m) -> jogada = e -> ultima_jogada;
-	// Criação de um nível de jogadas
-	CriaNivel (*e, *m, comp);
-}
+    } else { // Queremos o MINIMO
+        int min = +500;
+        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        int ilinha = 1;
+        while (ilinha >= -1) {
+		int icoluna = -1;
+		    while (icoluna >= -1) {
+                COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
+                if (!ilinha && !icoluna);
+                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
+                    ESTADO a = e;
+                    jogar (&a, jogada);
 
-
-
-void CriaNivel (ESTADO e, MinMax jogada, int comp) {
-
-    // Adicionar caso em q temos q adicionar todo NULL nas matriz, evitando assim, chamar outras funções.
-
-
-	if (!jogada) return;
-	else if (!comp) {
-		jogada = NULL;
-		return;
-	}
-	COORDENADA atual = get_ultima_jogada(&e);
-	int ilinha = 1;
-	while (ilinha >= -1) {
-	    int icoluna = -1;
-	    while (icoluna <= 1) {
-	        COORDENADA coor = {atual.coluna + icoluna, atual.linha + ilinha};
-			if (!ilinha && !icoluna) (jogada -> jogadas[1][1]) = NULL;
-			else if (CoordenadaValida (&coor) && jogadaValida (&e, &coor)) {
-				MinMax nodo = adicionarCoordenadaMinMax (&e, &coor, jogada, -ilinha + 1, icoluna + 1, comp);
-				ESTADO a = e;
-				jogar(&a, coor); // Tirar Verificação de jogada válida
-				CriaNivel (a, nodo, comp - 1);
-			} else jogada -> jogadas[-ilinha + 1][icoluna + 1] = NULL;
-	        icoluna ++;
-		}
-		putchar('\n');
-	ilinha --;
-	}
-}
-
-
-MinMax adicionarCoordenadaMinMax (ESTADO *e, COORDENADA *c, MinMax m, int linha, int coluna, int comp) {
-	if (!m) return NULL; // Nodo é NULL
-	else if (!comp) { // Comprimento chegou ao fim
-		int i = 2;
-		while (i) { // Adicionar NULL a todos os apontadores
-			int j = 2;
-			while (j) {
-				m -> jogadas[i][j] = NULL;
-				j --;
-			}
-			i --;
-		}
-		return NULL;
-	}
-	// A jogada é válida logo é adicionada.
-	m -> jogadas[linha][coluna] = malloc (sizeof (struct minmax));
-	printf ("0%d:%c%c \n", comp,'a' + (c -> coluna), '1' + (c -> linha));
-	(m -> jogadas[linha][coluna]) -> jogada = *c;
-	return m -> jogadas[linha][coluna];
-}
-
-
-int test_coor_rec (ESTADO *e, COORDENADA cTeste, int jA)
-{
-    int res = jogar (e, cTeste);
-    if (jA == 2)
-    {
-        if (res == 22) return 2; //2 ganhou
-        if (res == 21) return -1; //1 ganhou
-        if (res == 1) return 1; //possível
-        else return 0; //Jogada impossível                
-   }
-
-    if (jA == 1)
-    {
-        if (res == 21) return 2; //1 ganhou
-        if (res == 22) return -1; //2 ganhou
-        if (res == 1) return 1; //possível
-        else return 0; //Jogada impossível                
-   }
-} 
-
-
-int distRap (ESTADO *e)
-{
-    printf ("&&&&&");
-    int jA = get_jogador_atual (e);
-    COORDENADA cA = get_ultima_jogada (e);
-    int vLogico = 1;
-    int dist = 0;
-
-    if (jA == 1)
-    {
-        (cA.coluna)--;
-        (cA.linha) --;
-        vLogico = casaVazia(e, &cA);                                                 
-        while (cA.coluna > 0 && cA.linha > 0 && vLogico)
-        {
-   //     printf (" meio1 ");           
-         dist++;
-         (cA.coluna)--;
-         (cA.linha) --;
-         vLogico = casaVazia(e, &cA);
-        }
-        while (cA.coluna > 0 && cA.linha == 0 && cA.coluna < maximino && cA.linha < maximino && vLogico) {
-
-  //      printf (" linha1 == 0 ");
-                                                        (cA.coluna) --;
-                                                        vLogico = casaVazia(e, &cA);
-                                                        if (vLogico) dist++;   
-                                                    }   
-        
-        while (cA.coluna == 0 && cA.linha > 0 && cA.coluna < maximino && cA.linha < maximino && vLogico) {
-                          
-      //  printf (" coluna1 == 0 ");
-                                                                (cA.linha) --;
-                                                                vLogico = casaVazia(e, &cA);
-                                                                if (vLogico) dist++;   
-                                                            }
-
-        if (cA.coluna < maximino && cA.linha < maximino && cA.coluna == 0 && cA.linha == 0) return ++dist;
-        else return 0;
-    }
-    else
-    {   
-
-       // printf (" meio2 " );
-        (cA.coluna)++;
-        (cA.linha) ++;
-        vLogico = casaVazia(e, &cA);
-        
-        while (cA.coluna < maximino && cA.linha < maximino && cA.coluna > 0 && cA.linha > 0 && vLogico)
-        {
-
-    //    printf (" meio2 ");
-          dist++;           
-         (cA.coluna)++;
-         (cA .linha) ++;
-         vLogico = casaVazia(e, &cA);
-         //
-        }
-        while (cA.coluna < maximino && cA.linha  == maximino && cA.coluna > 0 && cA.linha > 0 && vLogico) 
-                                                    {
-                          
-       // printf (" linha max 2 " );
-                                                        (cA.coluna) ++;
-                                                        vLogico = casaVazia(e, &cA);
-                                                        if (vLogico) dist++;   
-                                                    }   
-        
-        while (cA.coluna == maximino && cA.linha  < maximino && cA.coluna > 0 && cA.linha > 0 && vLogico) {
-                          
-     //   printf (" coluna max 2 ");
-                                                                (cA.linha ) ++;
-                                                                vLogico = casaVazia(e, &cA);
-                                                                if (vLogico) dist++;   
-                                                            }
-
-        if (cA.coluna == maximino && cA.linha  == maximino && cA.coluna > 0 && cA.linha > 0) return ++dist;
-        else return 0;
+                    int valor = minimax(e, comp - 1, alpha, beta, 0);
+                    if (valor < min) {
+                        min = valor;
+                        jogadaotima = jogada;
+                    }
+                    if (beta > valor) beta = valor;
+                    if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
+                }
+                icoluna --; 
+		    }
+		ilinha --;
+	    }
+    return jogadaotima;
     }
 }
 
-//Calcula a distância independentemente de estar ou não ocupado
-int dist_imdt (COORDENADA c, int jogA)
-{
-    int col = c.coluna;
-    int lin = c.linha;
-    if (jogA == 1)
-        {
-        if (col >= lin) return col--;
-        else return lin--;
-        }
-    else 
-        {
-        lin = maximino - lin;
-        col = maximino - col;
-        if (lin >= col) return lin++;
-        else return col++;
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+/// Função valorativa
+/// j2 -200_______________0_______________200 j1
+/// Chamada inicial minimax (e, 3, -500, +500, 2 - jogador)
+
+
+int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) { 
+
+    // Chegamos a uma folha/jogada vencedora 
+    int vencedor = Vencedor (&e);
+    if (vencedor == 1) return 201; // Jogada vencedora
+    else if (vencedor == 2) return -201; // Jogada perdedora
+    else if (!comp) return min_max_Estado(&e, Maximizar);
+
+    // Queremos o MAXIMO
+    if (Maximizar) {
+        int max = -500;
+        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        int ilinha = 1;
+        while (ilinha >= -1) {
+		int icoluna = 1;
+		    while (icoluna >= -1) {
+                COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
+                if (!ilinha && !icoluna);
+                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
+                    ESTADO a = e;
+                    jogar (&a, jogada);
+
+                    int valor = minimax(e, comp - 1, alpha, beta, 0);
+                    if (valor > max) max = valor; 
+                    if (alpha < valor) alpha = valor;
+                    if (beta <= alpha) return max; // Alpha Beta Pruning
+                }
+                icoluna --; 
+		    }
+		ilinha --;
+	    }
+    return max;
+
+    } else { // Queremos o MINIMO
+        int min = +500;
+        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        int ilinha = 1;
+        while (ilinha >= -1) {
+		int icoluna = 1;
+		    while (icoluna >= -1) {
+                COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
+                if (!ilinha && !icoluna);
+                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
+                    ESTADO a = e;
+                    jogar (&a, jogada);
+
+                    int valor = minimax(e, comp - 1, alpha, beta, 1);
+                    if (valor < min) min = valor; 
+                    if (beta > valor) beta = valor;
+                    if (beta <= alpha) return min; // Alpha Beta Pruning
+                }
+                icoluna --;
+		    }
+		ilinha --;
+	    }
+    return min;
+    }
 }
 
 
 
-//flood_fill testar com
+
+//////////////////////
+
+ 
+
+
+
+
+
+
+
+
+
 
 //Altera um valor na matriz para um dado número (subst)
 void setCasaBOT (int col, int lin, MAPA m, int subst)
@@ -249,11 +199,14 @@ void setCasaBOT (int col, int lin, MAPA m, int subst)
     (m[lin][col]) = subst;
 }
 
+
 int getCasaBOT (int col, int lin, MAPA m)
 {   
     //int * mi;
     return ((m)[lin] [col]);
 }
+
+
 // iniciar com 0 da peça atual
 void flood_fill (int distAtual, MAPA m, COORDENADA cA)
 {
@@ -286,6 +239,8 @@ void flood_fill (int distAtual, MAPA m, COORDENADA cA)
         flood_fill (distAtual, m, volta);
    
 }
+
+
 //Inicializa a matriz/mapa
 void inicializaMapa (MAPA m, ESTADO *e)
 {
@@ -312,44 +267,120 @@ void inicializaMapa (MAPA m, ESTADO *e)
    }
 }
 
-int dist (ESTADO *e)
-{
-    COORDENADA cA = get_ultima_jogada (e);
-                            int jA = get_jogador_atual (e);
-                                MAPA m;
-      //                          int a = dist_imdt (cA, jA);
-    
-        //                        int b = distRap (e);
-                                inicializaMapa (m,e);
-    
-                             flood_fill (0, m, cA);
-                                //mostrar_mapa (m);
-    //int lin = cA -> linha;
-    //int col = cA -> coluna;
-    int d1 = getCasaBOT (0, 0, m);
-    int d2 = getCasaBOT (maximino, maximino, m);
-    
-    //int dist = distRap ();
-    if (d1 == 100 || d2 == 100) return 50; // Não é possivel chegar a nenhuma das casas
-    // Falta o caso em que um jogador pode chegar a sua casa e o outro não
-    if (jA == 1) return (d2 - d1);
-    else return (d1 - d2);
+
+void mostrar_mapa (MAPA m) {
+    printf ("\n  cheguei  \n");
+    int i = 0;
+    int linha;
+    for (linha = 7; linha > (-1); linha--) {
+        for (i = 0; i < 9; i++) {
+            COORDENADA c = {i, linha}; {
+            if (i == 8) printf ("\n");
+            else printf ("%03d_", (m[linha][i])); }  }
+    }
 }
 
-MinMax Max(ESTADO *e, MinMax m, int jogador) {
-    ESTADO *eJogada;
-    int max = -10000;
-    jogar(e, (m -> jogadas[0][0]) -> jogada);
-    int i = 2;
-		while (i) { // Adicionar NULL a todos os apontadores
-			int j = 2;
-			while (j) {
-				m -> jogadas[i][j] = NULL;
-				j --;
-			}
-			i --;
-		}
 
+int test_max (MAPA m1, MAPA m2, int res, COORDENADA cA)
+{
+        int valTab1, valTab2, temp;
+        valTab1 = m1[cA.linha][cA.coluna];
+        valTab2 = m2[cA.linha][cA.coluna];
+        temp = valTab2 - valTab1;
+        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40 && temp > res ) res = temp;
+        return res;
+}
+
+
+int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA)
+{
+    int valTab1, valTab2, temp;
+    valTab1 = m1[cA.linha][cA.coluna];
+        valTab2 = m2[cA.linha][cA.coluna];
+        temp = valTab2 - valTab1;
+        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40&& temp < res ) res = temp;
+        return res;
+}
+
+
+// O inteiro do min_max diz se é suposto maximizar ou minimar o valor
+int min_max_Estado (ESTADO *e, int min_max)
+{
+    if (Vencedor(e) == 1) return 200;
+    if (Vencedor(e) == 2) return -200;
+    int jogA = get_jogador_atual (e);
+    COORDENADA coorJ = get_ultima_jogada (e);
+    //Inicializar mapas
+    // m1 = mapa cuja contagem parte da casa (0,0) - J1
+    //m2 = ...
+    MAPA m1, m2;
+    inicializaMapa (m1,  e);
+    inicializaMapa (m2,  e);
+    COORDENADA cA;
+     //maximizar
+    cA.coluna = 0;
+    cA.linha = 0;
+    flood_fill (0, m1, cA);
+  //  mostrar_mapa (m1);
+    // *printf ("\n");
+    cA.coluna = maximino;
+    cA.linha = maximino;  //Depois copiar mapa, em vez de inicializar
+    // Gastas memória desnecessária
+    flood_fill (0, m2, cA);
+    int valTab1, valTab2, res;
+
+    // *mostrar_mapa ( m1) ; //   
+    // *mostrar_mapa ( m2) ;
+    //inicializa mapas feitos
+    if (min_max == 1) {  //Para maximizar
+        (coorJ.coluna)++;
+        
+        //Inicializar valor de resposta
+        valTab1 = m1[coorJ.linha][coorJ.coluna];
+        valTab2 = m2[coorJ.linha][coorJ.coluna];
+        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40) res = valTab2  -  valTab1 ;
+        else res = -100;
+        (coorJ.linha)++;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.coluna)--;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.coluna)--;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.linha)--;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.linha)--;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.coluna)++;
+        res = test_max (m1, m2, res, coorJ);
+        (coorJ.coluna)++;
+        res = test_max (m1, m2, res, coorJ);
+    }
+        else 
+        {
+         (coorJ.coluna)++;  
+//Inicializar valor de resposta
+        valTab1 = m1[coorJ.linha][coorJ.coluna];
+        valTab2 = m2[coorJ.linha][coorJ.coluna];
+
+        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40) res = valTab2  -  valTab1 ;
+        else res = 100;
+        (coorJ.linha)++;
+        res = test_min (m1, m2, res, coorJ);
+      (coorJ.coluna)--;
+        res = test_min (m1, m2, res, coorJ);
+        (coorJ.coluna)--;
+        res = test_min (m1, m2, res, coorJ);
+        (coorJ.linha)--;
+        res = test_min (m1, m2, res, coorJ);
+        (coorJ.linha)--;
+        res = test_min (m1, m2, res, coorJ);
+        (coorJ.coluna)++;
+        res = test_min (m1, m2, res, coorJ);
+        (coorJ.coluna)++;
+        res = test_min (m1, m2, res, coorJ);
+        }
+        
+        return res;
 }
 
 
