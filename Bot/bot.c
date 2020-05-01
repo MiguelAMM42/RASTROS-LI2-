@@ -283,7 +283,7 @@ void mostrar_mapa (MAPA m) {
 
 int test_max (MAPA m1, MAPA m2, int res, COORDENADA cA)
 {
-        if (CoordenadaValida (cA)) {
+        if (CoordenadaValida (&cA)) {
                                    int valTab1, valTab2, temp;
                                     valTab1 = m1[cA.linha][cA.coluna];
                                     valTab2 = m2[cA.linha][cA.coluna];
@@ -295,7 +295,7 @@ int test_max (MAPA m1, MAPA m2, int res, COORDENADA cA)
 }
 int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA)
 {
-   if (CoordenadaValida (cA)) {
+   if (CoordenadaValida (&cA)) {
                                  int valTab1, valTab2, temp;
                                  valTab1 = m1[cA.linha][cA.coluna];
                                  valTab2 = m2[cA.linha][cA.coluna];
