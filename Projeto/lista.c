@@ -118,25 +118,28 @@ void adicionarCoordenada (ESTADO *e, COORDENADA *c, LISTA *l) {
 	(*l) = insere_cabeca (*l, s);
 }
 	
+    
 
 int dist_jog1 (COORDENADA c, int jogAtual)
 {
+    int distancia;
     int col = c.coluna;
     int lin = c.linha;
     if (jogAtual == 1)
         {
-        if (col <= lin) return col--;
-        else return lin--;
+        distancia = (lin*lin) + (col*col);
         }
     else 
         {
-        lin = max_tab - lin;
-        col = max_tab - col;
-        if (lin <= col) return lin++;
-        else return col++;
+        lin = 7 - lin;
+        col = 7 - col;
+        distancia = (lin*lin) + (col*col);
         }
-}
-	
+
+    return distancia;
+}  
+    
+
 
 
 int length (LISTA l){
