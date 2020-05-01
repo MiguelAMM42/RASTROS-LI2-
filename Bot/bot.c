@@ -81,7 +81,7 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
                     ESTADO a = e;
                     jogar (&a, jogada);
 
-                    int valor = minimax(e, comp - 1, alpha, beta, 0);
+                    int valor = minimax(e, comp - 1, alpha, beta, 1);
                     if (valor < min) {
                         min = valor;
                         jogadaotima = jogada;
