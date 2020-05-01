@@ -44,6 +44,7 @@ void mostra_jogadas (ESTADO *s, FILE *fp) {  // Imprime a lista de jogadas
 void guarda_ficheiro (ESTADO *e, FILE *fp) {
     mostrar_tabuleiro (*e, fp);
     mostra_jogadas (e, fp);
+    fputc ('\n', fp);
 }
 
 

@@ -23,9 +23,10 @@ int main (int argc, char *argv[]) {
 
 	// Jogada do Bot
 	putchar ('\n');
-    COORDENADA jogada = jogadaOTIMA (*e, 6, -500, +500, 2 - get_jogador_atual(e));
-    // printf ("\n%d\n", minimax(*e, 4, -500, 500, 1));
+    COORDENADA jogada = jogadaOTIMA (*e, 1, -500, +500, 2 - get_jogador_atual(e));
+    // printf ("\n%d\n", minimax(*e, 1, -500, 500, 2 - get_jogador_atual(e)));
     jogar(e, jogada); // Tirar verificaçao da jogada valida
+    putchar('\n');
     mostrar_tabuleiro(*e, stdout);
 
 	// Gravação da jogada no ficheiro
@@ -34,6 +35,7 @@ int main (int argc, char *argv[]) {
     if (fileGravacao == NULL) return -1; // Caso em que não abre
     guarda_ficheiro (e, fileGravacao);
     fclose(fileGravacao);
+    putchar('\n');
     return 0;
 }
 
@@ -58,6 +60,7 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
                     if (valor > max) {
                         max = valor;
                         jogadaotima = jogada;
+                        printf ("%d", valor);
                     } 
                     if (alpha < valor) alpha = valor;
                     if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
@@ -85,6 +88,7 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
                     if (valor < min) {
                         min = valor;
                         jogadaotima = jogada;
+                        printf ("%d", valor);
                     }
                     if (beta > valor) beta = valor;
                     if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
@@ -121,9 +125,9 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
 
     // Chegamos a uma folha/jogada vencedora 
     int vencedor = Vencedor (&e);
-    if (vencedor == 1) return 201; // Jogada vencedora
-    else if (vencedor == 2) return -201; // Jogada perdedora
-    else if (!comp) return min_max_Estado(&e, Maximizar);
+    if (vencedor == 1) return 201; // Jogada vencedora para o jogador 1
+    else if (vencedor == 2) return -201; // Jogada vencedora para o jogador 2
+    else if (!comp) return 1; // min_max_Estado(&e, Maximizar);
 
     // Queremos o MAXIMO
     if (Maximizar) {
@@ -140,8 +144,11 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
                     jogar (&a, jogada);
 
                     int valor = minimax(e, comp - 1, alpha, beta, 0);
-                    if (valor > max) max = valor; 
-                    if (alpha < valor) alpha = valor;
+                    if (valor > max) {
+                        max = valor;
+                        printf ("%d", valor);
+                    }
+                    if (valor > alpha) alpha = valor;
                     if (beta <= alpha) return max; // Alpha Beta Pruning
                 }
                 icoluna --; 
@@ -164,8 +171,11 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
                     jogar (&a, jogada);
 
                     int valor = minimax(e, comp - 1, alpha, beta, 1);
-                    if (valor < min) min = valor; 
-                    if (beta > valor) beta = valor;
+                    if (valor < min) {
+                        min = valor;
+                        printf ("%d", valor);
+                    } 
+                    if (valor < beta) beta = valor;
                     if (beta <= alpha) return min; // Alpha Beta Pruning
                 }
                 icoluna --;
@@ -331,8 +341,8 @@ int min_max_Estado (ESTADO *e, int min_max)
     int valTab1, valTab2, res;
     int coorVal;
 
-mostrar_mapa ( m1) ; //   
-mostrar_mapa ( m2) ;
+// mostrar_mapa ( m1) ; //   
+// mostrar_mapa ( m2) ;
     //inicializa mapas feitos
     if (min_max == 1) {  //Para maximizar
         (coorJ.coluna)++;
@@ -397,7 +407,7 @@ mostrar_mapa ( m2) ;
                 }
             }
         printf("\n Mapa final \n ");
-        mostrar_mapa (m2);    
+        // mostrar_mapa (m2);    
         printf ("\n %d \n", res);
 
         return res;
