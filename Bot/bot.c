@@ -283,31 +283,31 @@ void mostrar_mapa (MAPA m) {
 
 int test_max (MAPA m1, MAPA m2, int res, COORDENADA cA)
 {
-        int valTab1, valTab2, temp;
-        valTab1 = m1[cA.linha][cA.coluna];
-        valTab2 = m2[cA.linha][cA.coluna];
-        temp = valTab2 - valTab1;
-        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40 && temp > res ) res = temp;
+        if (CoordenadaValida (cA)) {
+                                   int valTab1, valTab2, temp;
+                                    valTab1 = m1[cA.linha][cA.coluna];
+                                    valTab2 = m2[cA.linha][cA.coluna];
+                                    temp = valTab2 - valTab1;
+                                    if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40 && temp > res ) res = temp;
+                                    }
+
         return res;
 }
-
-
 int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA)
 {
-    int valTab1, valTab2, temp;
-    valTab1 = m1[cA.linha][cA.coluna];
-        valTab2 = m2[cA.linha][cA.coluna];
-        temp = valTab2 - valTab1;
-        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40&& temp < res ) res = temp;
+   if (CoordenadaValida (cA)) {
+                                 int valTab1, valTab2, temp;
+                                 valTab1 = m1[cA.linha][cA.coluna];
+                                 valTab2 = m2[cA.linha][cA.coluna];
+                                 temp = valTab2 - valTab1;
+                                 if (temp < res ) res = temp;
+                                }
         return res;
 }
-
-
 // O inteiro do min_max diz se é suposto maximizar ou minimar o valor
 int min_max_Estado (ESTADO *e, int min_max)
 {
-    if (Vencedor(e) == 1) return 200;
-    if (Vencedor(e) == 2) return -200;
+ //   if (vencedor (e) == 1 );
     int jogA = get_jogador_atual (e);
     COORDENADA coorJ = get_ultima_jogada (e);
     //Inicializar mapas
@@ -320,30 +320,30 @@ int min_max_Estado (ESTADO *e, int min_max)
      //maximizar
     cA.coluna = 0;
     cA.linha = 0;
-    flood_fill (0, m1, cA);
+    flood_fill (0, m1, cA);  //
+
   //  mostrar_mapa (m1);
-    // *printf ("\n");
+    printf ("\n");
     cA.coluna = maximino;
     cA.linha = maximino;  //Depois copiar mapa, em vez de inicializar
     // Gastas memória desnecessária
-    flood_fill (0, m2, cA);
+    flood_fill (0, m2, cA);  //
     int valTab1, valTab2, res;
-     flood_fill (0, m1, coorJ);
-     int c1 = getCasaBOT (maximino, maximino, m1);
-     int c2 =  getCasaBOT (maximino, maximino, m2);
-    // *mostrar_mapa ( m1) ; //   
-    // *mostrar_mapa ( m2) ;
+    int coorVal;
+
+mostrar_mapa ( m1) ; //   
+mostrar_mapa ( m2) ;
     //inicializa mapas feitos
     if (min_max == 1) {  //Para maximizar
-
-     res = c2-c1;
-      /*  (coorJ.coluna)++;
-        
-        //Inicializar valor de resposta
+        (coorJ.coluna)++;
         valTab1 = m1[coorJ.linha][coorJ.coluna];
         valTab2 = m2[coorJ.linha][coorJ.coluna];
-        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40) res = valTab2  -  valTab1 ;
-        else res = -100;
+                                        
+        if (coorJ.coluna <= maximino && valTab1 != -1 && valTab2 != -1) res = valTab2  -  valTab1 ;
+        else res = 100;
+                                        //Inicializar valor de resposta
+        
+        
         (coorJ.linha)++;
         res = test_max (m1, m2, res, coorJ);
         (coorJ.coluna)--;
@@ -357,21 +357,21 @@ int min_max_Estado (ESTADO *e, int min_max)
         (coorJ.coluna)++;
         res = test_max (m1, m2, res, coorJ);
         (coorJ.coluna)++;
-        res = test_max (m1, m2, res, coorJ); */
+        res = test_max (m1, m2, res, coorJ);
     }
         else 
         {
-            res = c1-c2;
-     /*    (coorJ.coluna)++;  
+         (coorJ.coluna)++;  
 //Inicializar valor de resposta
         valTab1 = m1[coorJ.linha][coorJ.coluna];
         valTab2 = m2[coorJ.linha][coorJ.coluna];
-
-        if (valTab1 >= 0 && valTab1 <= 40 && valTab2 >= 0 && valTab2 <= 40) res = valTab2  -  valTab1 ;
+        
+        if (coorJ.coluna <= maximino && valTab1 != -1 && valTab2 != -1) res = valTab2  -  valTab1 ;
         else res = 100;
         (coorJ.linha)++;
+
         res = test_min (m1, m2, res, coorJ);
-      (coorJ.coluna)--;
+        (coorJ.coluna)--;
         res = test_min (m1, m2, res, coorJ);
         (coorJ.coluna)--;
         res = test_min (m1, m2, res, coorJ);
@@ -382,9 +382,24 @@ int min_max_Estado (ESTADO *e, int min_max)
         (coorJ.coluna)++;
         res = test_min (m1, m2, res, coorJ);
         (coorJ.coluna)++;
-        res = test_min (m1, m2, res, coorJ); */
+        res = test_min (m1, m2, res, coorJ);
         }
-        
-        return res;
-}
+        int i, ii;
+        for (i = 0; i <= maximino; i++)
+            {
+                for (ii = 0; ii<= maximino; ii++)
+                {
+                    int v2 = getCasaBOT (i, ii, m2);
+                    int v1 = getCasaBOT (i, ii, m1);
+                   if (v1 == -1 || v2 == -1) v2 = -69;
+                   else v2 = v2-v1;
+                setCasaBOT (i, ii, m2, v2) ;
+                }
+            }
+        printf("\n Mapa final \n ");
+        mostrar_mapa (m2);    
+        printf ("\n %d \n", res);
 
+        return res;
+    }
+    // Queremos o mínimo da lista
