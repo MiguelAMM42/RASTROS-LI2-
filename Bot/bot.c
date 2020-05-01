@@ -328,12 +328,16 @@ int min_max_Estado (ESTADO *e, int min_max)
     // Gastas memória desnecessária
     flood_fill (0, m2, cA);
     int valTab1, valTab2, res;
-
+     flood_fill (0, m1, coorJ);
+     int c1 = getCasaBOT (maximino, maximino, m1);
+     int c2 =  getCasaBOT (maximino, maximino, m2);
     // *mostrar_mapa ( m1) ; //   
     // *mostrar_mapa ( m2) ;
     //inicializa mapas feitos
     if (min_max == 1) {  //Para maximizar
-        (coorJ.coluna)++;
+
+     res = c2-c1;
+      /*  (coorJ.coluna)++;
         
         //Inicializar valor de resposta
         valTab1 = m1[coorJ.linha][coorJ.coluna];
@@ -353,11 +357,12 @@ int min_max_Estado (ESTADO *e, int min_max)
         (coorJ.coluna)++;
         res = test_max (m1, m2, res, coorJ);
         (coorJ.coluna)++;
-        res = test_max (m1, m2, res, coorJ);
+        res = test_max (m1, m2, res, coorJ); */
     }
         else 
         {
-         (coorJ.coluna)++;  
+            res = c1-c2;
+     /*    (coorJ.coluna)++;  
 //Inicializar valor de resposta
         valTab1 = m1[coorJ.linha][coorJ.coluna];
         valTab2 = m2[coorJ.linha][coorJ.coluna];
@@ -377,10 +382,9 @@ int min_max_Estado (ESTADO *e, int min_max)
         (coorJ.coluna)++;
         res = test_min (m1, m2, res, coorJ);
         (coorJ.coluna)++;
-        res = test_min (m1, m2, res, coorJ);
+        res = test_min (m1, m2, res, coorJ); */
         }
         
         return res;
 }
-
 
