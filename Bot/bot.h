@@ -15,6 +15,9 @@ void mostrar_mapa (MAPA m);
 
 COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador);
 int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar);
+int getCasaBOT (int col, int lin, MAPA m);
+void setCasaBOT (int col, int lin, MAPA m, int subst);
+int valor(ESTADO *e, int jogador);
 
 /**
 brief Cria uma lista com os valores úteis para a heurística do Min_Max

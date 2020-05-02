@@ -19,11 +19,10 @@ int main (int argc, char *argv[]) {
     le_ficheiro (e, fileLeitura);
     fclose(fileLeitura);
     mostrar_tabuleiro (*e, stdout);
-    mostra_jogadas(e, stdout);
 
 	// Jogada do Bot
 	putchar ('\n');
-    COORDENADA jogada = jogadaOTIMA (*e, 1, -500, +500, 2 - get_jogador_atual(e));
+    COORDENADA jogada = jogadaOTIMA (*e, 7, -500, +500, 2 - get_jogador_atual(e));
     // printf ("\n%d\n", minimax(*e, 1, -500, 500, 2 - get_jogador_atual(e)));
     jogar(e, jogada); // Tirar verificaçao da jogada valida
     putchar('\n');
@@ -53,16 +52,15 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
                 else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO a = e;
-                    jogar (&a, jogada);
+                    ESTADO eNovo = e;
+                    jogar (&eNovo, jogada);
 
-                    int valor = minimax(e, comp - 1, alpha, beta, 0);
+                    int valor = minimax(eNovo, comp - 1, alpha, beta, 0);
                     if (valor > max) {
                         max = valor;
                         jogadaotima = jogada;
-                        printf ("%d", valor);
                     } 
-                    if (alpha < valor) alpha = valor;
+                    if (valor > alpha) alpha = valor;
                     if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
                 }
                 icoluna --; 
@@ -76,21 +74,20 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
         COORDENADA ultimajogada = get_ultima_jogada(&e);
         int ilinha = 1;
         while (ilinha >= -1) {
-		int icoluna = -1;
+		int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
                 else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO a = e;
-                    jogar (&a, jogada);
+                    ESTADO eNovo = e;
+                    jogar (&eNovo, jogada);
 
-                    int valor = minimax(e, comp - 1, alpha, beta, 1);
+                    int valor = minimax(eNovo, comp - 1, alpha, beta, 1);
                     if (valor < min) {
                         min = valor;
                         jogadaotima = jogada;
-                        printf ("%d", valor);
                     }
-                    if (beta > valor) beta = valor;
+                    if (valor < beta) beta = valor;
                     if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
                 }
                 icoluna --; 
@@ -127,7 +124,7 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
     int vencedor = Vencedor (&e);
     if (vencedor == 1) return 201; // Jogada vencedora para o jogador 1
     else if (vencedor == 2) return -201; // Jogada vencedora para o jogador 2
-    else if (!comp) return 1; // min_max_Estado(&e, Maximizar);
+    else if (!comp) return valor(&e, Maximizar); // min_max_Estado(&e, Maximizar);
 
     // Queremos o MAXIMO
     if (Maximizar) {
@@ -135,19 +132,16 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
         COORDENADA ultimajogada = get_ultima_jogada(&e);
         int ilinha = 1;
         while (ilinha >= -1) {
-		int icoluna = 1;
+		    int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
                 else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO a = e;
-                    jogar (&a, jogada);
+                    ESTADO eNovo = e;
+                    jogar (&eNovo, jogada);
 
-                    int valor = minimax(e, comp - 1, alpha, beta, 0);
-                    if (valor > max) {
-                        max = valor;
-                        printf ("%d", valor);
-                    }
+                    int valor = minimax(eNovo, comp - 1, alpha, beta, 0);
+                    if (valor > max) max = valor;
                     if (valor > alpha) alpha = valor;
                     if (beta <= alpha) return max; // Alpha Beta Pruning
                 }
@@ -167,14 +161,11 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
                 else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO a = e;
-                    jogar (&a, jogada);
+                    ESTADO eNovo = e;
+                    jogar (&eNovo, jogada);
 
-                    int valor = minimax(e, comp - 1, alpha, beta, 1);
-                    if (valor < min) {
-                        min = valor;
-                        printf ("%d", valor);
-                    } 
+                    int valor = minimax(eNovo, comp - 1, alpha, beta, 1);
+                    if (valor < min) min = valor;
                     if (valor < beta) beta = valor;
                     if (beta <= alpha) return min; // Alpha Beta Pruning
                 }
@@ -191,7 +182,12 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
 
 //////////////////////
 
- 
+int valor(ESTADO *e, int jogador) {
+    MAPA m;
+    inicializaMapa (m,  e);
+    flood_fill (0, m, get_ultima_jogada(e));
+    return getCasaBOT (maximino, maximino, m) - getCasaBOT (0, 0, m);
+}
 
 
 
