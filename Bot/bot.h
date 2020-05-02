@@ -100,7 +100,7 @@ void setCasaBOT (int col, int lin, MAPA m, int subst);
 @param jogador Número do jogador(1 ou 2).
 @returns valor 
 */
-int valor(ESTADO *e, int jogador);
+int valor(ESTADO *e);
 /**
 \brief Função que contam o número de casas alcançáveis vazias no tabuleiro.
 @param m Mapa cujos valores fornecem a informação se certa peça é ou não alcançável.

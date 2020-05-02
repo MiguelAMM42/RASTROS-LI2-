@@ -125,7 +125,7 @@ int minimax(ESTADO *e, int comp, int alpha, int beta, int Maximizar) {
     int vencedor = Vencedor (e);
     if (vencedor == 1) return 200; // Jogada vencedora para o jogador 1
     else if (vencedor == 2) return -200; // Jogada vencedora para o jogador 2
-    else if (!comp) return valor(e, Maximizar); // min_max_Estado(&e, Maximizar);
+    else if (!comp) return valor(e); // min_max_Estado(&e, Maximizar);
 
     // Queremos o MAXIMO
     if (Maximizar) {
@@ -183,7 +183,7 @@ int minimax(ESTADO *e, int comp, int alpha, int beta, int Maximizar) {
 
 //////////////////////
 
-int valor(ESTADO *e, int jogador) {
+int valor(ESTADO *e) {
     int valor = 0;
     MAPA m;
     inicializaMapa (m, e);
