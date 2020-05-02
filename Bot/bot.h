@@ -57,12 +57,21 @@ void mostrar_mapa (MAPA m);
 /**
 \brief Função que devolve a melhor coordenada para a qual se pode jogar.
 @param e Estado do tabuleiro.
-@param comp Comprimento até onde vai a MinMax.
-@param alpha é o melhor valor que a função maximixadora pode garantir naquele nível ou mais à frente.
-@param beta é o melhor valor que a função minimizadora pode garantir naquele nível ou mais à frente.
-@param jogador 
+@param comp Comprimento até onde vai a MiniMax.
+@param alpha Alpha é o melhor valor que a função maximixadora pode garantir naquele nível ou mais à frente.
+@param beta Beta é o melhor valor que a função minimizadora pode garantir naquele nível ou mais à frente.
+@param jogador Número do jogador(1 ou 2).
 */
 COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador);
+/**
+\brief Função que dexecuta a heurística MiniMax.
+@param e Estado do tabuleiro.
+@param comp Comprimento até onde vai a MiniMax.
+@param alpha Alpha é o melhor valor que a função maximixadora pode garantir naquele nível ou mais à frente.
+@param beta Beta é o melhor valor que a função minimizadora pode garantir naquele nível ou mais à frente.
+@param jogador Maximizar 0 se fôr para maximizar. Outro número para minimizar.
+@returns Devolve o valor máximo se maximizou. Devolve o valor mínimo se minimizou.
+*/
 int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar);
 /**
 \brief Função que vai buscar um valor ao mapa.
@@ -79,17 +88,13 @@ int getCasaBOT (int col, int lin, MAPA m);
 @param subst Valor para inserir no mapa (m).
 */
 void setCasaBOT (int col, int lin, MAPA m, int subst);
-int valor(ESTADO *e, int jogador);
-
 /**
-brief Cria uma lista com os valores úteis para a heurística do Min_Max.
-@param e Apontador para o Estado.
-@param l lista de jogadas.
-@min_max Valor min_max.
+\brief Função que atribui um valor a cada casa do tabuleiro.
+@param e Apontador para o estado.
+@param jogador Número do jogador(1 ou 2).
+@returns valor 
 */
-
-
-
+int valor(ESTADO *e, int jogador);
 /**
 \brief Função que contam o número de casas alcançáveis vazias no tabuleiro.
 @param m Mapa cujos valores fornecem a informação se certa peça é ou não alcançável.
