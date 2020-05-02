@@ -3,7 +3,6 @@
 #include <string.h>
 #include <math.h>
 #include "dados.h"
-#include "lista.h"
 #include "logica.h"
 #include "interface.h"
 #define COMANDO_INVALIDO(jogo) jogo == 0

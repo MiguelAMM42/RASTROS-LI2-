@@ -5,7 +5,6 @@ CMakeFiles/Bot4.dir/bot.c.o: bot.c
 CMakeFiles/Bot4.dir/bot.c.o: bot.h
 CMakeFiles/Bot4.dir/bot.c.o: dados.h
 CMakeFiles/Bot4.dir/bot.c.o: interface.h
-CMakeFiles/Bot4.dir/bot.c.o: lista.h
 CMakeFiles/Bot4.dir/bot.c.o: logica.h
 
 CMakeFiles/Bot4.dir/dados.c.o: dados.c
@@ -14,7 +13,6 @@ CMakeFiles/Bot4.dir/dados.c.o: dados.h
 CMakeFiles/Bot4.dir/interface.c.o: dados.h
 CMakeFiles/Bot4.dir/interface.c.o: interface.c
 CMakeFiles/Bot4.dir/interface.c.o: interface.h
-CMakeFiles/Bot4.dir/interface.c.o: lista.h
 CMakeFiles/Bot4.dir/interface.c.o: logica.h
 
 CMakeFiles/Bot4.dir/lista.c.o: dados.h
@@ -23,7 +21,6 @@ CMakeFiles/Bot4.dir/lista.c.o: lista.h
 CMakeFiles/Bot4.dir/lista.c.o: logica.h
 
 CMakeFiles/Bot4.dir/logica.c.o: dados.h
-CMakeFiles/Bot4.dir/logica.c.o: lista.h
 CMakeFiles/Bot4.dir/logica.c.o: logica.c
 CMakeFiles/Bot4.dir/logica.c.o: logica.h
 

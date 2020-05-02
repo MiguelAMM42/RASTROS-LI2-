@@ -14,6 +14,15 @@
 # EXTERNAL cache entries
 ########################
 
+//Value Computed by CMake
+Bot_BINARY_DIR:STATIC=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot
+
+//Dependencies for target
+Bot_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+Bot_SOURCE_DIR:STATIC=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot
+
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
@@ -181,11 +190,23 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Dependencies for target
+RASTOS_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+Rastos_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 banderitas_BINARY_DIR:STATIC=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot
 
 //Value Computed by CMake
 banderitas_SOURCE_DIR:STATIC=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot
+
+//Dependencies for target
+dados.h_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+say-ola_LIB_DEPENDS:STATIC=
 
 
 ########################

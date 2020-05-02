@@ -7,7 +7,7 @@ Definição das funções relacionadas com as listas.
 #define ___LISTA_H___
 
 #define BUF_SIZE 1024
-
+#define maximino 7
 #define MAX_TAB 8
 
 typedef int MAPA[8][8];

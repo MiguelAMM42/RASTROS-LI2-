@@ -4,22 +4,20 @@ cmake_minimum_required(VERSION 3.10.2)
 
 project (banderitas VERSION 1.0.0)
 
-# add the executable
-#add_library ()
-#say-ola
-#dados.h
-#logica.h
-#interface.h
-#lista.h
 
-
-add_executable(
-Bot4
-bot.c
+add_library (
+say-ola SHARED
+dados.h
 dados.c
+logica.h
 logica.c
+interface.h
 interface.c
-lista.c
 )
 
-#target_link_libraries (Banderitas PRIVATE say-ola)
+add_executable(
+BotGoncalo
+bot.c
+)
+
+target_link_libraries (BotGoncalo PRIVATE say-ola)

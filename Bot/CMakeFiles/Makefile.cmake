@@ -42,5 +42,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Bot4.dir/DependInfo.cmake"
+  "CMakeFiles/say-ola.dir/DependInfo.cmake"
+  "CMakeFiles/BotGoncalo.dir/DependInfo.cmake"
   )

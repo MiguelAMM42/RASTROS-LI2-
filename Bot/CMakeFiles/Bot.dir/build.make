@@ -81,121 +81,18 @@ CMakeFiles/Bot.dir/bot.c.o.provides: CMakeFiles/Bot.dir/bot.c.o.requires
 CMakeFiles/Bot.dir/bot.c.o.provides.build: CMakeFiles/Bot.dir/bot.c.o
 
 
-CMakeFiles/Bot.dir/dados.c.o: CMakeFiles/Bot.dir/flags.make
-CMakeFiles/Bot.dir/dados.c.o: dados.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Bot.dir/dados.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/dados.c.o   -c /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.c
-
-CMakeFiles/Bot.dir/dados.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/dados.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.c > CMakeFiles/Bot.dir/dados.c.i
-
-CMakeFiles/Bot.dir/dados.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/dados.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.c -o CMakeFiles/Bot.dir/dados.c.s
-
-CMakeFiles/Bot.dir/dados.c.o.requires:
-
-.PHONY : CMakeFiles/Bot.dir/dados.c.o.requires
-
-CMakeFiles/Bot.dir/dados.c.o.provides: CMakeFiles/Bot.dir/dados.c.o.requires
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/dados.c.o.provides.build
-.PHONY : CMakeFiles/Bot.dir/dados.c.o.provides
-
-CMakeFiles/Bot.dir/dados.c.o.provides.build: CMakeFiles/Bot.dir/dados.c.o
-
-
-CMakeFiles/Bot.dir/logica.c.o: CMakeFiles/Bot.dir/flags.make
-CMakeFiles/Bot.dir/logica.c.o: logica.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Bot.dir/logica.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/logica.c.o   -c /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.c
-
-CMakeFiles/Bot.dir/logica.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/logica.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.c > CMakeFiles/Bot.dir/logica.c.i
-
-CMakeFiles/Bot.dir/logica.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/logica.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.c -o CMakeFiles/Bot.dir/logica.c.s
-
-CMakeFiles/Bot.dir/logica.c.o.requires:
-
-.PHONY : CMakeFiles/Bot.dir/logica.c.o.requires
-
-CMakeFiles/Bot.dir/logica.c.o.provides: CMakeFiles/Bot.dir/logica.c.o.requires
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/logica.c.o.provides.build
-.PHONY : CMakeFiles/Bot.dir/logica.c.o.provides
-
-CMakeFiles/Bot.dir/logica.c.o.provides.build: CMakeFiles/Bot.dir/logica.c.o
-
-
-CMakeFiles/Bot.dir/interface.c.o: CMakeFiles/Bot.dir/flags.make
-CMakeFiles/Bot.dir/interface.c.o: interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Bot.dir/interface.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/interface.c.o   -c /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/interface.c
-
-CMakeFiles/Bot.dir/interface.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/interface.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/interface.c > CMakeFiles/Bot.dir/interface.c.i
-
-CMakeFiles/Bot.dir/interface.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/interface.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/interface.c -o CMakeFiles/Bot.dir/interface.c.s
-
-CMakeFiles/Bot.dir/interface.c.o.requires:
-
-.PHONY : CMakeFiles/Bot.dir/interface.c.o.requires
-
-CMakeFiles/Bot.dir/interface.c.o.provides: CMakeFiles/Bot.dir/interface.c.o.requires
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/interface.c.o.provides.build
-.PHONY : CMakeFiles/Bot.dir/interface.c.o.provides
-
-CMakeFiles/Bot.dir/interface.c.o.provides.build: CMakeFiles/Bot.dir/interface.c.o
-
-
-CMakeFiles/Bot.dir/lista.c.o: CMakeFiles/Bot.dir/flags.make
-CMakeFiles/Bot.dir/lista.c.o: lista.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Bot.dir/lista.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Bot.dir/lista.c.o   -c /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.c
-
-CMakeFiles/Bot.dir/lista.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Bot.dir/lista.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.c > CMakeFiles/Bot.dir/lista.c.i
-
-CMakeFiles/Bot.dir/lista.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Bot.dir/lista.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.c -o CMakeFiles/Bot.dir/lista.c.s
-
-CMakeFiles/Bot.dir/lista.c.o.requires:
-
-.PHONY : CMakeFiles/Bot.dir/lista.c.o.requires
-
-CMakeFiles/Bot.dir/lista.c.o.provides: CMakeFiles/Bot.dir/lista.c.o.requires
-	$(MAKE) -f CMakeFiles/Bot.dir/build.make CMakeFiles/Bot.dir/lista.c.o.provides.build
-.PHONY : CMakeFiles/Bot.dir/lista.c.o.provides
-
-CMakeFiles/Bot.dir/lista.c.o.provides.build: CMakeFiles/Bot.dir/lista.c.o
-
-
 # Object files for target Bot
 Bot_OBJECTS = \
-"CMakeFiles/Bot.dir/bot.c.o" \
-"CMakeFiles/Bot.dir/dados.c.o" \
-"CMakeFiles/Bot.dir/logica.c.o" \
-"CMakeFiles/Bot.dir/interface.c.o" \
-"CMakeFiles/Bot.dir/lista.c.o"
+"CMakeFiles/Bot.dir/bot.c.o"
 
 # External object files for target Bot
 Bot_EXTERNAL_OBJECTS =
 
 Bot: CMakeFiles/Bot.dir/bot.c.o
-Bot: CMakeFiles/Bot.dir/dados.c.o
-Bot: CMakeFiles/Bot.dir/logica.c.o
-Bot: CMakeFiles/Bot.dir/interface.c.o
-Bot: CMakeFiles/Bot.dir/lista.c.o
 Bot: CMakeFiles/Bot.dir/build.make
+Bot: libsay-ola.so
 Bot: CMakeFiles/Bot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Bot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Bot"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Bot.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -204,10 +101,6 @@ CMakeFiles/Bot.dir/build: Bot
 .PHONY : CMakeFiles/Bot.dir/build
 
 CMakeFiles/Bot.dir/requires: CMakeFiles/Bot.dir/bot.c.o.requires
-CMakeFiles/Bot.dir/requires: CMakeFiles/Bot.dir/dados.c.o.requires
-CMakeFiles/Bot.dir/requires: CMakeFiles/Bot.dir/logica.c.o.requires
-CMakeFiles/Bot.dir/requires: CMakeFiles/Bot.dir/interface.c.o.requires
-CMakeFiles/Bot.dir/requires: CMakeFiles/Bot.dir/lista.c.o.requires
 
 .PHONY : CMakeFiles/Bot.dir/requires
 

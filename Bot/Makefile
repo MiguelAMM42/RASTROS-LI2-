@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Bot4
+# Target rules for targets named say-ola
 
 # Build rule for target.
-Bot4: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Bot4
-.PHONY : Bot4
+say-ola: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 say-ola
+.PHONY : say-ola
 
 # fast build rule for target.
-Bot4/fast:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/build
-.PHONY : Bot4/fast
+say-ola/fast:
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/build
+.PHONY : say-ola/fast
+
+#=============================================================================
+# Target rules for targets named BotGoncalo
+
+# Build rule for target.
+BotGoncalo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BotGoncalo
+.PHONY : BotGoncalo
+
+# fast build rule for target.
+BotGoncalo/fast:
+	$(MAKE) -f CMakeFiles/BotGoncalo.dir/build.make CMakeFiles/BotGoncalo.dir/build
+.PHONY : BotGoncalo/fast
 
 bot.o: bot.c.o
 
@@ -129,7 +142,7 @@ bot.o: bot.c.o
 
 # target to build an object file
 bot.c.o:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/bot.c.o
+	$(MAKE) -f CMakeFiles/BotGoncalo.dir/build.make CMakeFiles/BotGoncalo.dir/bot.c.o
 .PHONY : bot.c.o
 
 bot.i: bot.c.i
@@ -138,7 +151,7 @@ bot.i: bot.c.i
 
 # target to preprocess a source file
 bot.c.i:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/bot.c.i
+	$(MAKE) -f CMakeFiles/BotGoncalo.dir/build.make CMakeFiles/BotGoncalo.dir/bot.c.i
 .PHONY : bot.c.i
 
 bot.s: bot.c.s
@@ -147,7 +160,7 @@ bot.s: bot.c.s
 
 # target to generate assembly for a file
 bot.c.s:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/bot.c.s
+	$(MAKE) -f CMakeFiles/BotGoncalo.dir/build.make CMakeFiles/BotGoncalo.dir/bot.c.s
 .PHONY : bot.c.s
 
 dados.o: dados.c.o
@@ -156,7 +169,7 @@ dados.o: dados.c.o
 
 # target to build an object file
 dados.c.o:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/dados.c.o
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/dados.c.o
 .PHONY : dados.c.o
 
 dados.i: dados.c.i
@@ -165,7 +178,7 @@ dados.i: dados.c.i
 
 # target to preprocess a source file
 dados.c.i:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/dados.c.i
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/dados.c.i
 .PHONY : dados.c.i
 
 dados.s: dados.c.s
@@ -174,7 +187,7 @@ dados.s: dados.c.s
 
 # target to generate assembly for a file
 dados.c.s:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/dados.c.s
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/dados.c.s
 .PHONY : dados.c.s
 
 interface.o: interface.c.o
@@ -183,7 +196,7 @@ interface.o: interface.c.o
 
 # target to build an object file
 interface.c.o:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/interface.c.o
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/interface.c.o
 .PHONY : interface.c.o
 
 interface.i: interface.c.i
@@ -192,7 +205,7 @@ interface.i: interface.c.i
 
 # target to preprocess a source file
 interface.c.i:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/interface.c.i
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/interface.c.i
 .PHONY : interface.c.i
 
 interface.s: interface.c.s
@@ -201,35 +214,8 @@ interface.s: interface.c.s
 
 # target to generate assembly for a file
 interface.c.s:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/interface.c.s
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/interface.c.s
 .PHONY : interface.c.s
-
-lista.o: lista.c.o
-
-.PHONY : lista.o
-
-# target to build an object file
-lista.c.o:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/lista.c.o
-.PHONY : lista.c.o
-
-lista.i: lista.c.i
-
-.PHONY : lista.i
-
-# target to preprocess a source file
-lista.c.i:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/lista.c.i
-.PHONY : lista.c.i
-
-lista.s: lista.c.s
-
-.PHONY : lista.s
-
-# target to generate assembly for a file
-lista.c.s:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/lista.c.s
-.PHONY : lista.c.s
 
 logica.o: logica.c.o
 
@@ -237,7 +223,7 @@ logica.o: logica.c.o
 
 # target to build an object file
 logica.c.o:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/logica.c.o
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/logica.c.o
 .PHONY : logica.c.o
 
 logica.i: logica.c.i
@@ -246,7 +232,7 @@ logica.i: logica.c.i
 
 # target to preprocess a source file
 logica.c.i:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/logica.c.i
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/logica.c.i
 .PHONY : logica.c.i
 
 logica.s: logica.c.s
@@ -255,7 +241,7 @@ logica.s: logica.c.s
 
 # target to generate assembly for a file
 logica.c.s:
-	$(MAKE) -f CMakeFiles/Bot4.dir/build.make CMakeFiles/Bot4.dir/logica.c.s
+	$(MAKE) -f CMakeFiles/say-ola.dir/build.make CMakeFiles/say-ola.dir/logica.c.s
 .PHONY : logica.c.s
 
 # Help Target
@@ -265,8 +251,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Bot4"
 	@echo "... edit_cache"
+	@echo "... say-ola"
+	@echo "... BotGoncalo"
 	@echo "... bot.o"
 	@echo "... bot.i"
 	@echo "... bot.s"
@@ -276,9 +263,6 @@ help:
 	@echo "... interface.o"
 	@echo "... interface.i"
 	@echo "... interface.s"
-	@echo "... lista.o"
-	@echo "... lista.i"
-	@echo "... lista.s"
 	@echo "... logica.o"
 	@echo "... logica.i"
 	@echo "... logica.s"

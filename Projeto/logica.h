@@ -23,6 +23,7 @@ int jogar (ESTADO *estado, COORDENADA c);
 /**
 \brief Verifica se há um vencedor
 @param estado Apontador para o estado
+@returns Retorna o número do vencedor caso haja
 */
 int Vencedor (ESTADO *e);
 /**
@@ -32,12 +33,6 @@ int Vencedor (ESTADO *e);
 @returns Se a jogada é válida ou não
 */
 int jogadaValida (ESTADO *estado, COORDENADA *c);
-/**
-\brief Verifica se o jogo acaba
-@param estado Apontador para o estado
-@returns Retorna o fim ou não do jogo
-*/
-int fimDoJogo (ESTADO *estado);
 /**
 \brief Verifica se alguma das casas possíveis é vazia ou não
 @param estado Apontador para o estado

@@ -23,6 +23,7 @@ int jogar (ESTADO *estado, COORDENADA c);
 /**
 \brief Verifica se há um vencedor
 @param estado Apontador para o estado
+@returns Retorna o número do vencedor caso haja
 */
 int Vencedor (ESTADO *e);
 /**
@@ -32,12 +33,7 @@ int Vencedor (ESTADO *e);
 @returns Se a jogada é válida ou não
 */
 int jogadaValida (ESTADO *estado, COORDENADA *c);
-/**
-\brief Verifica se o jogo acaba
-@param estado Apontador para o estado
-@returns Retorna o fim ou não do jogo
-*/
-int fimDoJogo (ESTADO *estado);
+
 /**
 \brief Verifica se alguma das casas possíveis é vazia ou não
 @param estado Apontador para o estado
@@ -79,17 +75,5 @@ void guardaLinha (ESTADO *e, char linha[], int nlinha, int *contador);
 @param n Número de jogadas
 */
 void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n);
-/**
-\brief Permite ao jogador voltar para uma determinada jogada
-@param e Apontador para o estado
-@param numeroJogada número da jogada para qual o jogador pretende ir (supõe-se que está é válida)
-*/
-void jogadaAnterior (ESTADO *e, int numeroJogada);
-/**
-\brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
-@param vV Lista dos vizinhos válidos
-@param e Apontador para o estado
-*/
-COORDENADA* comando_jog(LISTA vV, ESTADO *e);
 
 #endif

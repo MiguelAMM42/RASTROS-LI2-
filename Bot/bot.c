@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dados.h"
-#include "lista.h"
 #include "logica.h"
 #include "interface.h"
 #include "bot.h"
@@ -22,8 +21,10 @@ int main (int argc, char *argv[]) {
 
 	// Jogada do Bot
 	putchar ('\n');
-    COORDENADA jogada = jogadaOTIMA (*e, 7, -500, +500, 2 - get_jogador_atual(e));
-    // printf ("\n%d\n", minimax(*e, 1, -500, 500, 2 - get_jogador_atual(e)));
+    int comp = 4;
+    comp += (get_num_jogadas(e)/3);
+    COORDENADA jogada = jogadaOTIMA (e, comp, -500, +500, 2 - get_jogador_atual(e));
+    // printf ("\n%d\n", minimax(e, 4, -500, 500, 2 - get_jogador_atual(e)));
     jogar(e, jogada); // Tirar verificaçao da jogada valida
     putchar('\n');
     mostrar_tabuleiro(*e, stdout);
@@ -39,29 +40,29 @@ int main (int argc, char *argv[]) {
 }
 
 
-COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
+COORDENADA jogadaOTIMA (ESTADO *e, int comp, int alpha, int beta, int jogador) {
     COORDENADA jogadaotima;
     // Queremos o MAXIMO
     if (jogador) {
         int max = -500;
-        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        COORDENADA ultimajogada = get_ultima_jogada(e);
         int ilinha = 1;
         while (ilinha >= -1) {
 		int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
-                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO eNovo = e;
+                else if (CoordenadaValida(&jogada) && jogadaValida(e, &jogada)) {
+                    ESTADO eNovo = *e;
                     jogar (&eNovo, jogada);
 
-                    int valor = minimax(eNovo, comp - 1, alpha, beta, 0);
+                    int valor = minimax(&eNovo, comp - 1, alpha, beta, 0);
                     if (valor > max) {
                         max = valor;
                         jogadaotima = jogada;
                     } 
                     if (valor > alpha) alpha = valor;
-                    if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
+                    if (beta <= alpha) return jogadaotima; // Pruning
                 }
                 icoluna --; 
 		    }
@@ -71,24 +72,24 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
 
     } else { // Queremos o MINIMO
         int min = +500;
-        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        COORDENADA ultimajogada = get_ultima_jogada(e);
         int ilinha = 1;
         while (ilinha >= -1) {
 		int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
-                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO eNovo = e;
+                else if (CoordenadaValida(&jogada) && jogadaValida(e, &jogada)) {
+                    ESTADO eNovo = *e;
                     jogar (&eNovo, jogada);
 
-                    int valor = minimax(eNovo, comp - 1, alpha, beta, 1);
+                    int valor = minimax(&eNovo, comp - 1, alpha, beta, 1);
                     if (valor < min) {
                         min = valor;
                         jogadaotima = jogada;
                     }
                     if (valor < beta) beta = valor;
-                    if (beta <= alpha) return jogadaotima; // Alpha Beta Pruning
+                    if (beta <= alpha) return jogadaotima; // Pruning
                 }
                 icoluna --; 
 		    }
@@ -118,32 +119,32 @@ COORDENADA jogadaOTIMA (ESTADO e, int comp, int alpha, int beta, int jogador) {
 /// Chamada inicial minimax (e, 3, -500, +500, 2 - jogador)
 
 
-int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) { 
+int minimax(ESTADO *e, int comp, int alpha, int beta, int Maximizar) { 
 
     // Chegamos a uma folha/jogada vencedora 
-    int vencedor = Vencedor (&e);
-    if (vencedor == 1) return 201; // Jogada vencedora para o jogador 1
-    else if (vencedor == 2) return -201; // Jogada vencedora para o jogador 2
-    else if (!comp) return valor(&e, Maximizar); // min_max_Estado(&e, Maximizar);
+    int vencedor = Vencedor (e);
+    if (vencedor == 1) return 200; // Jogada vencedora para o jogador 1
+    else if (vencedor == 2) return -200; // Jogada vencedora para o jogador 2
+    else if (!comp) return valor(e, Maximizar); // min_max_Estado(&e, Maximizar);
 
     // Queremos o MAXIMO
     if (Maximizar) {
         int max = -500;
-        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        COORDENADA ultimajogada = get_ultima_jogada(e);
         int ilinha = 1;
         while (ilinha >= -1) {
 		    int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
-                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO eNovo = e;
+                else if (CoordenadaValida(&jogada) && jogadaValida(e, &jogada)) {
+                    ESTADO eNovo = *e;
                     jogar (&eNovo, jogada);
 
-                    int valor = minimax(eNovo, comp - 1, alpha, beta, 0);
+                    int valor = minimax(&eNovo, comp - 1, alpha, beta, 0);
                     if (valor > max) max = valor;
                     if (valor > alpha) alpha = valor;
-                    if (beta <= alpha) return max; // Alpha Beta Pruning
+                    if (beta <= alpha) return max; // Pruning
                 }
                 icoluna --; 
 		    }
@@ -153,21 +154,21 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
 
     } else { // Queremos o MINIMO
         int min = +500;
-        COORDENADA ultimajogada = get_ultima_jogada(&e);
+        COORDENADA ultimajogada = get_ultima_jogada(e);
         int ilinha = 1;
         while (ilinha >= -1) {
 		int icoluna = 1;
 		    while (icoluna >= -1) {
                 COORDENADA jogada = {ultimajogada.coluna + icoluna, ultimajogada.linha + ilinha};
                 if (!ilinha && !icoluna);
-                else if (CoordenadaValida(&jogada) && jogadaValida(&e, &jogada)) {
-                    ESTADO eNovo = e;
+                else if (CoordenadaValida(&jogada) && jogadaValida(e, &jogada)) {
+                    ESTADO eNovo = *e;
                     jogar (&eNovo, jogada);
 
-                    int valor = minimax(eNovo, comp - 1, alpha, beta, 1);
+                    int valor = minimax(&eNovo, comp - 1, alpha, beta, 1);
                     if (valor < min) min = valor;
                     if (valor < beta) beta = valor;
-                    if (beta <= alpha) return min; // Alpha Beta Pruning
+                    if (beta <= alpha) return min; // Pruning
                 }
                 icoluna --;
 		    }
@@ -183,10 +184,25 @@ int minimax(ESTADO e, int comp, int alpha, int beta, int Maximizar) {
 //////////////////////
 
 int valor(ESTADO *e, int jogador) {
+    int valor = 0;
     MAPA m;
-    inicializaMapa (m,  e);
+    inicializaMapa (m, e);
     flood_fill (0, m, get_ultima_jogada(e));
-    return getCasaBOT (maximino, maximino, m) - getCasaBOT (0, 0, m);
+    int d1 = getCasaBOT (0, 0, m);
+    int d2 = getCasaBOT (maximino, maximino, m);
+    if (d1 + d2 == 200) paridade (e); // Caso não seja possível chegar a nenhuma das casas, a pariedade entra em questão
+    if (d1 == 100) valor -= 100; // Impossível chegar à casa do jogador 1
+    else if (d2 == 100) valor += 100; // Impossível chegar à casa do jogador 2
+    else if (d2 == 1 && get_jogador_atual(e) == 2) valor = -200; // Jogador 2 ganha
+    else if (d1 == 1 && get_jogador_atual(e) == 1) valor = 200; // Jogador 1 ganha
+    else if (d1 > d2) {
+        if (d1 > 5) valor -= 50 + d1 - d2; // Jogador 2 a ganhar
+        else valor += 50 + d1 - d2; // Jogador 1 a ganhar
+    } else {
+        if (d2 > 5) valor -= 50 + d1 - d2; // Jogador 2 a ganhar
+        else valor += 50 + d1 - d2; // Jogador 1 a ganhar
+    }
+    return valor;
 }
 
 
@@ -310,6 +326,7 @@ int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA)
                                 }
         return res;
 }
+
 // O inteiro do min_max diz se é suposto maximizar ou minimar o valor
 int min_max_Estado (ESTADO *e, int min_max)
 {
@@ -409,3 +426,32 @@ int min_max_Estado (ESTADO *e, int min_max)
         return res;
     }
     // Queremos o mínimo da lista
+
+int contaVazias(MAPA m){
+    int vazias=0;
+    int linha, coluna;
+    for(linha = maximino; linha >= 0; linha --){
+
+        for(coluna = 0; coluna <= maximino; coluna ++){
+
+            if( (m[linha][coluna] > 0) && (m[linha][coluna] < 100) ) vazias++;
+
+        }
+    
+    }
+    
+    return vazias;
+}
+
+
+int paridade(ESTADO *e){
+    MAPA m;
+    inicializaMapa (m, e);
+    flood_fill (0, m, get_ultima_jogada(e));
+    int jogador = get_jogador_atual(e);
+    int casasVazias = contaVazias(m);
+    // printf ("\n Paridade \n");
+    // mostrar_mapa (m);
+    if ((jogador + casasVazias)%2) return -200; 
+    return 200;
+}

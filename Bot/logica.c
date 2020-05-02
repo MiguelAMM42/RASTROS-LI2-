@@ -3,7 +3,6 @@
 #include <math.h>
 #include <string.h>
 #include "dados.h"
-#include "lista.h"
 #include "logica.h"
 
 
@@ -155,54 +154,10 @@ void guardaJogadas (ESTADO *e, char linha[],int num_jogada ,int n) {
     }
 }
 
-void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe um *numeroJogada* válido, ou seja, menor que o num_jogadas atual.
-    if (numeroJogada == 0) 
-    {
-        int com = get_num_comandos (e);
-        free (e);
-        (e) = inicializar_estado();
-        set_num_comandos (e, com);
-        return; 
-    }
-    numeroJogada--;
-    int n = e -> num_jogadas;
-    set_num_jogadas (e, numeroJogada+1); // Alterar o *num_jogadas* para o número de jogadas pretendido.
-    set_ultima_jogada (e, (e-> jogadas [numeroJogada]).jogador2); 
-    set_casa (e, e -> jogadas[numeroJogada].jogador1, PRETA); //Altera casa do jogador 1, para casa PRETA
-    set_casa (e, e -> jogadas[numeroJogada].jogador2, BRANCA);
-   numeroJogada ++;
-    while (numeroJogada <= n) { // Transformar as peças das eventuais jogadas posteriores.
-        set_casa (e, e -> jogadas[numeroJogada].jogador1, VAZIO);
-        set_casa (e, e -> jogadas[numeroJogada].jogador2, VAZIO);
-        numeroJogada ++;
-    }
-    if (get_jogador_atual (e) == 2) set_casa (e, e -> jogadas[numeroJogada].jogador1, VAZIO); // Caso a última jogada seja incompleta.
-    
-    set_jogador_atual (e, 1); // Alterar o *jogador_atual* para o jogador 1 que será o primeiro a jogar.
-    COORDENADA c = {0,0};
-    set_casa (e, c, UM);
-}
 
 
 
-COORDENADA *comando_jog(LISTA vV, ESTADO *e){   
-    int distancia;
-    COORDENADA* jogada; 
-    COORDENADA* jogadaMinima;
-    int jogAtual = get_jogador_atual(e);
-    int distanciaMinima = 200;
-    while(!lista_esta_vazia(vV)){
-        jogada = devolve_cabeca(vV);
-        distancia = dist_jog1(*jogada, jogAtual);
-        if (distancia < distanciaMinima){
-            jogadaMinima = jogada;
-            distanciaMinima = distancia;
-        }
-        vV = vV -> prox;
-    }
-    return jogadaMinima;
 
-}
 
 
 

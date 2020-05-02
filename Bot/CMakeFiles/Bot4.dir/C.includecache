@@ -15,8 +15,6 @@ string.h
 -
 dados.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.h
-lista.h
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.h
 logica.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.h
 interface.h
@@ -47,8 +45,6 @@ math.h
 -
 dados.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.h
-lista.h
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.h
 logica.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.h
 interface.h
@@ -83,8 +79,6 @@ string.h
 -
 dados.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/dados.h
-lista.h
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/lista.h
 logica.h
 /home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/logica.h
 
