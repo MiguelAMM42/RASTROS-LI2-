@@ -23,6 +23,7 @@ int jogar (ESTADO *estado, COORDENADA c);
 /**
 \brief Verifica se há um vencedor
 @param estado Apontador para o estado
+@returns Retorna o número do vencedor caso haja
 */
 int Vencedor (ESTADO *e);
 /**
