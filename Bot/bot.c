@@ -412,7 +412,6 @@ int min_max_Estado (ESTADO *e, int min_max)
 
 
 int contaVazias(MAPA m){
-
     int vazias=0;
     int linha, coluna;
     for(linha = maximino; linha >= 0; linha --){
@@ -430,19 +429,17 @@ int contaVazias(MAPA m){
 }
 
 
-int paridade(MAPA m, ESTADO *e){
+int paridade(ESTADO *e){
+    MAPA m;
+    int resultado;
+    inicializaMapa (m, e);
+    flood_fill (0, m, get_ultima_jogada(e));
     int jogador = get_jogador_atual(e);
     int casasVazias = contaVazias(m);
-    if (jogador == 1){
-        if (casasVazias%2 == 0){
-         return 200;
-        }else return -200;
-    }
-    else 
-    {
-        if (casasVazias%2 == 0){
-            return -200;
-        } else return 200;
-    }
+    resultado = jogador + casasVazias;
+    if (resultado%2) return -200; 
+    return 200;
 }
 
+
+//se a soma for impara
