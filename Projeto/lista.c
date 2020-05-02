@@ -126,20 +126,28 @@ int dist_jog1 (COORDENADA c, int jogAtual)
     int col = c.coluna;
     int lin = c.linha;
     if (jogAtual == 1)
+    {
+
+            if(col == 0) distancia = -1;
+            if (lin == 0) distancia = -1;
+            else distancia = (lin*lin) + (col*col);
+
+    } else
         {
-        distancia = (lin*lin) + (col*col);
-        }
-    else 
-        {
-        lin = 7 - lin;
-        col = 7 - col;
-        distancia = (lin*lin) + (col*col);
+        
+            if(col == 7) distancia = -1;
+            if (lin == 7) distancia = -1;
+            else{
+                
+                lin = 7 - lin;
+                col = 7 - col;
+                distancia = (lin*lin) + (col*col);
+            } 
         }
 
     return distancia;
 }  
     
-
 
 
 int length (LISTA l){
