@@ -80,5 +80,21 @@ brief Cria uma lista com os valores úteis para a heurística do Min_Max
 
 
 
+/**
+\brief Função que contam o número de casas alcançáveis vazias no tabuleiro
+@param m Mapa cujos valores fornecem a informação se certa peça é ou não alcançável
+@returns Número de casas vazias
+*/
+int contaVazias(MAPA m);
+/**
+\brief Função que dá informação sobre a paridade
+@param m Mapa cujos valores fornecem a informação se certa peça é ou não alcançável
+@param e Apontador para o estado
+@returns 200 se a jogada é boa para o jogador 1; -200 se é boa para o jogador 2
+*/
+ int paridade(MAPA m, ESTADO *e);
+
+
+
 
 #endif

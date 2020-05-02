@@ -409,3 +409,40 @@ int min_max_Estado (ESTADO *e, int min_max)
         return res;
     }
     // Queremos o mínimo da lista
+
+
+int contaVazias(MAPA m){
+
+    int vazias=0;
+    int linha, coluna;
+    for(linha = maximino; linha >= 0; linha --){
+
+        for(coluna = 0; coluna <= maximino; coluna ++){
+
+            if( (m[linha][coluna] > 0) && (m[linha][coluna] < 100) ) vazias++;
+
+        }
+    
+    }
+    
+    return vazias;
+
+}
+
+
+int paridade(MAPA m, ESTADO *e){
+    int jogador = get_jogador_atual(e);
+    int casasVazias = contaVazias(m);
+    if (jogador == 1){
+        if (casasVazias%2 == 0){
+         return 200;
+        }else return -200;
+    }
+    else 
+    {
+        if (casasVazias%2 == 0){
+            return -200;
+        } else return 200;
+    }
+}
+
