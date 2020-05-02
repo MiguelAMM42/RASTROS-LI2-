@@ -191,10 +191,10 @@ int valor(ESTADO *e, int jogador) {
     int d1 = getCasaBOT (0, 0, m);
     int d2 = getCasaBOT (maximino, maximino, m);
     if (d1 + d2 == 200) paridade (e); // Caso não seja possível chegar a nenhuma das casas, a pariedade entra em questão
-    if (d1 == 100) valor -= 100; // Impossível chegar à casa do jogador 1
+    if (d1 == 100) valor -= 100;      // Impossível chegar à casa do jogador 1
     else if (d2 == 100) valor += 100; // Impossível chegar à casa do jogador 2
     else if (d2 == 1 && get_jogador_atual(e) == 2) valor = -200; // Jogador 2 ganha
-    else if (d1 == 1 && get_jogador_atual(e) == 1) valor = 200; // Jogador 1 ganha
+    else if (d1 == 1 && get_jogador_atual(e) == 1) valor = 200;  // Jogador 1 ganha
     else if (d1 > d2) {
         if (d1 > 5) valor -= 50 + d1 - d2; // Jogador 2 a ganhar
         else valor += 50 + d1 - d2; // Jogador 1 a ganhar
@@ -450,8 +450,6 @@ int paridade(ESTADO *e){
     flood_fill (0, m, get_ultima_jogada(e));
     int jogador = get_jogador_atual(e);
     int casasVazias = contaVazias(m);
-    // printf ("\n Paridade \n");
-    // mostrar_mapa (m);
     if ((jogador + casasVazias)%2) return -200; 
     return 200;
 }
