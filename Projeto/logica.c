@@ -188,7 +188,7 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
 COORDENADA *comando_jog(LISTA vizinhosValidos, ESTADO *e){   
     int distancia;
     COORDENADA* jogada; 
-    COORDENADA* jogadaMinima;
+    COORDENADA* jogadaMinima = NULL;
     int jogAtual = get_jogador_atual(e);
     int distanciaMinima = 200;
     while(!lista_esta_vazia(vizinhosValidos)){
