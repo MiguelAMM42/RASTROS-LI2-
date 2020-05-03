@@ -5,7 +5,6 @@ Definição do estado e das funções que o manipulam
 
 #ifndef ___DADOS_H___
 #define  ___DADOS_H___
-#define BUF_SIZE 1024
 
 #define TRUE 1
 #define FALSE 0
