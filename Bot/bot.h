@@ -29,32 +29,6 @@ void inicializaMapa (MAPA m, ESTADO *e);
 */
 void flood_fill (int distAtual, MAPA m, COORDENADA cA);
 /**
-\brief Dá valores à coordenada atual, última jogada, a partir das distâncias.
-@param e Apontador para o Estado.
-@param jogAtual Jogador atual.
-@returns Valor da casa(entre -200 e 200)
-*/
-int min_max_Estado (ESTADO *e, int jogAtual);
-/**
-\brief Calcula um valor a partir de 2 mapas e compara com o valor atual da coordenada, 
-\brief analisando se é uma casa melhor do que a atual hipótese.
-@param m1 Mapa cujo referencial é a coordenada (0,0).
-@param m2 Mapa cujo referencial é a coordenada (7,7).
-@param res Melhor hipótese até agora da coordenada atual.
-@param cA Coordenada para ver nos 2 mapas.
-@returns Menor valor pequeno à volta daquela casa.
-*/
-int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA);
-/**
-\brief Função similar à função anterior.
-@param m1 Mapa cujo referencial é a coordenada (0,0).
-@param m2 Mapa cujo referencial é a coordenada (7,7).
-@param res Melhor hipótese até agora da coordenada atual.
-@param cA Coordenada para ver nos 2 mapas.
-@returns Maior valor à volta daquela casa.
-*/
-int test_max (MAPA m1, MAPA m2, int res, COORDENADA cA);
-/**
 \brief Função utilizada para imprimir um tabuleiro, para visualizar melhor o mapa.
 @param m1 Mapa cujo referencial é a coordenada (0,0).
 */
@@ -113,8 +87,6 @@ int contaVazias(MAPA m);
 */
  int paridade(ESTADO *e);
 
-int contaVazias(MAPA m);
-int paridade(ESTADO *e);
 
 
 
