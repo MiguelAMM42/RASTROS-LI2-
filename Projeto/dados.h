@@ -161,4 +161,3 @@ int get_num_comandos (ESTADO *e);
 
 #endif
 
-
