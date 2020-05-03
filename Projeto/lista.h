@@ -59,12 +59,6 @@ int lista_esta_vazia(LISTA L);
 */
 LISTA criaLista (ESTADO *e);
 /**
-\brief Calcula rapidamente a distância da coordenada à peça de vitória do jogador Atual
-@param c Coordenada onde se encontra a peça branca
-@param JOgador Atual (1 ou 2)
-*/
-int dist_jog1 (COORDENADA c, int jogAtual);
-/**
 \brief Caso a coordenada seja uma jogada válida, adiciona à lista
 @param Apontador para o Estado
 @param Apontador para a Coordenada
