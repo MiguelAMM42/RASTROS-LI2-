@@ -6,66 +6,77 @@ Definição do estado e das funções que o manipulam
 #ifndef ___DADOS_H___
 #define  ___DADOS_H___
 
+
+
 /**
-\brief Número 1 é associado ao valor boleano "True"
-*/
+ *brief Número 1 é associado ao valor boleano "True"
+ */
 #define TRUE 1
+
 /**
-\brief Número 0 é associado ao valor boleano "False"
-*/
+ *brief Número 0 é associado ao valor boleano "False"
+ */
 #define FALSE 0
+
 /**
-\brief Número máximo de peças
-*/
+ *brief Número máximo de peças
+ */
 #define MAX 64
+
+
+
 /**
-\brief Tipo de dados para a casa
-*/
+ *brief Tipo de dados para a casa
+ */
 typedef enum {
-  UM = '1',
-  DOIS = '2',
-  VAZIO = '.',
-  BRANCA = '*',
-  PRETA = '#'
+  UM = '1',     /**< Casa 1 */
+  DOIS = '2',   /**< Casa 2 */
+  VAZIO = '.',  /**< Casa vazia */
+  BRANCA = '*', /**< Casa atual */
+  PRETA = '#'   /**< Casa ocupada(Preta) */
 } CASA;
+
+
 /**
-\brief Tipo de dados para as coordenadas
-*/
+ *brief Tipo de dados para as coordenadas
+ */
 typedef struct {
-    int coluna;
-    int linha;
+    /*@{*/
+    int coluna; /**< Coluna da coordenada*/
+    int linha;  /**< Linha da coordenada*/
+    /*@}*/
 } COORDENADA;
 
+
 /**
-\brief Tipo de dados para a jogada
-*/
+ *brief Tipo de dados para a jogada
+ */
 typedef struct {
-    COORDENADA jogador1;
-    COORDENADA jogador2;
+  /*@{*/
+  COORDENADA jogador1; /**< Última coordenada para onde jogou o jogador 1*/
+  COORDENADA jogador2; /**< Última coordenada para onde jogou o jogador 1*/
+  /*@}*/
 } JOGADA;
 
+
 /**
-\brief Tipo de dados para as jogadas
-*/
+ *brief Tipo de dados para as jogadas
+ */
 typedef JOGADA JOGADAS[32];
 
-/**
-\brief Tipo de dados para o estado
-*/
 
+/**
+ *brief Tipo de dados para o estado
+ */
 typedef struct {
-  /** O tabuleiro */
-    CASA tab[8][8];
-  /** As jogadas */
-    JOGADAS jogadas;
-  /** O número das jogadas, usado no prompt */
-    int num_jogadas;
-  /** O jogador atual */
-    int jogador_atual;
-  /** O nº de comando, usado no prompt */
-  int num_comando;
-  /** A coordenada da última jogada */
-  COORDENADA ultima_jogada;
+  /*@{*/
+  CASA tab[8][8];           /**< O tabuleiro */
+  JOGADAS jogadas;          /**< As jogadas */
+  int num_jogadas;          /**< O número das jogadas, usado no prompt */  
+  int jogador_atual;        /**< O jogador atual */  
+  int num_comando;          /**< O nº de comando, usado no prompt */
+  COORDENADA ultima_jogada; /**< A coordenada da última jogada */
+  /*@}*/
 } ESTADO;
 
 /**
@@ -152,5 +163,4 @@ void set_num_comandos (ESTADO *e, int n);
 int get_num_comandos (ESTADO *e);
 
 #endif
-
 
