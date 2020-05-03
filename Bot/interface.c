@@ -5,7 +5,6 @@
 #include "dados.h"
 #include "logica.h"
 #include "interface.h"
-#define COMANDO_INVALIDO(jogo) jogo == 0
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
     int i = 0;

@@ -5,17 +5,16 @@ Definição das funções relacionadas com o bot.
 
 #ifndef ___BOT_H___
 #define ___BOT_H___
+
 /**
- * Para calcular as distâncias usamos uma matriz de inteiros, que indicam distâncias ou a casa, conformo o Estado.
- * A essa matriz chamamos MAPA.
- */
-
-#define BUF_SIZE 1024
-#define MAX_TAB 8
+\brief Constante usada no flood_fill para preencher o mapa, impondo-lhe limites.
+*/ 
 #define maximino 7
-
+/**
+\brief Para calcular as distâncias usamos uma matriz de inteiros, que indicam distâncias ou a casa, conformo o Estado.
+* A essa matriz chamamos MAPA.
+*/ 
 typedef int MAPA[8][8];
-
 /**
 \brief Função que transcreve para um mapa as casas já ocupadas, atribuindo-lhes o valor -1.
 @param e Apontador para o Estado.

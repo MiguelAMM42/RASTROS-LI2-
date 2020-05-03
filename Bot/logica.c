@@ -7,24 +7,24 @@
 
 
 
-int jogar (ESTADO *estado, COORDENADA c) {
+int jogar (ESTADO *e, COORDENADA c) {
     // 1 - Devolve o Estado com a jogada efetuada; 0 - Devolve o estado inicial (a jogada não é válida)
     //if (! jogadaValida(estado, &c)) return 0; // Caso em que a jogada pretendida não é válida.
-    set_casa (estado, get_ultima_jogada (estado), PRETA); // Altera a casa BRANCA da jogada anterior para PRETA 
-    set_casa (estado, c, BRANCA); //  Altera a casa VAZIO da jogada atual para BRANCA 
+    set_casa (e, get_ultima_jogada (e), PRETA); // Altera a casa BRANCA da jogada anterior para PRETA 
+    set_casa (e, c, BRANCA); //  Altera a casa VAZIO da jogada atual para BRANCA 
     // Alterar no array de jogadas, acrescentar a atual
     // Coloca a última jogada no array de Jogadas #1
     // Altera a última jogada para a jogada que o jogador pretende efetuar #2
     // Muda o jogador atual para o seguinte #3
-    if (get_jogador_atual (estado) == 1) {
-        set_jogadas_coordenada (estado, get_num_jogadas(estado), 1, c); // #1
-        set_ultima_jogada (estado, c); // #2
-        set_jogador_atual (estado, 2); // #3
+    if (get_jogador_atual (e) == 1) {
+        set_jogadas_coordenada (e, get_num_jogadas(e), 1, c); // #1
+        set_ultima_jogada (e, c); // #2
+        set_jogador_atual (e, 2); // #3
     } else {
-        set_jogadas_coordenada (estado, get_num_jogadas(estado), 2, c); // #1
-        set_ultima_jogada (estado, c); // #2
-        set_jogador_atual (estado, 1); // #3
-        set_num_jogadas (estado, get_num_jogadas(estado) + 1);
+        set_jogadas_coordenada (e, get_num_jogadas(e), 2, c); // #1
+        set_ultima_jogada (e, c); // #2
+        set_jogador_atual (e, 1); // #3
+        set_num_jogadas (e, get_num_jogadas(e) + 1);
     }
     return 1;
 }
@@ -43,36 +43,36 @@ int Vencedor (ESTADO *e) {
     return 0; // Não há vencedor
 }
 
-int casaVazia(ESTADO *estado, COORDENADA *c) {
+int casaVazia(ESTADO *e, COORDENADA *c) {
     // Primeiro ve se a casa de destino está vazia
     // 1 para vazia; 0 n vazia    
-    CASA casa = get_casa (estado, *c);
+    CASA casa = get_casa (e, *c);
     if (casa != PRETA && casa != BRANCA) return TRUE;
     else return FALSE;
 }
 
-int jogadaValida(ESTADO *estado, COORDENADA *c) {
+int jogadaValida(ESTADO *e, COORDENADA *c) {
     // Primeiro ve se a jogada é valida
     // Depois modifica o estado se for válida
     int colA, linA, colB, linB;
-    linA = (estado -> ultima_jogada).linha; 
-    colA = (estado -> ultima_jogada).coluna; 
+    linA = (e -> ultima_jogada).linha; 
+    colA = (e -> ultima_jogada).coluna; 
     linB = c -> linha; 
     colB = c -> coluna; 
     if
     (( ((colA == colB) && ((linA == linB-1) || (linA == linB+1)))
     || ((colA == colB +1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1))) 
     || ((colA == colB -1) && ((linA == linB-1) || (linA == linB)|| (linA == linB+1))))
-    && casaVazia(estado, c)) return TRUE;
+    && casaVazia(e, c)) return TRUE;
     else return FALSE;
 }
 
 
 //Something is wrong in Jogadas_Possiveis
 
-int JogadasPossiveis (ESTADO *estado) {
-    COORDENADA c = estado -> ultima_jogada;
-    if (anyVazio (estado, &c)) return TRUE;
+int JogadasPossiveis (ESTADO *e) {
+    COORDENADA c = e -> ultima_jogada;
+    if (anyVazio (e, &c)) return TRUE;
     return FALSE;
 }
 
@@ -93,8 +93,8 @@ int anyVazio (ESTADO *e, COORDENADA *c) {
 }
 
 
-int CoordenadaValida (COORDENADA *a) {	
-    if (a -> linha <= 7 && a -> linha >= 0 && a -> coluna >= 0 && a -> coluna <= 7) return TRUE;	
+int CoordenadaValida (COORDENADA *c) {	
+    if (c -> linha <= 7 && c -> linha >= 0 && c -> coluna >= 0 && c -> coluna <= 7) return TRUE;	
     return FALSE;	
 }
 

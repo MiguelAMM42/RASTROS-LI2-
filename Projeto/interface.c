@@ -190,7 +190,7 @@ int comandoJog2 (ESTADO *e){
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    char endereco[BUF_SIZE]; 
+    char endereco[BUF_SIZE];
     int jog = 0;
     printf (">>");
     
@@ -204,7 +204,7 @@ int interpretador(ESTADO *e) {
         printf ("Fim\n");
         return 0;
 
-    } else if (sscanf(linha, "gr%s", endereco) == 1) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
+    } else if (sscanf(linha, "gr%s")) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
         int comGr = comandoGravar(e,endereco);
         return comGr;
 

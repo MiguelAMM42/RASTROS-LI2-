@@ -5,7 +5,6 @@
 #include "logica.h"
 #include "interface.h"
 #include "bot.h"
-#define maximino 7
 
 int main (int argc, char *argv[]) {
 	if (argc != 3) return -1;
@@ -277,10 +276,10 @@ void inicializaMapa (MAPA m, ESTADO *e)
             cA.linha = linha;
             CASA atual;
             atual = get_casa (e, cA);
-            if (get_casa (e, cA) == DOIS) setCasaBOT (coluna, linha, m, 100); // O flood-fill preenche o mapa todo, e para
-            else if (get_casa (e, cA) == UM)  setCasaBOT (coluna, linha, m, 100); // termos acesso à distância à casa X vemos o valor na casa X
-            else if (get_casa (e, cA) == BRANCA)  setCasaBOT (coluna, linha, m, 0); // Assim vamos à casa (0,0) e temos a distância do Jog 1;
-            else if (get_casa (e, cA) == VAZIO)  setCasaBOT (coluna, linha, m, 100);
+            if (atual == DOIS) setCasaBOT (coluna, linha, m, 100); // O flood-fill preenche o mapa todo, e para
+            else if (atual == UM)  setCasaBOT (coluna, linha, m, 100); // termos acesso à distância à casa X vemos o valor na casa X
+            else if (atual == BRANCA)  setCasaBOT (coluna, linha, m, 0); // Assim vamos à casa (0,0) e temos a distância do Jog 1;
+            else if (atual == VAZIO)  setCasaBOT (coluna, linha, m, 100);
             else  setCasaBOT (coluna, linha, m, -1); 
             coluna--;
         }
@@ -296,9 +295,10 @@ void mostrar_mapa (MAPA m) {
     int linha;
     for (linha = 7; linha > (-1); linha--) {
         for (i = 0; i < 9; i++) {
-            COORDENADA c = {i, linha}; {
+            // COORDENADA c = {i, linha};
             if (i == 8) printf ("\n");
-            else printf ("%03d_", (m[linha][i])); }  }
+            else printf ("%03d_", (m[linha][i]));  
+            }
     }
 }
 
@@ -331,7 +331,6 @@ int test_min (MAPA m1, MAPA m2, int res, COORDENADA cA)
 int min_max_Estado (ESTADO *e, int min_max)
 {
  //   if (vencedor (e) == 1 );
-    int jogA = get_jogador_atual (e);
     COORDENADA coorJ = get_ultima_jogada (e);
     //Inicializar mapas
     // m1 = mapa cuja contagem parte da casa (0,0) - J1
@@ -352,7 +351,6 @@ int min_max_Estado (ESTADO *e, int min_max)
     // Gastas memória desnecessária
     flood_fill (0, m2, cA);  //
     int valTab1, valTab2, res;
-    int coorVal;
 
 // mostrar_mapa ( m1) ; //   
 // mostrar_mapa ( m2) ;

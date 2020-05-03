@@ -6,7 +6,6 @@ Definição das funções relacionadas com o interface.
 #ifndef ___INTERFACE_H___
 #define ___INTERFACE_H___
 
-#define BUF_SIZE 1024
 /**
 \brief Mostra as jogadas
 @param s Apontador para o estado
@@ -31,9 +30,9 @@ int interpretador(ESTADO *e);
 */
 void mostra_prompt (ESTADO *s);
 /**
-\brief Interpreta as jogadas feitas pelo jogador
+\brief Guarda no ficheiro o Estado do Jogo
 @param e Apontador para o Estado
-@param fp Apontador para o ficheiro onde se guarda o Estado
+@param fp Apontador para o ficheiro onde se guarda o Estado do Jogo
 */
 void guarda_ficheiro (ESTADO *e, FILE *fp);
 
