@@ -6,19 +6,18 @@ Definição das funções relacionadas com as listas.
 #ifndef ___LISTA_H___
 #define ___LISTA_H___
 
-#define BUF_SIZE 1024
-
-#define MAX_TAB 8
-
+/**
+\brief Para calcular as distâncias usamos uma matriz de inteiros, que indicam distâncias ou a casa, conformo o Estado.
+* A essa matriz chamamos MAPA.
+*/
 typedef int MAPA[8][8];
-
+/**
+\brief Estrutura de dados para listas
+*/
 typedef struct nodo {
    void *valor;
    struct nodo *prox;
 } NODO, *LISTA;
-
-
-
 /**
 \brief Inicializa a lista, com NULL
 @param e Apontador para o Estado

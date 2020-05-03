@@ -7,53 +7,52 @@
 #include "lista.h"
 #include "logica.h"
 #include "interface.h"
-#define COMANDO_INVALIDO(jogo) jogo == 0
 
 // IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
 // INFO JOGAR: VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2; 
 
 
 int interpretador(ESTADO *e) {
-    char linha[BUF_SIZE];
+    char imput[BUF_SIZE];
     char col[2], lin[2];
     char endereco[BUF_SIZE]; 
     int jog = 0;
     printf (">>");
     
-    if (fgets(linha, BUF_SIZE, stdin) == NULL) return -1;
+    if (fgets(imput, BUF_SIZE, stdin) == NULL) return -1;
 
-    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
+    if (strlen(imput) == 3 && sscanf(imput, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
         int comJogar = comandoJogar(e,col,lin);
         return comJogar;
 
-    } else if ((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) { // Se premires qualquer carater, termina.
+    } else if ((strcmp(imput, ("Q\n")) == 0) || (strcmp(imput, ("q\n")) == 0)) { // Se premires qualquer carater, termina.
         printf ("Fim\n");
         return 0;
 
-    } else if (sscanf(linha, "gr%s", endereco) == 1) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
+    } else if (sscanf(imput, "gr%s", endereco) == 1) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
         int comGr = comandoGravar(e,endereco);
         return comGr;
 
     
-    } else if (sscanf(linha, "pos%d", &jog) == 1) {
+    } else if (sscanf(imput, "pos%d", &jog) == 1) {
         int comPos = comandoPos(e, jog);
         return comPos;
 
-    } else if (strcmp(linha, ("jog\n")) == 0) {
+    } else if (strcmp(imput, ("jog\n")) == 0) {
         int comJog = comandoJog (e);
         return comJog;
 
-    } else if (strcmp(linha, ("jog2\n")) == 0) {
+    } else if (strcmp(imput, ("jog2\n")) == 0) {
         int comJog = comandoJog2 (e);
         return comJog;
     
 
-    }else if (strcmp(linha, ("movs\n")) == 0) {
+    }else if (strcmp(imput, ("movs\n")) == 0) {
         mostra_jogadas (e, stdout);
         e -> num_comando ++;
         return 1;
 
-    } else if (sscanf(linha, "ler%s", endereco) == 1) { // Para ler, se meter ler QUALQUER_COISA, vai para esta parte.
+    } else if (sscanf(imput, "ler%s", endereco) == 1) { // Para ler, se meter ler QUALQUER_COISA, vai para esta parte.
         int comLer = comandoLer(e,endereco );
         return comLer;
     }

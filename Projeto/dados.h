@@ -5,10 +5,18 @@ Definição do estado e das funções que o manipulam
 
 #ifndef ___DADOS_H___
 #define  ___DADOS_H___
-#define BUF_SIZE 1024
 
+/**
+\brief Número 1 é associado ao valor boleano "True"
+*/
 #define TRUE 1
+/**
+\brief Número 0 é associado ao valor boleano "False"
+*/
 #define FALSE 0
+/**
+\brief Número máximo de peças
+*/
 #define MAX 64
 /**
 \brief Tipo de dados para a casa
