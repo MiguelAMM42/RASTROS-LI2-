@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC   -shared -Wl,-soname,libsay-ola.so -o libsay-ola.so CMakeFiles/say-ola.dir/dados.c.o CMakeFiles/say-ola.dir/logica.c.o CMakeFiles/say-ola.dir/interface.c.o 

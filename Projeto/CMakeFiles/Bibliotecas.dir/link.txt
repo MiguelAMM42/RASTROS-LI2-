@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC   -shared -Wl,-soname,libBibliotecas.so -o libBibliotecas.so CMakeFiles/Bibliotecas.dir/dados.c.o CMakeFiles/Bibliotecas.dir/logica.c.o CMakeFiles/Bibliotecas.dir/interface.c.o CMakeFiles/Bibliotecas.dir/lista.c.o 

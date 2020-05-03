@@ -1,4 +1,0 @@
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles/rebuild_cache.dir
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles/edit_cache.dir
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles/say-ola.dir
-/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot/CMakeFiles/BotGoncalo.dir

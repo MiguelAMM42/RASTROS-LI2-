@@ -1,0 +1,585 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="bot_8h" kind="file" language="C++">
+    <compoundname>bot.h</compoundname>
+    <includedby refid="bot_8c" local="yes">bot/bot.c</includedby>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="bot_8h_1a82df32a94e3330888d280dc6437cb017" prot="public" static="no">
+        <name>maximino</name>
+        <initializer>7</initializer>
+        <briefdescription>
+<para>Constante usada no flood_fill para preencher o mapa, impondo-lhe limites. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="12" column="9" bodyfile="bot/bot.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" prot="public" static="no">
+        <type>int</type>
+        <definition>typedef int MAPA[8][8]</definition>
+        <argsstring>[8][8]</argsstring>
+        <name>MAPA</name>
+        <briefdescription>
+<para>Para calcular as distâncias usamos uma matriz de inteiros, que indicam distâncias ou a casa, conformo o Estado. A essa matriz chamamos MAPA. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="17" column="1" bodyfile="bot/bot.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="bot_8h_1a307ab523afc2cf3660e768bd4f738652" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void inicializaMapa</definition>
+        <argsstring>(MAPA m, ESTADO *e)</argsstring>
+        <name>inicializaMapa</name>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que transcreve para um mapa as casas já ocupadas, atribuindo-lhes o valor -1. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o Estado. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa pronto para ser inicializado, no início não tem valores corretos. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="23" column="1" bodyfile="bot/bot.c" bodystart="497" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1afeb7f964d18988f1428d8822ab72dd12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void flood_fill</definition>
+        <argsstring>(int distAtual, MAPA m, COORDENADA cA)</argsstring>
+        <name>flood_fill</name>
+        <param>
+          <type>int</type>
+          <declname>distAtual</declname>
+        </param>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref></type>
+          <declname>cA</declname>
+        </param>
+        <briefdescription>
+<para>Através da heutísitica do flood_fill, preenche as posições do mapa. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>distAtual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Quando a função é chamada pela primeira vez, o valor é 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o Estado. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Referência das distâncias, a partir deste ponto começa a contagem. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="30" column="1" bodyfile="bot/bot.c" bodystart="463" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1a5c24dd1af7437af3d98df4f925c6035c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mostrar_mapa</definition>
+        <argsstring>(MAPA m)</argsstring>
+        <name>mostrar_mapa</name>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+<para>Dá valores à coordenada atual, última jogada, a partir das distâncias. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o Estado. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jogAtual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Jogador atual. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Valor da casa(entre -200 e 200) Calcula um valor a partir de 2 mapas e compara com o valor atual da coordenada, analisando se é uma casa melhor do que a atual hipótese. </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>m1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujo referencial é a coordenada (0,0). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujo referencial é a coordenada (7,7). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Melhor hipótese até agora da coordenada atual. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordenada para ver nos 2 mapas. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Menor valor pequeno à volta daquela casa. Função similar à função anterior. </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>m1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujo referencial é a coordenada (0,0). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujo referencial é a coordenada (7,7). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Melhor hipótese até agora da coordenada atual. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordenada para ver nos 2 mapas. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Maior valor à volta daquela casa. Função utilizada para imprimir um tabuleiro, para visualizar melhor o mapa. </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>m1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujo referencial é a coordenada (0,0). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="61" column="1" bodyfile="bot/bot.c" bodystart="523" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1ad7cf54bcf426b9cf6009aa19861b4071" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref></type>
+        <definition>COORDENADA jogadaOTIMA</definition>
+        <argsstring>(ESTADO *e, int comp, int alpha, int beta, int jogador)</argsstring>
+        <name>jogadaOTIMA</name>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>comp</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>jogador</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve a melhor coordenada para a qual se pode jogar. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do tabuleiro. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Comprimento até onde vai a MiniMax. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Alpha é o melhor valor que a função maximixadora pode garantir naquele nível ou mais à frente. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Beta é o melhor valor que a função minimizadora pode garantir naquele nível ou mais à frente. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jogador</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Número do jogador(1 ou 2). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="70" column="1" bodyfile="bot/bot.c" bodystart="270" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1ac2067fc27ecdc9b230cebcfc961838e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int minimax</definition>
+        <argsstring>(ESTADO *e, int comp, int alpha, int beta, int Maximizar)</argsstring>
+        <name>minimax</name>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>comp</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>Maximizar</declname>
+        </param>
+        <briefdescription>
+<para>Função que dexecuta a heurística MiniMax. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do tabuleiro. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Comprimento até onde vai a MiniMax. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Alpha é o melhor valor que a função maximixadora pode garantir naquele nível ou mais à frente. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Beta é o melhor valor que a função minimizadora pode garantir naquele nível ou mais à frente. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jogador</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximizar 0 se fôr para maximizar. Outro número para minimizar. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Devolve o valor máximo se maximizou. Devolve o valor mínimo se minimizou.</para></simplesect>
+Função valorativa j2 -200_______________0_______________200 j1 Chamada inicial minimax (e, 3, -500, +500, 2 - jogador) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="80" column="1" bodyfile="bot/bot.c" bodystart="349" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1a3d4e9bfa8aed1640c430f10416b73bcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getCasaBOT</definition>
+        <argsstring>(int col, int lin, MAPA m)</argsstring>
+        <name>getCasaBOT</name>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lin</declname>
+        </param>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+<para>Função que vai buscar um valor ao mapa. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coluna para procurar no MAPA. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linha para procurar no MAPA. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa para procurar. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="87" column="1" bodyfile="bot/bot.c" bodystart="455" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1aab5fcbf545631fe18dd659f4a74724ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCasaBOT</definition>
+        <argsstring>(int col, int lin, MAPA m, int subst)</argsstring>
+        <name>setCasaBOT</name>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lin</declname>
+        </param>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subst</declname>
+        </param>
+        <briefdescription>
+<para>Função que altera um valor ao mapa. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coluna para procurar no MAPA. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linha para procurar no MAPA. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa para procurar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Valor para inserir no mapa (m). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="95" column="1" bodyfile="bot/bot.c" bodystart="448" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1a3067ffe1951e07343e706f2a968c40a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int valor</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>valor</name>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que atribui um valor a cada casa do tabuleiro. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>jogador</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Número do jogador(1 ou 2). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>valor </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="102" column="1" bodyfile="bot/bot.c" bodystart="416" bodyend="436"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1ad9e4da32bf8a1a2340532d294f483910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int contaVazias</definition>
+        <argsstring>(MAPA m)</argsstring>
+        <name>contaVazias</name>
+        <param>
+          <type><ref refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref></type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+<para>Função que contam o número de casas alcançáveis vazias no tabuleiro. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mapa cujos valores fornecem a informação se certa peça é ou não alcançável. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Número de casas vazias. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="108" column="1" bodyfile="bot/bot.c" bodystart="660" bodyend="674"/>
+      </memberdef>
+      <memberdef kind="function" id="bot_8h_1a0692d914b4d33757d532f70f7573ea64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int paridade</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>paridade</name>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que dá informação sobre a paridade. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Apontador para o estado. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>200 se a jogada é boa para o jogador 1; -200 se é boa para o jogador 2. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="bot/bot.h" line="114" column="1" bodyfile="bot/bot.c" bodystart="677" bodyend="685"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Definição das funções relacionadas com o bot. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>___BOT_H___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>___BOT_H___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="bot_8h_1a82df32a94e3330888d280dc6437cb017" refkind="member"><highlight class="preprocessor">#define<sp/>maximino<sp/>7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref>[8][8];</highlight></codeline>
+<codeline lineno="23"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a307ab523afc2cf3660e768bd4f738652" kindref="member">inicializaMapa</ref><sp/>(<ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m,<sp/><ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="30"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1afeb7f964d18988f1428d8822ab72dd12" kindref="member">flood_fill</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>distAtual,<sp/><ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m,<sp/><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>cA);</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//int<sp/>min_max_Estado<sp/>(ESTADO<sp/>*e,<sp/>int<sp/>jogAtual);</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"></highlight><highlight class="comment">//int<sp/>test_min<sp/>(MAPA<sp/>m1,<sp/>MAPA<sp/>m2,<sp/>int<sp/>res,<sp/>COORDENADA<sp/>cA);</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"></highlight><highlight class="comment">//int<sp/>test_max<sp/>(MAPA<sp/>m1,<sp/>MAPA<sp/>m2,<sp/>int<sp/>res,<sp/>COORDENADA<sp/>cA);</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a5c24dd1af7437af3d98df4f925c6035c" kindref="member">mostrar_mapa</ref><sp/>(<ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/><ref refid="bot_8h_1ad7cf54bcf426b9cf6009aa19861b4071" kindref="member">jogadaOTIMA</ref><sp/>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>comp,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alpha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>beta,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>jogador);</highlight></codeline>
+<codeline lineno="80"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1ac2067fc27ecdc9b230cebcfc961838e7" kindref="member">minimax</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>comp,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alpha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>beta,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Maximizar);</highlight></codeline>
+<codeline lineno="87"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a3d4e9bfa8aed1640c430f10416b73bcc" kindref="member">getCasaBOT</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lin,<sp/><ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m);</highlight></codeline>
+<codeline lineno="95"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1aab5fcbf545631fe18dd659f4a74724ba" kindref="member">setCasaBOT</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lin,<sp/><ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subst);</highlight></codeline>
+<codeline lineno="102"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a3067ffe1951e07343e706f2a968c40a5" kindref="member">valor</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="108"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1ad9e4da32bf8a1a2340532d294f483910" kindref="member">contaVazias</ref>(<ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a0692d914b4d33757d532f70f7573ea64" kindref="member">paridade</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1ad9e4da32bf8a1a2340532d294f483910" kindref="member">contaVazias</ref>(<ref refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kindref="member">MAPA</ref><sp/>m);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bot_8h_1a0692d914b4d33757d532f70f7573ea64" kindref="member">paridade</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="bot/bot.h"/>
+  </compounddef>
+</doxygen>

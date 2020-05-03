@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/BotGoncalo.dir/bot.c.o  -o BotGoncalo -Wl,-rpath,/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Bot libsay-ola.so 

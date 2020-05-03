@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/Jogo.dir/main.c.o  -o Jogo -Wl,-rpath,/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto libBibliotecas.so 

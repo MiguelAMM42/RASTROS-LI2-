@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/Bot4.dir/bot.c.o CMakeFiles/Bot4.dir/dados.c.o CMakeFiles/Bot4.dir/logica.c.o CMakeFiles/Bot4.dir/interface.c.o CMakeFiles/Bot4.dir/lista.c.o  -o Bot4 
