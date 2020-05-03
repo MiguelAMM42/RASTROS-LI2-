@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
+  <compound refid="structCOORDENADA" kind="struct"><name>COORDENADA</name>
+    <member refid="structCOORDENADA_1adfbc8d4856ce807139fdf62e00aed29a" kind="variable"><name>coluna</name></member>
+    <member refid="structCOORDENADA_1aefe14bcc5a066ac3b21500cc3d28c06f" kind="variable"><name>linha</name></member>
+  </compound>
+  <compound refid="structESTADO" kind="struct"><name>ESTADO</name>
+    <member refid="structESTADO_1ae03c399b73d7a92d7f7ced83e91e5b6f" kind="variable"><name>tab</name></member>
+    <member refid="structESTADO_1afae43b87a488fad0f2b56a18bad31d18" kind="variable"><name>jogadas</name></member>
+    <member refid="structESTADO_1a261495728744647e618b4e623f5a4b7a" kind="variable"><name>num_jogadas</name></member>
+    <member refid="structESTADO_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kind="variable"><name>jogador_atual</name></member>
+    <member refid="structESTADO_1adf1064dfc09145b6995a7897249f1674" kind="variable"><name>num_comando</name></member>
+    <member refid="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" kind="variable"><name>ultima_jogada</name></member>
+  </compound>
+  <compound refid="structJOGADA" kind="struct"><name>JOGADA</name>
+    <member refid="structJOGADA_1a93d9306cb0c49b66b7d9a615bffe0149" kind="variable"><name>jogador1</name></member>
+    <member refid="structJOGADA_1ab46b16dfbdc7f2af9430c8dcdac0914b" kind="variable"><name>jogador2</name></member>
+  </compound>
+  <compound refid="structnodo" kind="struct"><name>nodo</name>
+    <member refid="structnodo_1ab63adcdb83ea1fdcf4fa10f3cafc4a6a" kind="variable"><name>valor</name></member>
+    <member refid="structnodo_1a086547621a7da23b916bbe26e0855308" kind="variable"><name>prox</name></member>
+  </compound>
+  <compound refid="bot_8c" kind="file"><name>bot.c</name>
+    <member refid="bot_8c_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+    <member refid="bot_8c_1ad7cf54bcf426b9cf6009aa19861b4071" kind="function"><name>jogadaOTIMA</name></member>
+    <member refid="bot_8c_1ac2067fc27ecdc9b230cebcfc961838e7" kind="function"><name>minimax</name></member>
+    <member refid="bot_8c_1a3067ffe1951e07343e706f2a968c40a5" kind="function"><name>valor</name></member>
+    <member refid="bot_8c_1aab5fcbf545631fe18dd659f4a74724ba" kind="function"><name>setCasaBOT</name></member>
+    <member refid="bot_8c_1a3d4e9bfa8aed1640c430f10416b73bcc" kind="function"><name>getCasaBOT</name></member>
+    <member refid="bot_8c_1afeb7f964d18988f1428d8822ab72dd12" kind="function"><name>flood_fill</name></member>
+    <member refid="bot_8c_1a307ab523afc2cf3660e768bd4f738652" kind="function"><name>inicializaMapa</name></member>
+    <member refid="bot_8c_1a5c24dd1af7437af3d98df4f925c6035c" kind="function"><name>mostrar_mapa</name></member>
+    <member refid="bot_8c_1a669f6f0b20fd5cfc7302dd27b157fba6" kind="function"><name>test_max</name></member>
+    <member refid="bot_8c_1a8a0b9bdab8c067670a1d4b1e59db5819" kind="function"><name>test_min</name></member>
+    <member refid="bot_8c_1a58de18578af6f6af3244edddbc1a69fa" kind="function"><name>min_max_Estado</name></member>
+    <member refid="bot_8c_1ad9e4da32bf8a1a2340532d294f483910" kind="function"><name>contaVazias</name></member>
+    <member refid="bot_8c_1a0692d914b4d33757d532f70f7573ea64" kind="function"><name>paridade</name></member>
+  </compound>
+  <compound refid="bot_8h" kind="file"><name>bot.h</name>
+    <member refid="bot_8h_1a82df32a94e3330888d280dc6437cb017" kind="define"><name>maximino</name></member>
+    <member refid="bot_8h_1a52609c49b7cb1593ab93deb1e267b70a" kind="typedef"><name>MAPA</name></member>
+    <member refid="bot_8h_1a307ab523afc2cf3660e768bd4f738652" kind="function"><name>inicializaMapa</name></member>
+    <member refid="bot_8h_1afeb7f964d18988f1428d8822ab72dd12" kind="function"><name>flood_fill</name></member>
+    <member refid="bot_8h_1a0e7039239f664f8642caaecd8673db9c" kind="function"><name>min_max_Estado</name></member>
+    <member refid="bot_8h_1a8a0b9bdab8c067670a1d4b1e59db5819" kind="function"><name>test_min</name></member>
+    <member refid="bot_8h_1a669f6f0b20fd5cfc7302dd27b157fba6" kind="function"><name>test_max</name></member>
+    <member refid="bot_8h_1a5c24dd1af7437af3d98df4f925c6035c" kind="function"><name>mostrar_mapa</name></member>
+    <member refid="bot_8h_1ad7cf54bcf426b9cf6009aa19861b4071" kind="function"><name>jogadaOTIMA</name></member>
+    <member refid="bot_8h_1ac2067fc27ecdc9b230cebcfc961838e7" kind="function"><name>minimax</name></member>
+    <member refid="bot_8h_1a3d4e9bfa8aed1640c430f10416b73bcc" kind="function"><name>getCasaBOT</name></member>
+    <member refid="bot_8h_1aab5fcbf545631fe18dd659f4a74724ba" kind="function"><name>setCasaBOT</name></member>
+    <member refid="bot_8h_1a3067ffe1951e07343e706f2a968c40a5" kind="function"><name>valor</name></member>
+    <member refid="bot_8h_1ad9e4da32bf8a1a2340532d294f483910" kind="function"><name>contaVazias</name></member>
+    <member refid="bot_8h_1a0692d914b4d33757d532f70f7573ea64" kind="function"><name>paridade</name></member>
+  </compound>
+  <compound refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c" kind="file"><name>CMakeCCompilerId.c</name>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a81dee0709ded976b2e0319239f72d174" kind="define"><name>COMPILER_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a2ae9b72bb13abaabfcf2ee0ba7d3fa1d" kind="define"><name>STRINGIFY_HELPER</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a43e1cad902b6477bec893cb6430bd6c8" kind="define"><name>STRINGIFY</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1adbc5372f40838899018fadbc89bd588b" kind="define"><name>PLATFORM_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1aba35d0d200deaeb06aee95ca297acb28" kind="define"><name>ARCHITECTURE_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1ad1280362da42492bbc11aa78cbf776ad" kind="define"><name>DEC</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a46d5d95daa1bef867bd0179594310ed5" kind="define"><name>HEX</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a07f8e5783674099cd7f5110e22a78cdb" kind="define"><name>C_DIALECT</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a4b0efeb7a5d59313986b3a0390f050f6" kind="variable"><name>info_compiler</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a2321403dee54ee23f0c2fa849c60f7d4" kind="variable"><name>info_platform</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a59647e99d304ed33b15cb284c27ed391" kind="variable"><name>info_arch</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a1ce162bad2fe6966ac8b33cc19e120b8" kind="variable"><name>info_language_dialect_default</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c" kind="file"><name>CMakeCCompilerId.c</name>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a81dee0709ded976b2e0319239f72d174" kind="define"><name>COMPILER_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a2ae9b72bb13abaabfcf2ee0ba7d3fa1d" kind="define"><name>STRINGIFY_HELPER</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a43e1cad902b6477bec893cb6430bd6c8" kind="define"><name>STRINGIFY</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1adbc5372f40838899018fadbc89bd588b" kind="define"><name>PLATFORM_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1aba35d0d200deaeb06aee95ca297acb28" kind="define"><name>ARCHITECTURE_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1ad1280362da42492bbc11aa78cbf776ad" kind="define"><name>DEC</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a46d5d95daa1bef867bd0179594310ed5" kind="define"><name>HEX</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a07f8e5783674099cd7f5110e22a78cdb" kind="define"><name>C_DIALECT</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a4b0efeb7a5d59313986b3a0390f050f6" kind="variable"><name>info_compiler</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a2321403dee54ee23f0c2fa849c60f7d4" kind="variable"><name>info_platform</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a59647e99d304ed33b15cb284c27ed391" kind="variable"><name>info_arch</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a1ce162bad2fe6966ac8b33cc19e120b8" kind="variable"><name>info_language_dialect_default</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdC_2CMakeCCompilerId_8c_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp" kind="file"><name>CMakeCXXCompilerId.cpp</name>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a81dee0709ded976b2e0319239f72d174" kind="define"><name>COMPILER_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a2ae9b72bb13abaabfcf2ee0ba7d3fa1d" kind="define"><name>STRINGIFY_HELPER</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a43e1cad902b6477bec893cb6430bd6c8" kind="define"><name>STRINGIFY</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1adbc5372f40838899018fadbc89bd588b" kind="define"><name>PLATFORM_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1aba35d0d200deaeb06aee95ca297acb28" kind="define"><name>ARCHITECTURE_ID</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1ad1280362da42492bbc11aa78cbf776ad" kind="define"><name>DEC</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a46d5d95daa1bef867bd0179594310ed5" kind="define"><name>HEX</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a34cc889e576a1ae6c84ae9e0a851ba21" kind="define"><name>CXX_STD</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a4b0efeb7a5d59313986b3a0390f050f6" kind="variable"><name>info_compiler</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a2321403dee54ee23f0c2fa849c60f7d4" kind="variable"><name>info_platform</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a59647e99d304ed33b15cb284c27ed391" kind="variable"><name>info_arch</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a1ce162bad2fe6966ac8b33cc19e120b8" kind="variable"><name>info_language_dialect_default</name></member>
+    <member refid="Bot_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp" kind="file"><name>CMakeCXXCompilerId.cpp</name>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a81dee0709ded976b2e0319239f72d174" kind="define"><name>COMPILER_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a2ae9b72bb13abaabfcf2ee0ba7d3fa1d" kind="define"><name>STRINGIFY_HELPER</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a43e1cad902b6477bec893cb6430bd6c8" kind="define"><name>STRINGIFY</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1adbc5372f40838899018fadbc89bd588b" kind="define"><name>PLATFORM_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1aba35d0d200deaeb06aee95ca297acb28" kind="define"><name>ARCHITECTURE_ID</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1ad1280362da42492bbc11aa78cbf776ad" kind="define"><name>DEC</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a46d5d95daa1bef867bd0179594310ed5" kind="define"><name>HEX</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a34cc889e576a1ae6c84ae9e0a851ba21" kind="define"><name>CXX_STD</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a4b0efeb7a5d59313986b3a0390f050f6" kind="variable"><name>info_compiler</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a2321403dee54ee23f0c2fa849c60f7d4" kind="variable"><name>info_platform</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a59647e99d304ed33b15cb284c27ed391" kind="variable"><name>info_arch</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a1ce162bad2fe6966ac8b33cc19e120b8" kind="variable"><name>info_language_dialect_default</name></member>
+    <member refid="Projeto_2CMakeFiles_23_810_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Bot_2CMakeFiles_2feature__tests_8c" kind="file"><name>feature_tests.c</name>
+    <member refid="Bot_2CMakeFiles_2feature__tests_8c_1a1582568e32f689337602a16bf8a5bff0" kind="variable"><name>features</name></member>
+    <member refid="Bot_2CMakeFiles_2feature__tests_8c_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Projeto_2CMakeFiles_2feature__tests_8c" kind="file"><name>feature_tests.c</name>
+    <member refid="Projeto_2CMakeFiles_2feature__tests_8c_1a1582568e32f689337602a16bf8a5bff0" kind="variable"><name>features</name></member>
+    <member refid="Projeto_2CMakeFiles_2feature__tests_8c_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Bot_2CMakeFiles_2feature__tests_8cxx" kind="file"><name>feature_tests.cxx</name>
+    <member refid="Bot_2CMakeFiles_2feature__tests_8cxx_1a1582568e32f689337602a16bf8a5bff0" kind="variable"><name>features</name></member>
+    <member refid="Bot_2CMakeFiles_2feature__tests_8cxx_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Projeto_2CMakeFiles_2feature__tests_8cxx" kind="file"><name>feature_tests.cxx</name>
+    <member refid="Projeto_2CMakeFiles_2feature__tests_8cxx_1a1582568e32f689337602a16bf8a5bff0" kind="variable"><name>features</name></member>
+    <member refid="Projeto_2CMakeFiles_2feature__tests_8cxx_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Bot_2dados_8c" kind="file"><name>dados.c</name>
+    <member refid="Bot_2dados_8c_1a7e0c7e26fb685d9ab501e19b05e6954f" kind="function"><name>inicializar_estado</name></member>
+    <member refid="Bot_2dados_8c_1a4ff507f9c0fe1035cf233f4964b1a302" kind="function"><name>set_casa</name></member>
+    <member refid="Bot_2dados_8c_1a20acddc30eae79368814d559cce579a9" kind="function"><name>get_casa</name></member>
+    <member refid="Bot_2dados_8c_1aeaf028852b003f79a705a7968a8ad7e6" kind="function"><name>set_ultima_jogada</name></member>
+    <member refid="Bot_2dados_8c_1ae89c72e4fa31dcc1eb9ba0fb8ea707e1" kind="function"><name>get_ultima_jogada</name></member>
+    <member refid="Bot_2dados_8c_1ab7e988ba4468e2e908f35d98caa81f19" kind="function"><name>set_num_jogadas</name></member>
+    <member refid="Bot_2dados_8c_1adea30d54df73cf866227a6b6bd790827" kind="function"><name>get_num_jogadas</name></member>
+    <member refid="Bot_2dados_8c_1af88be1780cf433494c052a1664f6ed49" kind="function"><name>set_jogador_atual</name></member>
+    <member refid="Bot_2dados_8c_1ab9c95b014d2e217eae7d081088501963" kind="function"><name>get_jogador_atual</name></member>
+    <member refid="Bot_2dados_8c_1ab57295e8132be2b2f199d4c99e20de32" kind="function"><name>set_jogadas_coordenada</name></member>
+    <member refid="Bot_2dados_8c_1a966cedd5de36bd82a7cc6bb7ca9cb31e" kind="function"><name>coordenadaIgual</name></member>
+    <member refid="Bot_2dados_8c_1a42518d7b174b40d7e89cba990accf496" kind="function"><name>set_num_comandos</name></member>
+    <member refid="Bot_2dados_8c_1a64a0594c35b60d060e44640b60e55bea" kind="function"><name>get_num_comandos</name></member>
+  </compound>
+  <compound refid="Projeto_2dados_8c" kind="file"><name>dados.c</name>
+    <member refid="Projeto_2dados_8c_1a7e0c7e26fb685d9ab501e19b05e6954f" kind="function"><name>inicializar_estado</name></member>
+    <member refid="Projeto_2dados_8c_1a4ff507f9c0fe1035cf233f4964b1a302" kind="function"><name>set_casa</name></member>
+    <member refid="Projeto_2dados_8c_1a20acddc30eae79368814d559cce579a9" kind="function"><name>get_casa</name></member>
+    <member refid="Projeto_2dados_8c_1aeaf028852b003f79a705a7968a8ad7e6" kind="function"><name>set_ultima_jogada</name></member>
+    <member refid="Projeto_2dados_8c_1ae89c72e4fa31dcc1eb9ba0fb8ea707e1" kind="function"><name>get_ultima_jogada</name></member>
+    <member refid="Projeto_2dados_8c_1ab7e988ba4468e2e908f35d98caa81f19" kind="function"><name>set_num_jogadas</name></member>
+    <member refid="Projeto_2dados_8c_1adea30d54df73cf866227a6b6bd790827" kind="function"><name>get_num_jogadas</name></member>
+    <member refid="Projeto_2dados_8c_1af88be1780cf433494c052a1664f6ed49" kind="function"><name>set_jogador_atual</name></member>
+    <member refid="Projeto_2dados_8c_1ab9c95b014d2e217eae7d081088501963" kind="function"><name>get_jogador_atual</name></member>
+    <member refid="Projeto_2dados_8c_1ab57295e8132be2b2f199d4c99e20de32" kind="function"><name>set_jogadas_coordenada</name></member>
+    <member refid="Projeto_2dados_8c_1a966cedd5de36bd82a7cc6bb7ca9cb31e" kind="function"><name>coordenadaIgual</name></member>
+    <member refid="Projeto_2dados_8c_1a42518d7b174b40d7e89cba990accf496" kind="function"><name>set_num_comandos</name></member>
+    <member refid="Projeto_2dados_8c_1a64a0594c35b60d060e44640b60e55bea" kind="function"><name>get_num_comandos</name></member>
+  </compound>
+  <compound refid="Bot_2dados_8h" kind="file"><name>dados.h</name>
+    <member refid="Bot_2dados_8h_1aa8cecfc5c5c054d2875c03e77b7be15d" kind="define"><name>TRUE</name></member>
+    <member refid="Bot_2dados_8h_1aa93f0eb578d23995850d61f7d61c55c1" kind="define"><name>FALSE</name></member>
+    <member refid="Bot_2dados_8h_1a392fb874e547e582e9c66a08a1f23326" kind="define"><name>MAX</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kind="enum"><name>CASA</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kind="enumvalue"><name>UM</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kind="enumvalue"><name>DOIS</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kind="enumvalue"><name>VAZIO</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kind="enumvalue"><name>BRANCA</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kind="enumvalue"><name>PRETA</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kind="enumvalue"><name>UM</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kind="enumvalue"><name>DOIS</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kind="enumvalue"><name>VAZIO</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kind="enumvalue"><name>BRANCA</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kind="enumvalue"><name>PRETA</name></member>
+    <member refid="Bot_2dados_8h_1a94c221d29a1760f008b7834093259b7d" kind="typedef"><name>JOGADAS</name></member>
+    <member refid="Bot_2dados_8h_1a7e0c7e26fb685d9ab501e19b05e6954f" kind="function"><name>inicializar_estado</name></member>
+    <member refid="Bot_2dados_8h_1a4ff507f9c0fe1035cf233f4964b1a302" kind="function"><name>set_casa</name></member>
+    <member refid="Bot_2dados_8h_1a20acddc30eae79368814d559cce579a9" kind="function"><name>get_casa</name></member>
+    <member refid="Bot_2dados_8h_1aeaf028852b003f79a705a7968a8ad7e6" kind="function"><name>set_ultima_jogada</name></member>
+    <member refid="Bot_2dados_8h_1ae89c72e4fa31dcc1eb9ba0fb8ea707e1" kind="function"><name>get_ultima_jogada</name></member>
+    <member refid="Bot_2dados_8h_1ab7e988ba4468e2e908f35d98caa81f19" kind="function"><name>set_num_jogadas</name></member>
+    <member refid="Bot_2dados_8h_1adea30d54df73cf866227a6b6bd790827" kind="function"><name>get_num_jogadas</name></member>
+    <member refid="Bot_2dados_8h_1af88be1780cf433494c052a1664f6ed49" kind="function"><name>set_jogador_atual</name></member>
+    <member refid="Bot_2dados_8h_1ab9c95b014d2e217eae7d081088501963" kind="function"><name>get_jogador_atual</name></member>
+    <member refid="Bot_2dados_8h_1ab57295e8132be2b2f199d4c99e20de32" kind="function"><name>set_jogadas_coordenada</name></member>
+    <member refid="Bot_2dados_8h_1a966cedd5de36bd82a7cc6bb7ca9cb31e" kind="function"><name>coordenadaIgual</name></member>
+    <member refid="Bot_2dados_8h_1a42518d7b174b40d7e89cba990accf496" kind="function"><name>set_num_comandos</name></member>
+    <member refid="Bot_2dados_8h_1a64a0594c35b60d060e44640b60e55bea" kind="function"><name>get_num_comandos</name></member>
+  </compound>
+  <compound refid="Projeto_2dados_8h" kind="file"><name>dados.h</name>
+    <member refid="Projeto_2dados_8h_1aa8cecfc5c5c054d2875c03e77b7be15d" kind="define"><name>TRUE</name></member>
+    <member refid="Projeto_2dados_8h_1aa93f0eb578d23995850d61f7d61c55c1" kind="define"><name>FALSE</name></member>
+    <member refid="Projeto_2dados_8h_1a392fb874e547e582e9c66a08a1f23326" kind="define"><name>MAX</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kind="enum"><name>CASA</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kind="enumvalue"><name>UM</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kind="enumvalue"><name>DOIS</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kind="enumvalue"><name>VAZIO</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kind="enumvalue"><name>BRANCA</name></member>
+    <member refid="Bot_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kind="enumvalue"><name>PRETA</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kind="enumvalue"><name>UM</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kind="enumvalue"><name>DOIS</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kind="enumvalue"><name>VAZIO</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kind="enumvalue"><name>BRANCA</name></member>
+    <member refid="Projeto_2dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kind="enumvalue"><name>PRETA</name></member>
+    <member refid="Projeto_2dados_8h_1a94c221d29a1760f008b7834093259b7d" kind="typedef"><name>JOGADAS</name></member>
+    <member refid="Projeto_2dados_8h_1a7e0c7e26fb685d9ab501e19b05e6954f" kind="function"><name>inicializar_estado</name></member>
+    <member refid="Projeto_2dados_8h_1a4ff507f9c0fe1035cf233f4964b1a302" kind="function"><name>set_casa</name></member>
+    <member refid="Projeto_2dados_8h_1a20acddc30eae79368814d559cce579a9" kind="function"><name>get_casa</name></member>
+    <member refid="Projeto_2dados_8h_1aeaf028852b003f79a705a7968a8ad7e6" kind="function"><name>set_ultima_jogada</name></member>
+    <member refid="Projeto_2dados_8h_1ae89c72e4fa31dcc1eb9ba0fb8ea707e1" kind="function"><name>get_ultima_jogada</name></member>
+    <member refid="Projeto_2dados_8h_1ab7e988ba4468e2e908f35d98caa81f19" kind="function"><name>set_num_jogadas</name></member>
+    <member refid="Projeto_2dados_8h_1adea30d54df73cf866227a6b6bd790827" kind="function"><name>get_num_jogadas</name></member>
+    <member refid="Projeto_2dados_8h_1af88be1780cf433494c052a1664f6ed49" kind="function"><name>set_jogador_atual</name></member>
+    <member refid="Projeto_2dados_8h_1ab9c95b014d2e217eae7d081088501963" kind="function"><name>get_jogador_atual</name></member>
+    <member refid="Projeto_2dados_8h_1ab57295e8132be2b2f199d4c99e20de32" kind="function"><name>set_jogadas_coordenada</name></member>
+    <member refid="Projeto_2dados_8h_1a966cedd5de36bd82a7cc6bb7ca9cb31e" kind="function"><name>coordenadaIgual</name></member>
+    <member refid="Projeto_2dados_8h_1a42518d7b174b40d7e89cba990accf496" kind="function"><name>set_num_comandos</name></member>
+    <member refid="Projeto_2dados_8h_1a64a0594c35b60d060e44640b60e55bea" kind="function"><name>get_num_comandos</name></member>
+  </compound>
+  <compound refid="Bot_2interface_8c" kind="file"><name>interface.c</name>
+    <member refid="Bot_2interface_8c_1ab0666ab8d1dc23e2e155c0f992b62de6" kind="function"><name>mostrar_tabuleiro</name></member>
+    <member refid="Bot_2interface_8c_1a267baf8b3887b2e3ce2b4f759cbced6c" kind="function"><name>mostra_jogadas</name></member>
+    <member refid="Bot_2interface_8c_1adbe7c2c3528c083997d14ec6c0a0d8a7" kind="function"><name>guarda_ficheiro</name></member>
+  </compound>
+  <compound refid="Projeto_2interface_8c" kind="file"><name>interface.c</name>
+    <member refid="Projeto_2interface_8c_1a24da95ebeede4a540e37790ce8be359b" kind="function"><name>interpretador</name></member>
+    <member refid="Projeto_2interface_8c_1ab0666ab8d1dc23e2e155c0f992b62de6" kind="function"><name>mostrar_tabuleiro</name></member>
+    <member refid="Projeto_2interface_8c_1a267baf8b3887b2e3ce2b4f759cbced6c" kind="function"><name>mostra_jogadas</name></member>
+    <member refid="Projeto_2interface_8c_1ab34663336c22b482b0eadca598fd4bcb" kind="function"><name>mostra_prompt</name></member>
+    <member refid="Projeto_2interface_8c_1adbe7c2c3528c083997d14ec6c0a0d8a7" kind="function"><name>guarda_ficheiro</name></member>
+    <member refid="Projeto_2interface_8c_1a2d3b14a4d0e7bd04195b0d0d038b825c" kind="function"><name>comandoPos</name></member>
+    <member refid="Projeto_2interface_8c_1a9e531e72ec46548176cae326ecfd7e88" kind="function"><name>comandoJogar</name></member>
+    <member refid="Projeto_2interface_8c_1a4dd74e90054f4b44928446afbf6c3c32" kind="function"><name>comandoGravar</name></member>
+    <member refid="Projeto_2interface_8c_1aabd415fafb94a2d6c7a6d6d6a29979a8" kind="function"><name>comandoJog</name></member>
+    <member refid="Projeto_2interface_8c_1a85103aa04ba49e1a5745f371e4763416" kind="function"><name>comandoLer</name></member>
+    <member refid="Projeto_2interface_8c_1af5a824949b633ac90ebf4d370d96cbc2" kind="function"><name>comandoJog2</name></member>
+  </compound>
+  <compound refid="Bot_2interface_8h" kind="file"><name>interface.h</name>
+    <member refid="Bot_2interface_8h_1a267baf8b3887b2e3ce2b4f759cbced6c" kind="function"><name>mostra_jogadas</name></member>
+    <member refid="Bot_2interface_8h_1ab0666ab8d1dc23e2e155c0f992b62de6" kind="function"><name>mostrar_tabuleiro</name></member>
+    <member refid="Bot_2interface_8h_1a24da95ebeede4a540e37790ce8be359b" kind="function"><name>interpretador</name></member>
+    <member refid="Bot_2interface_8h_1ab34663336c22b482b0eadca598fd4bcb" kind="function"><name>mostra_prompt</name></member>
+    <member refid="Bot_2interface_8h_1adbe7c2c3528c083997d14ec6c0a0d8a7" kind="function"><name>guarda_ficheiro</name></member>
+  </compound>
+  <compound refid="Projeto_2interface_8h" kind="file"><name>interface.h</name>
+    <member refid="Projeto_2interface_8h_1a6821bafc3c88dfb2e433a095df9940c6" kind="define"><name>BUF_SIZE</name></member>
+    <member refid="Projeto_2interface_8h_1a267baf8b3887b2e3ce2b4f759cbced6c" kind="function"><name>mostra_jogadas</name></member>
+    <member refid="Projeto_2interface_8h_1ab0666ab8d1dc23e2e155c0f992b62de6" kind="function"><name>mostrar_tabuleiro</name></member>
+    <member refid="Projeto_2interface_8h_1a24da95ebeede4a540e37790ce8be359b" kind="function"><name>interpretador</name></member>
+    <member refid="Projeto_2interface_8h_1ab34663336c22b482b0eadca598fd4bcb" kind="function"><name>mostra_prompt</name></member>
+    <member refid="Projeto_2interface_8h_1adbe7c2c3528c083997d14ec6c0a0d8a7" kind="function"><name>guarda_ficheiro</name></member>
+    <member refid="Projeto_2interface_8h_1a2d3b14a4d0e7bd04195b0d0d038b825c" kind="function"><name>comandoPos</name></member>
+    <member refid="Projeto_2interface_8h_1a9e531e72ec46548176cae326ecfd7e88" kind="function"><name>comandoJogar</name></member>
+    <member refid="Projeto_2interface_8h_1a4dd74e90054f4b44928446afbf6c3c32" kind="function"><name>comandoGravar</name></member>
+    <member refid="Projeto_2interface_8h_1aabd415fafb94a2d6c7a6d6d6a29979a8" kind="function"><name>comandoJog</name></member>
+    <member refid="Projeto_2interface_8h_1a85103aa04ba49e1a5745f371e4763416" kind="function"><name>comandoLer</name></member>
+    <member refid="Projeto_2interface_8h_1af5a824949b633ac90ebf4d370d96cbc2" kind="function"><name>comandoJog2</name></member>
+  </compound>
+  <compound refid="Bot_2logica_8c" kind="file"><name>logica.c</name>
+    <member refid="Bot_2logica_8c_1ac313d7e553b1e2b5f266acb9bfff8141" kind="function"><name>jogar</name></member>
+    <member refid="Bot_2logica_8c_1a6fce62b57158daf992d52efc813da9cb" kind="function"><name>Vencedor</name></member>
+    <member refid="Bot_2logica_8c_1ad9d3bbf1c686135c03a9502b13f41388" kind="function"><name>casaVazia</name></member>
+    <member refid="Bot_2logica_8c_1aaee3276a7f7f28109913447b12e86c86" kind="function"><name>jogadaValida</name></member>
+    <member refid="Bot_2logica_8c_1a68872049be642d882802ebe75f80535e" kind="function"><name>JogadasPossiveis</name></member>
+    <member refid="Bot_2logica_8c_1a1326e92f82b72cd3bc1a55183720d079" kind="function"><name>anyVazio</name></member>
+    <member refid="Bot_2logica_8c_1a3c1b6e5c1c1e38e2095cc3637e26a92d" kind="function"><name>CoordenadaValida</name></member>
+    <member refid="Bot_2logica_8c_1adb63309b72e0749f8e56bb18df39152d" kind="function"><name>le_ficheiro</name></member>
+    <member refid="Bot_2logica_8c_1a46fdebf63e4fa6ef714bb7d1b8d5c163" kind="function"><name>guardaLinha</name></member>
+    <member refid="Bot_2logica_8c_1ad5683dcebcf5926c188b34a9c9151a3e" kind="function"><name>guardaJogadas</name></member>
+  </compound>
+  <compound refid="Projeto_2logica_8c" kind="file"><name>logica.c</name>
+    <member refid="Projeto_2logica_8c_1a53472e75f056ceb02b5387193021838a" kind="function"><name>jogar</name></member>
+    <member refid="Projeto_2logica_8c_1a6fce62b57158daf992d52efc813da9cb" kind="function"><name>Vencedor</name></member>
+    <member refid="Projeto_2logica_8c_1a88463afa79fe411e2f9ce48df4c8a5c5" kind="function"><name>casaVazia</name></member>
+    <member refid="Projeto_2logica_8c_1a082ab9e10e65f18d8c80efe8f0ee7a90" kind="function"><name>jogadaValida</name></member>
+    <member refid="Projeto_2logica_8c_1ac19a705a422f277470e437cf7aa7a554" kind="function"><name>JogadasPossiveis</name></member>
+    <member refid="Projeto_2logica_8c_1a1326e92f82b72cd3bc1a55183720d079" kind="function"><name>anyVazio</name></member>
+    <member refid="Projeto_2logica_8c_1a7f805617a6f4676ef215c29a0d1f45c4" kind="function"><name>CoordenadaValida</name></member>
+    <member refid="Projeto_2logica_8c_1adb63309b72e0749f8e56bb18df39152d" kind="function"><name>le_ficheiro</name></member>
+    <member refid="Projeto_2logica_8c_1a46fdebf63e4fa6ef714bb7d1b8d5c163" kind="function"><name>guardaLinha</name></member>
+    <member refid="Projeto_2logica_8c_1ad5683dcebcf5926c188b34a9c9151a3e" kind="function"><name>guardaJogadas</name></member>
+    <member refid="Projeto_2logica_8c_1a84a4a8d419fa5732e96e2180a5991d17" kind="function"><name>jogadaAnterior</name></member>
+    <member refid="Projeto_2logica_8c_1a6a102408a7dbcb4dd7a850945f181af3" kind="function"><name>comando_jog</name></member>
+    <member refid="Projeto_2logica_8c_1a69dc5f0b6d1d904f8795e2adab20286d" kind="function"><name>comando_jog2</name></member>
+    <member refid="Projeto_2logica_8c_1aeb945b3a623de54e0805ffcb44880f87" kind="function"><name>dist_jog1</name></member>
+  </compound>
+  <compound refid="Bot_2logica_8h" kind="file"><name>logica.h</name>
+    <member refid="Bot_2logica_8h_1ad9d3bbf1c686135c03a9502b13f41388" kind="function"><name>casaVazia</name></member>
+    <member refid="Bot_2logica_8h_1ac313d7e553b1e2b5f266acb9bfff8141" kind="function"><name>jogar</name></member>
+    <member refid="Bot_2logica_8h_1a6fce62b57158daf992d52efc813da9cb" kind="function"><name>Vencedor</name></member>
+    <member refid="Bot_2logica_8h_1aaee3276a7f7f28109913447b12e86c86" kind="function"><name>jogadaValida</name></member>
+    <member refid="Bot_2logica_8h_1a1326e92f82b72cd3bc1a55183720d079" kind="function"><name>anyVazio</name></member>
+    <member refid="Bot_2logica_8h_1a68872049be642d882802ebe75f80535e" kind="function"><name>JogadasPossiveis</name></member>
+    <member refid="Bot_2logica_8h_1a3c1b6e5c1c1e38e2095cc3637e26a92d" kind="function"><name>CoordenadaValida</name></member>
+    <member refid="Bot_2logica_8h_1adb63309b72e0749f8e56bb18df39152d" kind="function"><name>le_ficheiro</name></member>
+    <member refid="Bot_2logica_8h_1a46fdebf63e4fa6ef714bb7d1b8d5c163" kind="function"><name>guardaLinha</name></member>
+    <member refid="Bot_2logica_8h_1ad5683dcebcf5926c188b34a9c9151a3e" kind="function"><name>guardaJogadas</name></member>
+  </compound>
+  <compound refid="Projeto_2logica_8h" kind="file"><name>logica.h</name>
+    <member refid="Projeto_2logica_8h_1a88463afa79fe411e2f9ce48df4c8a5c5" kind="function"><name>casaVazia</name></member>
+    <member refid="Projeto_2logica_8h_1a53472e75f056ceb02b5387193021838a" kind="function"><name>jogar</name></member>
+    <member refid="Projeto_2logica_8h_1a6fce62b57158daf992d52efc813da9cb" kind="function"><name>Vencedor</name></member>
+    <member refid="Projeto_2logica_8h_1a082ab9e10e65f18d8c80efe8f0ee7a90" kind="function"><name>jogadaValida</name></member>
+    <member refid="Projeto_2logica_8h_1a1326e92f82b72cd3bc1a55183720d079" kind="function"><name>anyVazio</name></member>
+    <member refid="Projeto_2logica_8h_1ac19a705a422f277470e437cf7aa7a554" kind="function"><name>JogadasPossiveis</name></member>
+    <member refid="Projeto_2logica_8h_1a7f805617a6f4676ef215c29a0d1f45c4" kind="function"><name>CoordenadaValida</name></member>
+    <member refid="Projeto_2logica_8h_1adbe7c2c3528c083997d14ec6c0a0d8a7" kind="function"><name>guarda_ficheiro</name></member>
+    <member refid="Projeto_2logica_8h_1adb63309b72e0749f8e56bb18df39152d" kind="function"><name>le_ficheiro</name></member>
+    <member refid="Projeto_2logica_8h_1a46fdebf63e4fa6ef714bb7d1b8d5c163" kind="function"><name>guardaLinha</name></member>
+    <member refid="Projeto_2logica_8h_1ad5683dcebcf5926c188b34a9c9151a3e" kind="function"><name>guardaJogadas</name></member>
+    <member refid="Projeto_2logica_8h_1a84a4a8d419fa5732e96e2180a5991d17" kind="function"><name>jogadaAnterior</name></member>
+    <member refid="Projeto_2logica_8h_1a6a102408a7dbcb4dd7a850945f181af3" kind="function"><name>comando_jog</name></member>
+    <member refid="Projeto_2logica_8h_1a69dc5f0b6d1d904f8795e2adab20286d" kind="function"><name>comando_jog2</name></member>
+    <member refid="Projeto_2logica_8h_1aeb945b3a623de54e0805ffcb44880f87" kind="function"><name>dist_jog1</name></member>
+  </compound>
+  <compound refid="lista_8c" kind="file"><name>lista.c</name>
+    <member refid="lista_8c_1a4c10928f7acaa4e3de3760cea0dfd9c0" kind="function"><name>lista_esta_vazia</name></member>
+    <member refid="lista_8c_1ae3b99323b6f8f35d80bb69ff1a27985e" kind="function"><name>criar_lista</name></member>
+    <member refid="lista_8c_1a9026a681a68322b5ec7f07137b864cbd" kind="function"><name>remove_cabeca</name></member>
+    <member refid="lista_8c_1ad9380152361127432c55c1c6067e05ae" kind="function"><name>proximo</name></member>
+    <member refid="lista_8c_1ae631d29062c7dad5a99b738df41faf9b" kind="function"><name>insere_cabeca</name></member>
+    <member refid="lista_8c_1abfcb205f3eb670157be0d1221021714b" kind="function"><name>devolve_cabeca</name></member>
+    <member refid="lista_8c_1abca95c97419c216058988b39d856b93b" kind="function"><name>criaLista</name></member>
+    <member refid="lista_8c_1a8aad2d21acf3c37bfc5f7b939fe6e290" kind="function"><name>adicionarCoordenada</name></member>
+    <member refid="lista_8c_1a1ba8d733e5338c4787d6802976ada84d" kind="function"><name>length</name></member>
+  </compound>
+  <compound refid="lista_8h" kind="file"><name>lista.h</name>
+    <member refid="lista_8h_1a52609c49b7cb1593ab93deb1e267b70a" kind="typedef"><name>MAPA</name></member>
+    <member refid="lista_8h_1ab74c40cea97ab9b24f68471bb1ded1a2" kind="typedef"><name>NODO</name></member>
+    <member refid="lista_8h_1a2ed03b19209dd10718380b31b09a69f5" kind="typedef"><name>LISTA</name></member>
+    <member refid="lista_8h_1ae3b99323b6f8f35d80bb69ff1a27985e" kind="function"><name>criar_lista</name></member>
+    <member refid="lista_8h_1a37ba5fc3cfddb6bc94d4b54b00bc696e" kind="function"><name>insere_cabeca</name></member>
+    <member refid="lista_8h_1abfcb205f3eb670157be0d1221021714b" kind="function"><name>devolve_cabeca</name></member>
+    <member refid="lista_8h_1ad9380152361127432c55c1c6067e05ae" kind="function"><name>proximo</name></member>
+    <member refid="lista_8h_1a9026a681a68322b5ec7f07137b864cbd" kind="function"><name>remove_cabeca</name></member>
+    <member refid="lista_8h_1a4c10928f7acaa4e3de3760cea0dfd9c0" kind="function"><name>lista_esta_vazia</name></member>
+    <member refid="lista_8h_1abca95c97419c216058988b39d856b93b" kind="function"><name>criaLista</name></member>
+    <member refid="lista_8h_1a8aad2d21acf3c37bfc5f7b939fe6e290" kind="function"><name>adicionarCoordenada</name></member>
+    <member refid="lista_8h_1a1ba8d733e5338c4787d6802976ada84d" kind="function"><name>length</name></member>
+  </compound>
+  <compound refid="main_8c" kind="file"><name>main.c</name>
+    <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="md_README" kind="page"><name>md_README</name>
+  </compound>
+  <compound refid="dir_ceed94a551154b2fffbc9a5374b69df3" kind="dir"><name>Bot/CMakeFiles/3.10.2</name>
+  </compound>
+  <compound refid="dir_5776f2ef7e3449a2b1a1a39696cc3292" kind="dir"><name>Projeto/CMakeFiles/3.10.2</name>
+  </compound>
+  <compound refid="dir_3e591643e291dc3ae765186fa1775caa" kind="dir"><name>Bot</name>
+  </compound>
+  <compound refid="dir_57c6fbf77bd3bb78646128cc524c30ed" kind="dir"><name>Bot/CMakeFiles</name>
+  </compound>
+  <compound refid="dir_8982164fb73dd84e91a40a514e2032bb" kind="dir"><name>Projeto/CMakeFiles</name>
+  </compound>
+  <compound refid="dir_6a8b9797d071a28c02c7b59873625b71" kind="dir"><name>Projeto/CMakeFiles/3.10.2/CompilerIdC</name>
+  </compound>
+  <compound refid="dir_155b0e9cdeceac526a804c4e71c192fe" kind="dir"><name>Bot/CMakeFiles/3.10.2/CompilerIdC</name>
+  </compound>
+  <compound refid="dir_5ba534df004367f029bc383e46a2332e" kind="dir"><name>Projeto/CMakeFiles/3.10.2/CompilerIdCXX</name>
+  </compound>
+  <compound refid="dir_578c138d061f79e0e42a04b4dd104609" kind="dir"><name>Bot/CMakeFiles/3.10.2/CompilerIdCXX</name>
+  </compound>
+  <compound refid="dir_0536670d1fa3a65273137b579df70e24" kind="dir"><name>Projeto</name>
+  </compound>
+</doxygenindex>
