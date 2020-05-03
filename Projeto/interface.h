@@ -6,6 +6,10 @@ Definição das funções relacionadas com o interface.
 #ifndef ___INTERFACE_H___
 #define ___INTERFACE_H___
 
+
+/**
+\brief Usado para armazenar um comando escrito pelo utilizador(imput) 
+*/
 #define BUF_SIZE 1024
 /**
 \brief Mostra as jogadas

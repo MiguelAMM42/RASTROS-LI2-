@@ -91,12 +91,18 @@ void jogadaAnterior (ESTADO *e, int numeroJogada);
 @param vV Lista dos vizinhos válidos
 @param e Apontador para o estado
 */
-COORDENADA* comando_jog(LISTA vV, ESTADO *e);
+COORDENADA* comando_jog(LISTA vizinhosValidos, ESTADO *e);
 /**
 \brief Permite determinar as posições vizinhas válidas da posição atual da peça no Estado
 @param vV Lista dos vizinhos válidos
 @param x Valor aleatório gerado previamente 
 */
-COORDENADA* comando_jog2(LISTA vV, int x);
+COORDENADA* comando_jog2(LISTA vizinhosValidos, int valAleat);
+/**
+\brief Calcula rapidamente a distância da coordenada à peça de vitória do jogador Atual
+@param c Coordenada onde se encontra a peça branca
+@param JOgador Atual (1 ou 2)
+*/
+int dist_jog1 (COORDENADA c, int jogAtual);
 
 #endif

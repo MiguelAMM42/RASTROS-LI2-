@@ -185,37 +185,37 @@ void jogadaAnterior (ESTADO *e, int numeroJogada) { // Supõe-se que se recebe u
 
 
 
-COORDENADA *comando_jog(LISTA vV, ESTADO *e){   
+COORDENADA *comando_jog(LISTA vizinhosValidos, ESTADO *e){   
     int distancia;
     COORDENADA* jogada; 
-    COORDENADA* jogadaMinima;
+    COORDENADA* jogadaMinima = NULL;
     int jogAtual = get_jogador_atual(e);
     int distanciaMinima = 200;
-    while(!lista_esta_vazia(vV)){
-        jogada = devolve_cabeca(vV);
+    while(!lista_esta_vazia(vizinhosValidos)){
+        jogada = devolve_cabeca(vizinhosValidos);
         distancia = dist_jog1(*jogada, jogAtual);
         if (distancia < distanciaMinima){
             jogadaMinima = jogada;
             distanciaMinima = distancia;
         }
-        vV = vV -> prox;
+        vizinhosValidos = vizinhosValidos -> prox;
     }
     return jogadaMinima;
 
 }
 
 
-COORDENADA *comando_jog2(LISTA vV,int x){   
+COORDENADA *comando_jog2(LISTA vizinhosValidos,int valAleat){   
     int i;
     COORDENADA* jogada; 
-    if (x == 1) jogada = devolve_cabeca(vV);
+    if (valAleat == 1) jogada = devolve_cabeca(vizinhosValidos);
     else {
         
-        for(i = x; i > 1; i--){
-            vV = vV -> prox;
+        for(i = valAleat; i > 1; i--){
+            vizinhosValidos = vizinhosValidos -> prox;
         }
         
-        jogada = devolve_cabeca(vV);
+        jogada = devolve_cabeca(vizinhosValidos);
      
     }
     
@@ -223,6 +223,34 @@ COORDENADA *comando_jog2(LISTA vV,int x){
 
 }
 
+
+int dist_jog1 (COORDENADA c, int jogAtual)
+{
+    int distancia;
+    int col = c.coluna;
+    int lin = c.linha;
+    if (jogAtual == 1)
+    {
+
+            if(col == 0) distancia = -1;
+            if (lin == 0) distancia = -1;
+            else distancia = (lin*lin) + (col*col);
+
+    } else
+        {
+        
+            if(col == 7) distancia = -1;
+            if (lin == 7) distancia = -1;
+            else{
+                
+                lin = 7 - lin;
+                col = 7 - col;
+                distancia = (lin*lin) + (col*col);
+            } 
+        }
+
+    return distancia;
+}  
 
 
 

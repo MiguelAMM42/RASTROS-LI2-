@@ -9,12 +9,12 @@ ESTADO *inicializar_estado() {
     set_num_comandos (teste1, 0);
     COORDENADA c = {4, 4};
     set_ultima_jogada(teste1, c);
-    for (int i = 7; i > (-1); i--) {
-        for (int ii = 0; ii < 8; ii ++) {
-            COORDENADA a = {ii, i};
-            if (i == 4 && ii == 4) set_casa (teste1, a, BRANCA);
-            else if (i == 7 && ii == 7) set_casa (teste1, a, DOIS);
-            else if (i == 0 && ii == 0) set_casa (teste1, a, UM);
+    for (int linha = 7; linha > (-1); linha--) {
+        for (int coluna = 0; coluna < 8; coluna ++) {
+            COORDENADA a = {coluna, linha};
+            if (linha == 4 && coluna == 4) set_casa (teste1, a, BRANCA);
+            else if (linha == 7 && coluna == 7) set_casa (teste1, a, DOIS);
+            else if (linha == 0 && coluna == 0) set_casa (teste1, a, UM);
             else set_casa (teste1, a, VAZIO);                                         
         }
     }

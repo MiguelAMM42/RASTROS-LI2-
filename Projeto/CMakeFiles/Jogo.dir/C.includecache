@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/dados.h
+
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/interface.h
+
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/lista.h
+
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/logica.h
+
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/main.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+time.h
+-
+dados.h
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/dados.h
+lista.h
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/lista.h
+interface.h
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/interface.h
+logica.h
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/logica.h
+

@@ -1,0 +1,4 @@
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/CMakeFiles/rebuild_cache.dir
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/CMakeFiles/edit_cache.dir
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/CMakeFiles/Bibliotecas.dir
+/home/goncalo/Projetos/LI2/Rastos/RASTROS-LI2-/Projeto/CMakeFiles/Jogo.dir

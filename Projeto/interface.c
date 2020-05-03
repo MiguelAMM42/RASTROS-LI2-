@@ -7,15 +7,63 @@
 #include "lista.h"
 #include "logica.h"
 #include "interface.h"
-#define COMANDO_INVALIDO(jogo) jogo == 0
+
+// IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
+
+int interpretador(ESTADO *e) {
+    char input[BUF_SIZE];
+    char col[2], lin[2];
+    char endereco[BUF_SIZE]; 
+    int jog = 0;
+    printf (">>");
+    
+    if (fgets(input, BUF_SIZE, stdin) == NULL) return -1;
+
+    if (strlen(input) == 3 && sscanf(input, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
+        int comJogar = comandoJogar(e,col,lin);
+        return comJogar;
+
+    } else if ((strcmp(input, ("Q\n")) == 0) || (strcmp(input, ("q\n")) == 0)) { // Se premires qualquer carater, termina.
+        printf ("Fim\n");
+        return 0;
+
+    } else if (sscanf(input, "gr%s", endereco) == 1) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
+        int comGr = comandoGravar(e,endereco);
+        return comGr;
+
+    
+    } else if (sscanf(input, "pos%d", &jog) == 1) {
+        int comPos = comandoPos(e, jog);
+        return comPos;
+
+    } else if (strcmp(input, ("jog\n")) == 0) {
+        int comJog = comandoJog (e);
+        return comJog;
+
+    } else if (strcmp(input, ("jog2\n")) == 0) {
+        int comJog = comandoJog2 (e);
+        return comJog;
+    
+
+    }else if (strcmp(input, ("movs\n")) == 0) {
+        mostra_jogadas (e, stdout);
+        e -> num_comando ++;
+        return 1;
+
+    } else if (sscanf(input, "ler%s", endereco) == 1) { // Para ler, se meter ler QUALQUER_COISA, vai para esta parte.
+        int comLer = comandoLer(e,endereco );
+        return comLer;
+    }
+    return -1;
+} 
+
 
 void mostrar_tabuleiro (ESTADO s, FILE *fp) {
-    int i = 0;
-    int linha;
+    int coluna, linha;
     for (linha = 7; linha > (-1); linha--) {
-        for (i = 0; i < 9; i++) {
-            COORDENADA c = {i, linha};
-            if (i == 8) fputc('\n', fp);
+        for (coluna = 0; coluna < 9; coluna++) {
+            COORDENADA c = {coluna, linha};
+            if (coluna == 8) fputc('\n', fp);
             else if (get_casa (&s, c) == DOIS) fputc('2', fp);
             else if (get_casa (&s, c) == UM) fputc('1', fp);
             else if (get_casa (&s, c) == BRANCA) fputc('*', fp);
@@ -180,58 +228,3 @@ int comandoJog2 (ESTADO *e){
             e -> num_comando ++;
             return 1;
 }
-
-
-
-// IGNORA: -1 ; ACABA: 0; CONTINUA: +1;
-// INFO JOGAR: VÁLIDA: 1 ; INVÁLIDA: 0; ACABA: 2; 
-
-
-int interpretador(ESTADO *e) {
-    char linha[BUF_SIZE];
-    char col[2], lin[2];
-    char endereco[BUF_SIZE];
-    int jog = 0;
-    printf (">>");
-    
-    if (fgets(linha, BUF_SIZE, stdin) == NULL) return -1;
-
-    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) { // Quando é feita a jogada normal.
-        int comJogar = comandoJogar(e,col,lin);
-        return comJogar;
-
-    } else if ((strcmp(linha, ("Q\n")) == 0) || (strcmp(linha, ("q\n")) == 0)) { // Se premires qualquer carater, termina.
-        printf ("Fim\n");
-        return 0;
-
-    } else if (sscanf(linha, "gr%s")) { // Para gravar, se meter gr QUALQUER_COISA vai para esta parte.
-        int comGr = comandoGravar(e,endereco);
-        return comGr;
-
-    
-    } else if (sscanf(linha, "pos%d", &jog) == 1) {
-        int comPos = comandoPos(e, jog);
-        return comPos;
-
-    } else if (strcmp(linha, ("jog\n")) == 0) {
-        int comJog = comandoJog (e);
-        return comJog;
-
-    } else if (strcmp(linha, ("jog2\n")) == 0) {
-        int comJog = comandoJog2 (e);
-        return comJog;
-	
-
-	}else if (strcmp(linha, ("movs\n")) == 0) {
-        mostra_jogadas (e, stdout);
-        e -> num_comando ++;
-        return 1;
-
-    } else if (sscanf(linha, "ler%s", endereco) == 1) { // Para ler, se meter ler QUALQUER_COISA, vai para esta parte.
-        int comLer = comandoLer(e,endereco );
-        return comLer;
-    }
-    return -1;
-} 
-
-
