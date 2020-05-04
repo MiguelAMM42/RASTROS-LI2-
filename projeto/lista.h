@@ -24,8 +24,8 @@ typedef struct nodo {
   * @name Nodo prox
   */
   /*@{*/
-   struct nodo *prox; /**< Struct prox  */
-} NODO, *LISTA;
+   struct nodo *prox; /**< struct prox  */
+} NODO, *LISTA; /**< struct Nodo  */
 /**
 \brief Inicializa a lista, com NULL
 @param e Apontador para o Estado

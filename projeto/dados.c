@@ -1,3 +1,8 @@
+/**
+@file dados.c
+Definição das funções relacionadas com os dados.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "dados.h"

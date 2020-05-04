@@ -1,3 +1,8 @@
+/**
+@file logica.c
+Definição das funções relacionadas com a logica.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

@@ -1,3 +1,8 @@
+/**
+@file interface.c
+Definição das funções relacionadas com a interface.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

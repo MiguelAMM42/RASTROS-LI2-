@@ -1,3 +1,9 @@
+/**
+@file main.c
+Definição da função main do projeto
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,6 +13,10 @@
 #include "interface.h"
 #include "logica.h"
 
+
+/**
+\brief Função principal do programa
+*/
 int main () {
 // Define o estado inicial
     srand(time(NULL));
