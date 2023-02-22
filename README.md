@@ -1,12 +1,9 @@
 # RASTROS-LI2-
 
-- UC : LI2;
+Trabalho realizado na disciplina de Laboratórios de Informática II, que consistia em criar o jogo Rastros no terminal, realizado em C, e criar um bot.
 
-- TURNO PRÁTICO: PL5;
+Realizado por:
 
-- GRUPO : 1;
-
-- ALUNOS:
-	- Diogo Manuel Brito Pires @a93239;	
-	- Gonçalo André Rodrigues Soares @a93286;
-    - Miguel Ângelo Machado Martins @a93280;
+	- Diogo Manuel Brito Pires;	
+	- Gonçalo André Rodrigues Soares;
+    - Miguel Ângelo Machado Martins;
